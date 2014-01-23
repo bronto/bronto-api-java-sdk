@@ -20,6 +20,7 @@ public class DeliveryReadRequest extends RichReadRequest<DeliveryFilter, Deliver
 
     public DeliveryReadRequest(DeliveryFilter filter, int pageNumber) {
         super(filter, pageNumber);
+        withIncludeContent(false).withIncludeContent(false);
     }
 
     public DeliveryReadRequest(DeliveryFilter filter) {

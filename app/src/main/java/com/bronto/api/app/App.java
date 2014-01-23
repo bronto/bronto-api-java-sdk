@@ -8,6 +8,7 @@ import com.bronto.api.operation.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -37,24 +38,31 @@ public class App {
         String sessionId = client.login();
         System.out.println("Successful login: " + sessionId);
 
-        System.out.println("Reading active contacts");
-        final ContactOperations contactOps = new ContactOperations(client);
-        final ContactReadRequest activeContacts = new ContactReadRequest().withStatus(ContactStatus.ACTIVE);
-        contactOps.read(activeContacts, new CompletionHandler<ContactObject>(contactOps, activeContacts) {
-            private int total = 0;
+        final MailListOperations listOps = new MailListOperations(client);
+        ContactOperations contactOps = new ContactOperations(client);
+        ObjectOperations<FieldObject> fieldOps = client.transport(FieldObject.class);
+        ObjectOperations<DeliveryObject> deliveryOps = client.transport(DeliveryObject.class);
 
+        ContactReadRequest activeContacts = new ContactReadRequest()
+            .withIncludeLists(true)
+            .withStatus(ContactStatus.ACTIVE)
+            .withEmail(FilterOperator.STARTS_WITH, "philip");
+
+        System.out.println("Reading active contacts");
+        contactOps.read(activeContacts, new CompletionHandler<ContactObject>(contactOps, activeContacts) {
             @Override
             public void readObjects(List<ContactObject> contacts) {
                 for (ContactObject contact : contacts) {
-                    total += 1;
                     System.out.println(String.format("Contact %s: %s", contact.getId(), contact.getEmail()));
+                    for (String listId : contact.getListIds()) {
+                        System.out.println("\tList id: " + listId);
+                    }
                 }
             }
         });
 
+        MailListReadRequest listRead = new MailListReadRequest();
         System.out.println("Reading lists");
-        final MailListOperations listOps = new MailListOperations(client);
-        final MailListReadRequest listRead = new MailListReadRequest();
         listOps.read(listRead, new CompletionHandler<MailListObject>(listOps, listRead) {
             @Override
             public void readObjects(List<MailListObject> lists) {
@@ -64,9 +72,8 @@ public class App {
             }
         });
 
+        FieldReadRequest fieldRead = new FieldReadRequest();
         System.out.println("Reading fields");
-        final ObjectOperations<FieldObject> fieldOps = client.transport(FieldObject.class);
-        final FieldReadRequest fieldRead = new FieldReadRequest();
         fieldOps.read(fieldRead, new CompletionHandler<FieldObject>(fieldOps, fieldRead) {
             @Override
             public void readObjects(List<FieldObject> fields) {
@@ -75,6 +82,19 @@ public class App {
                 }
             }
         });
+
+        DeliveryReadRequest deliveries = new DeliveryReadRequest()
+              .withStatus(DeliveryStatus.SENT)
+              .withDeliveryType(DeliveryType.NORMAL)
+              .withIncludeRecipients(true);
+
+        System.out.println("Reading sent bulk deliveries");
+        for (DeliveryObject delivery : deliveryOps.readAll(deliveries)) {
+            System.out.println(String.format("Delivery %s: status %s went to:", delivery.getId(), delivery.getStatus()));
+            for (DeliveryRecipientObject recipient : delivery.getRecipients()) {
+                System.out.println(String.format("\t%s: %s", recipient.getId(), recipient.getType()));
+            }
+        }
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         if (reader.readLine() != null) {

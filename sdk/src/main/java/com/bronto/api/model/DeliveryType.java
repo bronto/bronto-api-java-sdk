@@ -11,4 +11,8 @@ public enum DeliveryType {
     public String getApiValue() {
         return name().toLowerCase();
     }
+
+    public boolean matches(String apiValue) {
+        return getApiValue().equals(apiValue);
+    }
 }
