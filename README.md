@@ -13,6 +13,16 @@ The SDK is broken up into two projects:
 - Chainable request building
 - Component driven object operations
 
+## Publish Locally
+
+The project is built [SBT](http://www.scala-sbt.org/) because it is a Superior Build Tool.
+
+```
+> sbt
+> project bronto-api
+> publishLocal
+```
+
 ## Installation
 
 ```
