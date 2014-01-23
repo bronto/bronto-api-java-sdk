@@ -16,6 +16,12 @@ object Build extends sbt.Build {
     settings = Common.settings
   ) aggregate (sdk, client)
 
+  lazy val app = Project(
+    "bronto-api-app",
+    file("app"),
+    settings = Common.settings
+  ) dependsOn sdk
+
   lazy val client = Project(
     "bronto-api-client",
     file("client"),
