@@ -49,9 +49,11 @@ String sessionId = client.login();
 ### Create new Contact
 
 ``` java
-ContactObject contact = new ContactObject();
+ContactOperations contactOps = new ContactOperations(client);
+
+ContactObject contact = contactOps.newObject();
 contact.setEmail("user@example.com");
-contact.setStatus("onboarding");
+contact.setStatus(ContactStatus.ONBOARDING.getApiStatus());
 contact.getListIds().add(listId);
 
 CotactField field = new ContactField();
@@ -59,8 +61,6 @@ field.setFieldId(fieldId);
 field.setContent(value);
 
 contact.getFields().add(field);
-
-ContactOperations contactOps = new ContactOperations(client);
 
 try {
     Future<WriteResult> result = contactOps.add(Arrays.asList(contact));
@@ -100,11 +100,11 @@ contactOps.delete(Arrays.asList(contact));
 
 ``` java
 Calendar createdThreshold = Calendar.getInstance();
-
+createdThreshold.add(Calendar.DATE, -7);
 
 final ContactReadRequest readContacts = new ContactReadRequest()
-    .withStatus("transactional")
-    .withCreated(FilterOperator.AFTER, createdThreshold)
+    .withStatus(ContactStatus.TRANSACTIONAL)
+    .withCreated(FilterOperator.AFTER, createdThreshold.getTime())
     .withListId(listId);
 
 contactOps.read(readContacts, new AsyncHandler() {
@@ -154,25 +154,61 @@ listOps.clear(Arrays.asList(list));
 FieldObject field = new FieldObject();
 field.setName("API Field");
 field.setLabel("API Field Label");
-field.setVisibility(false);
-field.setType("text");
+field.setVisibility(FieldVisibility.PRIVATE.getApiValue());
+field.setType(FieldType.TEXT.getApiValue());
 
-ObjectOperations<FieldObject> fieldOps = client.getOperations("fields");
-fieldOps.add(Arrays.asList(field));
+client.transport(FieldObject.class).add(Arrays.asList(field));
 ```
 
 ### Get a ContentTag
 
 ``` java
-ObjectOperations<ContentTagObject> contentTagOps = client.getOperations("contentTags");
+ObjectOperations<ContentTagObject> contentTagOps = client.transport(ContentTagObject.class);
 
-ContentTag tag = contentTagOps.get(new ContentTagReadRequest().withId("123")).get();
+ContentTagObject tag = contentTagOps.get(new ContentTagReadRequest().withId("123")).get();
 ```
 
 ### Retrieve a Message
 
 ``` java
-ObjectOperations<MessageObject> messageOps = client.getOperations("messages");
+ObjectOperations<MessageObject> messageOps = client.transport(MessageObject.class);
 
 MessageObject message = messageOps.get(new MessageReadRequest().withId("123")).get();
+```
+
+### Create a Delivery
+
+``` java
+DeliveryOperations deliveryOps = new DeliveryOperations(client);
+
+DeliveryRecipientObject recipient = new DeliveryRecipientObject();
+recipient.setDeliveryType(DeliveryRecipientSelection.SELECTED.getApiValue());
+recipient.setType(DeliveryRecipientType.CONTACT.getApiValue());
+recipient.setId(contact.getId());
+
+DeliveryObject delivery = deliveryOps.newObject(new Date());
+delivery.setType(DeliveryType.TRANSACTIONAL.getApiValue());
+delivery.setMessageId(message.getId());
+delivery.setFromEmail("user@example.com");
+delivery.setFromName("Example Sender");
+delivery.getRecipients().add(recipient);
+
+deliveryOps.add(Arrays.asList(delivery));
+```
+
+### Read a Delivery
+
+``` java
+deliveryOps.read(new DeliveryReadRequest().setId(delivery.getId())).get();
+```
+
+### Read Recipients from a Delivery
+
+``` java
+ObjectOperations<DeliveryRecipientStatObject> deliveryStats = client.transport(DeliveryRecipientStatObject.class);
+DeliveryRecipientReadRequest readDelivery = new DeliveryRecipientReadRequest().setId(delivery.getId());
+
+for (DeliveryRecipientStatObject stat : deliveryStats.readAll(readDelivery)) {
+    // Do something with stat
+}
 ```

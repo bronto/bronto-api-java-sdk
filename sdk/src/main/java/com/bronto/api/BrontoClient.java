@@ -1,6 +1,8 @@
 package com.bronto.api;
 
 import com.bronto.api.reflect.ApiReflection;
+import com.bronto.api.request.BrontoClientRequest;
+import com.bronto.api.operation.AbstractObjectOperations;
 
 import com.bronto.api.model.BrontoSoapApiImplService;
 import com.bronto.api.model.BrontoSoapPortType;
@@ -100,11 +102,20 @@ public class BrontoClient {
         });
     }
 
-    public <T> ObjectOperations<T> getOperations(final String name) {
-        return new AbstractObjectOperations<T>(this) {
+    public <T> ObjectOperations<T> transport(Class<T> clazz, final String name) {
+        return new AbstractObjectOperations<T>(clazz, this) {
             @Override
             public ApiReflection getSupportedWriteOperations() {
                 return new ApiReflection(name, "add", "update", "delete");
+            }
+        };
+    }
+
+    public <T> ObjectOperations<T> transport(final Class<T> clazz) {
+        return new AbstractObjectOperations<T>(clazz, this) {
+            @Override
+            public ApiReflection getSupportedWriteOperations() {
+                return new ApiReflection(clazz, "add", "update", "delete");
             }
         };
     }

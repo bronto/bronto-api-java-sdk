@@ -1,11 +1,13 @@
 package com.bronto.api.reflect;
 
-import com.bronto.api.BrontoReadRequest;
-import com.bronto.api.BrontoClientRequest;
+import com.bronto.api.request.BrontoReadRequest;
+import com.bronto.api.request.BrontoClientRequest;
 
 import com.bronto.api.model.BrontoSoapPortType;
 import com.bronto.api.model.SessionHeader;
 import com.bronto.api.model.WriteResult;
+
+import static com.bronto.api.util.StringUtils.*;
 
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -29,20 +31,13 @@ public class ApiReflection {
         this.callCache = new HashMap<String, Method>();
     }
 
+    public ApiReflection(Class<?> clazz, String...writeOps) {
+        // TODO: move this special casing out of here
+        this(pluralize(lowerCaseFirst(clazz.getSimpleName().replace("Object", "").replace("Sms", "SMS"))), writeOps);
+    }
+
     public List<String> getSupportedWriteOperations() {
         return writeOps;
-    }
-
-    private String lowerCaseFirst(String name) {
-        char[] chars = name.toCharArray();
-        chars[0] = Character.toLowerCase(chars[0]);
-        return new String(chars);
-    }
-
-    private String upperCaseFirst(String name) {
-        char[] chars = name.toCharArray();
-        chars[0] = Character.toUpperCase(chars[0]);
-        return new String(chars);
     }
 
     // Override for specific handling

@@ -1,11 +1,13 @@
 package com.bronto.api;
 
+import com.bronto.api.request.BrontoReadRequest;
 import com.bronto.api.model.WriteResult;
 
 import java.util.List;
 import java.util.concurrent.Future;
 
 public interface ObjectOperations<O> {
+    public O newObject();
     public Iterable<O> readAll(BrontoReadRequest<O> request);
 
     public Future<O> get(BrontoReadRequest<O> request);
