@@ -17,9 +17,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
 @SuppressWarnings("unchecked")
-public class BrontoClient {
-    public static int RETRY_LIMIT = 5;
-
+public class BrontoClient implements BrontoApi {
     private final String apiToken;
     private SessionHeader header;
     private BrontoSoapPortType apiService;
@@ -38,18 +36,22 @@ public class BrontoClient {
         this(apiToken, RETRY_LIMIT, service);
     }
 
+    @Override
     public BrontoSoapPortType getService() {
         return apiService;
     }
 
+    @Override
     public SessionHeader getSessionHeader() {
         return header;
     }
 
+    @Override
     public boolean isAuthenticated() {
         return header.getSessionId() != null;
     }
 
+    @Override
     public String login() {
         final String sessionId = invoke(new BrontoClientRequest<String>() {
             @Override
@@ -61,6 +63,7 @@ public class BrontoClient {
         return sessionId;
     }
 
+    @Override
     public <T> T invoke(final BrontoClientRequest<T> request) {
         int retry = 0;
         while (retry < retryLimit) {
@@ -102,15 +105,7 @@ public class BrontoClient {
         });
     }
 
-    public <T> ObjectOperations<T> transport(Class<T> clazz, final String name) {
-        return new AbstractObjectOperations<T>(clazz, this) {
-            @Override
-            public ApiReflection getSupportedWriteOperations() {
-                return new ApiReflection(name, "add", "update", "delete");
-            }
-        };
-    }
-
+    @Override
     public <T> ObjectOperations<T> transport(final Class<T> clazz) {
         return new AbstractObjectOperations<T>(clazz, this) {
             @Override
