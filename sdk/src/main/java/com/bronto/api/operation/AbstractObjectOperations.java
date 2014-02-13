@@ -1,13 +1,11 @@
 package com.bronto.api.operation;
 
-import com.bronto.api.AsyncHandler;
 import com.bronto.api.BrontoApi;
 import com.bronto.api.BrontoClientException;
 import com.bronto.api.ObjectOperations;
 import com.bronto.api.request.BrontoClientRequest;
 import com.bronto.api.request.BrontoReadRequest;
 import com.bronto.api.request.BrontoReadPager;
-import com.bronto.api.reflect.ApiReflection;
 
 import com.bronto.api.model.BrontoSoapPortType;
 import com.bronto.api.model.SessionHeader;
@@ -23,18 +21,11 @@ import java.util.HashMap;
 
 import java.util.concurrent.Future;
 
-public abstract class AbstractObjectOperations<O, C extends BrontoApi> implements ObjectOperations<O> {
-    protected final C client;
-    protected final ApiReflection reflect;
-    protected final Class<O> clazz;
+public abstract class AbstractObjectOperations<O> extends AbstractCommonOperations<BrontoApi, O> implements ObjectOperations<O> {
 
-    public AbstractObjectOperations(Class<O> clazz, C client) {
-        this.clazz = clazz;
-        this.client = client;
-        this.reflect = getSupportedWriteOperations();
+    public AbstractObjectOperations(Class<O> clazz, BrontoApi client) {
+        super(clazz, client);
     }
-
-    public abstract ApiReflection getSupportedWriteOperations();
 
     protected WriteResult callWrite(final String method, List<O> objects) {
         final Object call = reflect.fillMethodCall(method, objects);
@@ -43,25 +34,6 @@ public abstract class AbstractObjectOperations<O, C extends BrontoApi> implement
 
     protected WriteResult callClient(final String method, final Object call) {
         return client.invoke(reflect.createMethodRequest(method, call));
-    }
-
-    public O newObject() {
-        try {
-            return (O) clazz.newInstance();
-        } catch (Exception e) {
-            throw new BrontoClientException(e);
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public Iterable<O> readAll(final BrontoReadRequest<O> request) {
-        return new Iterable<O>() {
-            @Override
-            public Iterator<O> iterator() {
-                return new BrontoReadPager(client, request);
-            }
-        };
     }
 
     @Override

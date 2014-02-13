@@ -2,7 +2,7 @@ package com.bronto.api;
 
 import com.bronto.api.reflect.ApiReflection;
 import com.bronto.api.request.BrontoClientRequest;
-import com.bronto.api.operation.AbstractObjectOperations;
+import com.bronto.api.operation.AbstractAsyncObjectOperations;
 
 import com.bronto.api.model.BrontoSoapApiImplService;
 import com.bronto.api.model.BrontoSoapPortType;
@@ -32,6 +32,12 @@ public class BrontoClientAsync extends BrontoClient implements BrontoApiAsync {
         this(apiToken, RETRY_LIMIT, Executors.newSingleThreadExecutor());
     }
 
+    @Override
+    public void shutdown() {
+        executor.shutdown();
+    }
+
+    @Override
     public ExecutorService getExecutorService() {
         return executor;
     }

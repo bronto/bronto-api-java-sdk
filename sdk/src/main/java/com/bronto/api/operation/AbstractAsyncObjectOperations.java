@@ -3,7 +3,7 @@ package com.bronto.api.operation;
 import com.bronto.api.AsyncHandler;
 import com.bronto.api.BrontoApiAsync;
 import com.bronto.api.BrontoClientException;
-import com.bronto.api.ObjectOperations;
+import com.bronto.api.AsyncObjectOperations;
 import com.bronto.api.request.BrontoClientRequest;
 import com.bronto.api.request.BrontoReadRequest;
 import com.bronto.api.request.BrontoReadPager;
@@ -23,7 +23,7 @@ import java.util.HashMap;
 
 import java.util.concurrent.Future;
 
-public abstract class AbstractAsyncObjectOperations<O> extends AbstractObjectOperations<O, BrontoApiAsync> implements AsyncObjectOperations<O> {
+public abstract class AbstractAsyncObjectOperations<O> extends AbstractCommonOperations<BrontoApiAsync, O> implements AsyncObjectOperations<O> {
     public AbstractAsyncObjectOperations(Class<O> clazz, BrontoApiAsync client) {
         super(clazz, client);
     }
@@ -47,7 +47,7 @@ public abstract class AbstractAsyncObjectOperations<O> extends AbstractObjectOpe
     }
 
     @Override
-    public Future<List<O>> readAsync(final BrontoReadRequest<O> request) {
+    public Future<List<O>> read(final BrontoReadRequest<O> request) {
         return client.async(request);
     }
 
@@ -57,7 +57,7 @@ public abstract class AbstractAsyncObjectOperations<O> extends AbstractObjectOpe
     }
 
     @Override
-    public Future<O> getAsync(final BrontoReadRequest<O> request) {
+    public Future<O> get(final BrontoReadRequest<O> request) {
         return client.async(new BrontoClientRequest<O>() {
             @Override
             public O invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
@@ -77,33 +77,33 @@ public abstract class AbstractAsyncObjectOperations<O> extends AbstractObjectOpe
     }
 
     @Override
-    public Future<WriteResult> addAsync(List<O> objects) {
+    public Future<WriteResult> add(List<O> objects) {
         return callWriteAsync("add", objects);
     }
 
     @Override
-    public Future<WriteResult> updateAsync(List<O> objects) {
+    public Future<WriteResult> update(List<O> objects) {
         return callWriteAsync("update", objects);
     }
 
     @Override
-    public Future<WriteResult> deleteAsync(List<O> objects) {
+    public Future<WriteResult> delete(List<O> objects) {
         return callWriteAsync("delete", objects);
     }
 
     @Override
-    public Future<WriteResult> addAsync(O...objects) {
-        return addAsync(Arrays.asList(objects));
+    public Future<WriteResult> add(O...objects) {
+        return add(Arrays.asList(objects));
     }
 
     @Override
-    public Future<WriteResult> updateAsync(O...objects) {
-        return updateAsync(Arrays.asList(objects));
+    public Future<WriteResult> update(O...objects) {
+        return update(Arrays.asList(objects));
     }
 
     @Override
-    public Future<WriteResult> deleteAsync(O...objects) {
-        return deleteAsync(Arrays.asList(objects));
+    public Future<WriteResult> delete(O...objects) {
+        return delete(Arrays.asList(objects));
     }
 
     @Override

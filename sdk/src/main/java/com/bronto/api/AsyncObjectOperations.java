@@ -6,17 +6,17 @@ import com.bronto.api.model.WriteResult;
 import java.util.List;
 import java.util.concurrent.Future;
 
-public interface AsyncObjectOperations<O> extends ObjectOperations<O> {
-    public Future<O> getAsync(BrontoReadRequest<O> request);
-    public Future<List<O>> readAsync(BrontoReadRequest<O> request);
+public interface AsyncObjectOperations<O> extends CommonOperations<O> {
+    public Future<O> get(BrontoReadRequest<O> request);
+    public Future<List<O>> read(BrontoReadRequest<O> request);
 
-    public Future<WriteResult> addAsync(List<O> objects);
-    public Future<WriteResult> updateAsync(List<O> objects);
-    public Future<WriteResult> deleteAsync(List<O> objects);
+    public Future<WriteResult> add(List<O> objects);
+    public Future<WriteResult> update(List<O> objects);
+    public Future<WriteResult> delete(List<O> objects);
 
-    public Future<WriteResult> addAsync(O...objects);
-    public Future<WriteResult> updateAsync(O...objects);
-    public Future<WriteResult> deleteAsync(O...objects);
+    public Future<WriteResult> add(O...objects);
+    public Future<WriteResult> update(O...objects);
+    public Future<WriteResult> delete(O...objects);
 
     public void get(BrontoReadRequest<O> request, AsyncHandler<O> handler);
     public void read(BrontoReadRequest<O> request, AsyncHandler<List<O>> handler);

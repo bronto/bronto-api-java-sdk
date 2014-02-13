@@ -77,7 +77,7 @@ public class BrontoClient implements BrontoApi {
 
     @Override
     public <T> ObjectOperations<T> transport(final Class<T> clazz) {
-        return new AbstractObjectOperations<T, BrontoApi>(clazz, this) {
+        return new AbstractObjectOperations<T>(clazz, this) {
             @Override
             public ApiReflection getSupportedWriteOperations() {
                 return new ApiReflection(clazz, "add", "update", "delete");

@@ -6,10 +6,7 @@ import com.bronto.api.model.WriteResult;
 import java.util.List;
 import java.util.concurrent.Future;
 
-public interface ObjectOperations<O> {
-    public O newObject();
-    public Iterable<O> readAll(BrontoReadRequest<O> request);
-
+public interface ObjectOperations<O> extends CommonOperations<O> {
     public O get(BrontoReadRequest<O> request);
     public List<O> read(BrontoReadRequest<O> request);
 

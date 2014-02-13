@@ -1,0 +1,49 @@
+package com.bronto.api.operation;
+
+import com.bronto.api.AsyncHandler;
+import com.bronto.api.BrontoApiAsync;
+import com.bronto.api.reflect.ApiReflection;
+
+import com.bronto.api.model.AddToDeliveryGroup;
+import com.bronto.api.model.DeliveryGroupIds;
+import com.bronto.api.model.DeliveryGroupObject;
+import com.bronto.api.model.WriteResult;
+
+import java.util.Arrays;
+import java.util.List;
+
+import java.util.concurrent.Future;
+
+public class DeliveryGroupOperationsAsync extends AbstractAsyncObjectOperations<DeliveryGroupObject> {
+    private DeliveryGroupOperations deliveryGroupOps;
+
+    public DeliveryGroupOperationsAsync(BrontoApiAsync client) {
+        super(DeliveryGroupObject.class, client);
+    }
+
+    @Override
+    public ApiReflection getSupportedWriteOperations() {
+        this.deliveryGroupOps = new DeliveryGroupOperations(client);
+        return deliveryGroupOps.getSupportedWriteOperations();
+    }
+
+    public Future<WriteResult> addOrUpdate(List<DeliveryGroupObject> deliveryGroups) {
+        return callWriteAsync("addOrUpdate", deliveryGroups);
+    }
+
+    public Future<WriteResult> addOrUpdate(DeliveryGroupObject...deliveryGroups) {
+        return addOrUpdate(Arrays.asList(deliveryGroups));
+    }
+
+    public void addOrUpdate(List<DeliveryGroupObject> deliveryGroups, AsyncHandler<WriteResult> handler) {
+        callWriteAsync("addOrUpdate", deliveryGroups, handler);
+    }
+
+    public Future<WriteResult> addToDeliveryGroup(DeliveryGroupObject deliveryGroup, DeliveryGroupIds ids) {
+        return callClientAsync("addToDeliveryGroup", deliveryGroupOps.createAddToDeliveryGroupCall(deliveryGroup, ids));
+    }
+
+    public void addToDeliveryGroup(DeliveryGroupObject deliveryGroup, DeliveryGroupIds ids, AsyncHandler<WriteResult> handler) {
+        callClientAsync("addToDeliveryGroup", deliveryGroupOps.createAddToDeliveryGroupCall(deliveryGroup, ids), handler);
+    }
+}
