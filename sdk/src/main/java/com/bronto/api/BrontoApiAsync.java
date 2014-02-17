@@ -10,5 +10,5 @@ public interface BrontoApiAsync extends BrontoApi {
     public ExecutorService getExecutorService();
     public <T> Future<T> async(final BrontoClientRequest<T> request);
     public <T> void async(final BrontoClientRequest<T> request, final AsyncHandler<T> callback);
-    public <T> AsyncObjectOperations<T> transportAsync(final Class<T> clazz);
+    public <T> ObjectOperationsAsync<T> transportAsync(final Class<T> clazz);
 }

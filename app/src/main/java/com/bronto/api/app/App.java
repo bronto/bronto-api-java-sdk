@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class App {
 
     private static abstract class CompletionHandler<T> extends AsyncReadPager<T> {
-        public CompletionHandler(AsyncObjectOperations<T> ops, BrontoReadRequest<T> read) {
+        public CompletionHandler(ObjectOperationsAsync<T> ops, BrontoReadRequest<T> read) {
             super(ops, read);
         }
 
@@ -39,8 +39,8 @@ public class App {
 
         final MailListOperationsAsync listOps = new MailListOperationsAsync(client);
         ContactOperationsAsync contactOps = new ContactOperationsAsync(client);
-        AsyncObjectOperations<FieldObject> fieldOps = client.transportAsync(FieldObject.class);
-        AsyncObjectOperations<DeliveryObject> deliveryOps = client.transportAsync(DeliveryObject.class);
+        ObjectOperationsAsync<FieldObject> fieldOps = client.transportAsync(FieldObject.class);
+        ObjectOperationsAsync<DeliveryObject> deliveryOps = client.transportAsync(DeliveryObject.class);
 
         ContactReadRequest activeContacts = new ContactReadRequest()
             .withIncludeLists(true)

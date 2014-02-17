@@ -68,7 +68,7 @@ public class BrontoClientAsync extends BrontoClient implements BrontoApiAsync {
     }
 
     @Override
-    public <T> AsyncObjectOperations<T> transportAsync(final Class<T> clazz) {
+    public <T> ObjectOperationsAsync<T> transportAsync(final Class<T> clazz) {
         return new AbstractAsyncObjectOperations<T>(clazz, this) {
             @Override
             public ApiReflection getSupportedWriteOperations() {

@@ -3,7 +3,7 @@ package com.bronto.api.operation;
 import com.bronto.api.AsyncHandler;
 import com.bronto.api.BrontoApiAsync;
 import com.bronto.api.BrontoClientException;
-import com.bronto.api.AsyncObjectOperations;
+import com.bronto.api.ObjectOperationsAsync;
 import com.bronto.api.request.BrontoClientRequest;
 import com.bronto.api.request.BrontoReadRequest;
 import com.bronto.api.request.BrontoReadPager;
@@ -23,7 +23,7 @@ import java.util.HashMap;
 
 import java.util.concurrent.Future;
 
-public abstract class AbstractAsyncObjectOperations<O> extends AbstractCommonOperations<BrontoApiAsync, O> implements AsyncObjectOperations<O> {
+public abstract class AbstractAsyncObjectOperations<O> extends AbstractCommonOperations<BrontoApiAsync, O> implements ObjectOperationsAsync<O> {
     public AbstractAsyncObjectOperations(Class<O> clazz, BrontoApiAsync client) {
         super(clazz, client);
     }

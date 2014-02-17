@@ -6,7 +6,7 @@ import com.bronto.api.model.WriteResult;
 import java.util.List;
 import java.util.concurrent.Future;
 
-public interface AsyncObjectOperations<O> extends CommonOperations<O> {
+public interface ObjectOperationsAsync<O> extends CommonOperations<O> {
     public Future<O> get(BrontoReadRequest<O> request);
     public Future<List<O>> read(BrontoReadRequest<O> request);
 
