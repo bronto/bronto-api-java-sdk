@@ -33,17 +33,26 @@ public abstract class AbstractAsyncObjectOperations<O> extends AbstractCommonOpe
         return callClientAsync(method, call);
     }
 
-    protected void callWriteAsync(final String method, List<O> objects, AsyncHandler<WriteResult> handler) {
+    protected <V> Future<V> callWriteAsync(final String method, List<O> objects, AsyncHandler<WriteResult, V> handler) {
         final Object call = reflect.fillMethodCall(method, objects);
-        callClientAsync(method, call, handler);
+        return callClientAsync(method, call, handler);
     }
 
     protected Future<WriteResult> callClientAsync(final String method, final Object call) {
         return client.async(reflect.createMethodRequest(method, call));
     }
 
-    protected void callClientAsync(final String method, final Object call, final AsyncHandler<WriteResult> handler) {
-        client.async(reflect.createMethodRequest(method, call), handler);
+    protected <V> Future<V> callClientAsync(final String method, final Object call, final AsyncHandler<WriteResult, V> handler) {
+        return client.async(reflect.createMethodRequest(method, call), handler);
+    }
+
+    protected BrontoClientRequest<O> getSingle(final BrontoReadRequest<O> request) {
+        return new BrontoClientRequest<O>() {
+            @Override
+            public O invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
+                return request.invoke(service, header).get(0);
+            }
+        };
     }
 
     @Override
@@ -52,28 +61,18 @@ public abstract class AbstractAsyncObjectOperations<O> extends AbstractCommonOpe
     }
 
     @Override
-    public void read(final BrontoReadRequest<O> request, AsyncHandler<List<O>> handler) {
-        client.async(request, handler);
+    public <V> Future<V> read(final BrontoReadRequest<O> request, AsyncHandler<List<O>, V> handler) {
+        return client.async(request, handler);
     }
 
     @Override
     public Future<O> get(final BrontoReadRequest<O> request) {
-        return client.async(new BrontoClientRequest<O>() {
-            @Override
-            public O invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-                return request.invoke(service, header).get(0);
-            }
-        });
+        return client.async(getSingle(request));
     }
 
     @Override
-    public void get(final BrontoReadRequest<O> request, final AsyncHandler<O> handler) {
-        client.async(new BrontoClientRequest<O>() {
-            @Override
-            public O invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-                return request.invoke(service, header).get(0);
-            }
-        }, handler);
+    public <V> Future<V> get(final BrontoReadRequest<O> request, final AsyncHandler<O, V> handler) {
+        return client.async(getSingle(request), handler);
     }
 
     @Override
@@ -107,17 +106,17 @@ public abstract class AbstractAsyncObjectOperations<O> extends AbstractCommonOpe
     }
 
     @Override
-    public void add(List<O> objects, AsyncHandler<WriteResult> handler) {
-        callWriteAsync("add", objects, handler);
+    public <V> Future<V> add(List<O> objects, AsyncHandler<WriteResult, V> handler) {
+        return callWriteAsync("add", objects, handler);
     }
 
     @Override
-    public void update(List<O> objects, AsyncHandler<WriteResult> handler) {
-        callWriteAsync("update", objects, handler);
+    public <V> Future<V> update(List<O> objects, AsyncHandler<WriteResult, V> handler) {
+        return callWriteAsync("update", objects, handler);
     }
 
     @Override
-    public void delete(List<O> objects, AsyncHandler<WriteResult> handler) {
-        callWriteAsync("delete", objects, handler);
+    public <V> Future<V> delete(List<O> objects, AsyncHandler<WriteResult, V> handler) {
+        return callWriteAsync("delete", objects, handler);
     }
 }

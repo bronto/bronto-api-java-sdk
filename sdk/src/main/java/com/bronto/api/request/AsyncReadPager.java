@@ -1,11 +1,11 @@
 package com.bronto.api.request;
 
-import com.bronto.api.AsyncHandler;
+import com.bronto.api.AsyncVoidHandler;
 import com.bronto.api.ObjectOperationsAsync;
 
 import java.util.List;
 
-public abstract class AsyncReadPager<T> implements AsyncHandler<List<T>> {
+public abstract class AsyncReadPager<T> extends AsyncVoidHandler<List<T>> {
     private final ObjectOperationsAsync<T> ops;
     private final BrontoReadRequest<T> read;
 
@@ -23,7 +23,7 @@ public abstract class AsyncReadPager<T> implements AsyncHandler<List<T>> {
     }
 
     @Override
-    public void onSuccess(List<T> objects) {
+    public void onComplete(List<T> objects) {
         while (!objects.isEmpty()) {
             readObjects(objects);
             try {
@@ -32,11 +32,6 @@ public abstract class AsyncReadPager<T> implements AsyncHandler<List<T>> {
                 onError(e);
             }
         }
-    }
-
-    @Override
-    public void onError(Exception e) {
-        throw new RuntimeException(e);
     }
 
     public abstract void readObjects(List<T> objects);

@@ -33,7 +33,7 @@ public class OrderOperationsAsync extends AbstractAsyncObjectOperations<OrderObj
         return addOrUpdate(Arrays.asList(orders));
     }
 
-    public void addOrUpdate(List<OrderObject> orders, AsyncHandler<WriteResult> handler) {
-        callWriteAsync("addOrUpdate", orders, handler);
+    public <V> Future<V> addOrUpdate(List<OrderObject> orders, AsyncHandler<WriteResult, V> handler) {
+        return callWriteAsync("addOrUpdate", orders, handler);
     }
 }

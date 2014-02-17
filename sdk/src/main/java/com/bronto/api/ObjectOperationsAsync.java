@@ -18,9 +18,10 @@ public interface ObjectOperationsAsync<O> extends CommonOperations<O> {
     public Future<WriteResult> update(O...objects);
     public Future<WriteResult> delete(O...objects);
 
-    public void get(BrontoReadRequest<O> request, AsyncHandler<O> handler);
-    public void read(BrontoReadRequest<O> request, AsyncHandler<List<O>> handler);
-    public void add(List<O> objects, AsyncHandler<WriteResult> handler);
-    public void update(List<O> objects, AsyncHandler<WriteResult> handler);
-    public void delete(List<O> objects, AsyncHandler<WriteResult> handler);
+    public <V> Future<V> get(BrontoReadRequest<O> request, AsyncHandler<O, V> handler);
+    public <V> Future<V> read(BrontoReadRequest<O> request, AsyncHandler<List<O>, V> handler);
+
+    public <V> Future<V> add(List<O> objects, AsyncHandler<WriteResult, V> handler);
+    public <V> Future<V> update(List<O> objects, AsyncHandler<WriteResult, V> handler);
+    public <V> Future<V> delete(List<O> objects, AsyncHandler<WriteResult, V> handler);
 }

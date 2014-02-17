@@ -33,8 +33,8 @@ public class MailListOperationsAsync extends AbstractAsyncObjectOperations<MailL
         return clear(Arrays.asList(lists));
     }
 
-    public void clear(List<MailListObject> lists, AsyncHandler<WriteResult> handler) {
-        callWriteAsync("clear", lists, handler);
+    public <V> Future<V> clear(List<MailListObject> lists, AsyncHandler<WriteResult, V> handler) {
+        return callWriteAsync("clear", lists, handler);
     }
 
     public Future<WriteResult> removeFromList(MailListObject list, List<ContactObject> contacts) {
@@ -53,11 +53,11 @@ public class MailListOperationsAsync extends AbstractAsyncObjectOperations<MailL
         return addToList(list, Arrays.asList(contacts));
     }
 
-    public void removeFromList(MailListObject list, List<ContactObject> contacts, AsyncHandler<WriteResult> handler) {
-        callClientAsync("removeFromList", listOps.createRemoveCall(list, contacts), handler);
+    public <V> Future<V> removeFromList(MailListObject list, List<ContactObject> contacts, AsyncHandler<WriteResult, V> handler) {
+        return callClientAsync("removeFromList", listOps.createRemoveCall(list, contacts), handler);
     }
 
-    public void addToList(MailListObject list, List<ContactObject> contacts, AsyncHandler<WriteResult> handler) {
-        callClientAsync("addToList", listOps.createAddCall(list, contacts), handler);
+    public <V> Future<V> addToList(MailListObject list, List<ContactObject> contacts, AsyncHandler<WriteResult, V> handler) {
+        return callClientAsync("addToList", listOps.createAddCall(list, contacts), handler);
     }
 }

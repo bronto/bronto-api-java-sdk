@@ -1,6 +1,6 @@
 package com.bronto.api.operation;
 
-import com.bronto.api.AsyncHandler;
+import com.bronto.api.AsyncVoidHandler;
 
 import com.bronto.api.model.ResultItem;
 import com.bronto.api.model.WriteResult;
@@ -8,9 +8,9 @@ import com.bronto.api.model.WriteResult;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AsyncWriteHandler implements AsyncHandler<WriteResult> {
+public abstract class AsyncWriteHandler extends AsyncVoidHandler<WriteResult> {
     @Override
-    public void onSuccess(WriteResult writeResult) {
+    public void onComplete(WriteResult writeResult) {
         List<ResultItem> errors = new ArrayList<ResultItem>();
         List<ResultItem> success = new ArrayList<ResultItem>();
 

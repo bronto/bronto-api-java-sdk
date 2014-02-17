@@ -130,10 +130,10 @@ listOps.clear(list);
 
 ``` java
 FieldObject field = newObject(FieldObject.class)
-    .with("name", "API Field")
-    .with("label", "API Field Label")
-    .with("visibility", FieldVisibility.PRIVATE)
-    .with("type", FieldType.TEXT).get();
+    .set("name", "API Field")
+    .set("label", "API Field Label")
+    .set("visibility", FieldVisibility.PRIVATE)
+    .set("type", FieldType.TEXT).get();
 
 client.transport(FieldObject.class).add(field);
 ```
@@ -252,4 +252,24 @@ contactOps.addOrUpdate(Arrays.asList(contact), new AsyncWriteHandler() {
         }
     }
 });
+```
+
+### Transform Field into JSON
+
+``` java
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+ObjectMapper mapper = new ObjectMapper();
+Future<String> json = fieldOps.get(read, new AsyncHandler<FieldObject, String>() {
+    @Override
+    public String onSuccess(FieldObject field) {
+        return mapper.writeValue(field);
+    }
+    @Override
+    public void onError(Exception e) {
+        System.err.println(e.getMessage());
+    }
+});
+
+System.out.println(json.get());
 ```

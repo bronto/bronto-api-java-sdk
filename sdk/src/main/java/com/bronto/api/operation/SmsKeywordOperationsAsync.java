@@ -42,11 +42,11 @@ public class SmsKeywordOperationsAsync extends AbstractAsyncObjectOperations<Sms
         return addToKeyword(keyword, Arrays.asList(contacts));
     }
 
-    public void removeFromKeyword(SmsKeywordObject keyword, List<ContactObject> contacts, AsyncHandler<WriteResult> handler) {
-        callClientAsync("removeFromSMSKeyword", keywordOps.createRemoveCall(keyword, contacts), handler);
+    public <V> Future<V> removeFromKeyword(SmsKeywordObject keyword, List<ContactObject> contacts, AsyncHandler<WriteResult, V> handler) {
+        return callClientAsync("removeFromSMSKeyword", keywordOps.createRemoveCall(keyword, contacts), handler);
     }
 
-    public void addToKeyword(SmsKeywordObject keyword, List<ContactObject> contacts, AsyncHandler<WriteResult> handler) {
-        callClientAsync("addToSMSKeyword", keywordOps.createAddCall(keyword, contacts), handler);
+    public <V> Future<V> addToKeyword(SmsKeywordObject keyword, List<ContactObject> contacts, AsyncHandler<WriteResult, V> handler) {
+        return callClientAsync("addToSMSKeyword", keywordOps.createAddCall(keyword, contacts), handler);
     }
 }

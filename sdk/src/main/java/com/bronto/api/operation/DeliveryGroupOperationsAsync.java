@@ -35,15 +35,15 @@ public class DeliveryGroupOperationsAsync extends AbstractAsyncObjectOperations<
         return addOrUpdate(Arrays.asList(deliveryGroups));
     }
 
-    public void addOrUpdate(List<DeliveryGroupObject> deliveryGroups, AsyncHandler<WriteResult> handler) {
-        callWriteAsync("addOrUpdate", deliveryGroups, handler);
+    public <V> Future<V> addOrUpdate(List<DeliveryGroupObject> deliveryGroups, AsyncHandler<WriteResult, V> handler) {
+        return callWriteAsync("addOrUpdate", deliveryGroups, handler);
     }
 
     public Future<WriteResult> addToDeliveryGroup(DeliveryGroupObject deliveryGroup, DeliveryGroupIds ids) {
         return callClientAsync("addToDeliveryGroup", deliveryGroupOps.createAddToDeliveryGroupCall(deliveryGroup, ids));
     }
 
-    public void addToDeliveryGroup(DeliveryGroupObject deliveryGroup, DeliveryGroupIds ids, AsyncHandler<WriteResult> handler) {
-        callClientAsync("addToDeliveryGroup", deliveryGroupOps.createAddToDeliveryGroupCall(deliveryGroup, ids), handler);
+    public <V> Future<V> addToDeliveryGroup(DeliveryGroupObject deliveryGroup, DeliveryGroupIds ids, AsyncHandler<WriteResult, V> handler) {
+        return callClientAsync("addToDeliveryGroup", deliveryGroupOps.createAddToDeliveryGroupCall(deliveryGroup, ids), handler);
     }
 }

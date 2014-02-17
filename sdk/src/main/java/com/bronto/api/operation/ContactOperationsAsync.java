@@ -34,8 +34,8 @@ public class ContactOperationsAsync extends AbstractAsyncObjectOperations<Contac
         return addOrUpdate(Arrays.asList(contacts));
     }
 
-    public void addOrUpdate(List<ContactObject> contacts, AsyncHandler<WriteResult> handler) {
-        callWriteAsync("addOrUpdate", contacts, handler);
+    public <V> Future<V> addOrUpdate(List<ContactObject> contacts, AsyncHandler<WriteResult, V> handler) {
+        return callWriteAsync("addOrUpdate", contacts, handler);
     }
 
     public Future<WriteResult> addContactEvent(String keyword, List<ContactObject> contacts) {
@@ -46,8 +46,8 @@ public class ContactOperationsAsync extends AbstractAsyncObjectOperations<Contac
         return addContactEvent(keyword, Arrays.asList(contacts));
     }
 
-    public void addContactEvent(String keyword, List<ContactObject> contacts, AsyncHandler<WriteResult> handler) {
-        callClientAsync("addContactEvent", contactOps.createAddContactCall(keyword, contacts), handler);
+    public <V> Future<V> addContactEvent(String keyword, List<ContactObject> contacts, AsyncHandler<WriteResult, V> handler) {
+        return callClientAsync("addContactEvent", contactOps.createAddContactCall(keyword, contacts), handler);
     }
 
     public Future<WriteResult> addContactsToWorkflow(WorkflowObject workflow, List<ContactObject> contacts) {
@@ -58,7 +58,7 @@ public class ContactOperationsAsync extends AbstractAsyncObjectOperations<Contac
         return addContactsToWorkflow(workflow, Arrays.asList(contacts));
     }
 
-    public void addContactsToWorkflow(WorkflowObject workflow, List<ContactObject> contacts, AsyncHandler<WriteResult> handler) {
-        callClientAsync("addContactsToWorkflow", contactOps.createAddContactsToWorkflowCall(workflow, contacts), handler);
+    public <V> Future<V> addContactsToWorkflow(WorkflowObject workflow, List<ContactObject> contacts, AsyncHandler<WriteResult, V> handler) {
+        return callClientAsync("addContactsToWorkflow", contactOps.createAddContactsToWorkflowCall(workflow, contacts), handler);
     }
 }

@@ -53,15 +53,15 @@ public class BrontoClientAsync extends BrontoClient implements BrontoApiAsync {
     }
 
     @Override
-    public <T> void async(final BrontoClientRequest<T> request, final AsyncHandler<T> callback) {
-        executor.submit(new Runnable() {
+    public <T, V> Future<V> async(final BrontoClientRequest<T> request, final AsyncHandler<T, V> callback) {
+        return executor.submit(new Callable<V>() {
             @Override
-            public void run() {
-                T result;
+            public V call() {
                 try {
-                    callback.onSuccess(invoke(request));
+                    return callback.onSuccess(invoke(request));
                 } catch (Exception e) {
                     callback.onError(e);
+                    return null;
                 }
             }
         });
