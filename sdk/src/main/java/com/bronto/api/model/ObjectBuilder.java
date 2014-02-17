@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+@SuppressWarnings("unchecked")
 public class ObjectBuilder<T> {
     protected Class<T> objectClass;
     protected T object;
@@ -26,11 +27,11 @@ public class ObjectBuilder<T> {
 
     protected Field getField(String fieldName) {
         try {
-            Field field = objectClass.getField(fieldName);
+            Field field = objectClass.getDeclaredField(fieldName);
             field.setAccessible(true);
             return field;
         } catch (NoSuchFieldException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(String.format("%s: field `%s` does not exist.", objectClass.getSimpleName(), e.getMessage()));
         }
     }
 
@@ -38,7 +39,7 @@ public class ObjectBuilder<T> {
         try {
             return objectClass.getMethod("get" + upperCaseFirst(fieldName));
         } catch (NoSuchMethodException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(String.format("%s: method `%s` does not exist.", objectClass.getSimpleName(), e.getMessage()));
         }
     }
 
@@ -62,17 +63,19 @@ public class ObjectBuilder<T> {
         }
     }
 
-    public ObjectBuilder<T> add(String fieldName, List<Object> value) {
+    public <V> ObjectBuilder<T> add(String fieldName, List<V> value) {
         Field field = getField(fieldName);
         try {
-            if (List.class.isAssignableFrom(field.getDeclaringClass())) {
+            if (List.class.isAssignableFrom(field.getType())) {
                 Method getter = getterFor(fieldName);
-                List<Object> list = (List<Object>) getter.invoke(object);
+                List<V> list = (List<V>) getter.invoke(object);
                 list.addAll(value);
             } else if (value.size() > 0) {
                 set(fieldName, value.get(0));
             }
             return this;
+        } catch (ClassCastException e) {
+            throw new RuntimeException(String.format("%s: %s", objectClass.getSimpleName(), e.getMessage()));
         } catch (InvocationTargetException e) {
             throw new RuntimeException(e);
         } catch (IllegalAccessException e) {
@@ -80,7 +83,7 @@ public class ObjectBuilder<T> {
         }
     }
 
-    public ObjectBuilder<T> add(String fieldName, Object...value) {
+    public <V> ObjectBuilder<T> add(String fieldName, V...value) {
         return add(fieldName, Arrays.asList(value));
     }
 

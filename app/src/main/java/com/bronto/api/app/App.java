@@ -44,7 +44,7 @@ public class App {
 
         ContactReadRequest activeContacts = new ContactReadRequest()
             .withIncludeLists(true)
-            .withStatus(ContactStatus.ACTIVE)
+            .withStatus(ContactStatus.ONBOARDING)
             .withEmail(FilterOperator.STARTS_WITH, "philip");
 
         System.out.println("Reading active contacts");

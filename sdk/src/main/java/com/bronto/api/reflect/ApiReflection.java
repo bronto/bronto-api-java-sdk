@@ -109,7 +109,7 @@ public class ApiReflection {
     }
 
     public BrontoClientRequest<WriteResult> createMethodRequest(final String method, final Object call) {
-        final Method getReturn = getResultsMethod("removeFromList");
+        final Method getReturn = getResultsMethod(method);
         return new BrontoClientRequest<WriteResult>() {
             @Override
             public WriteResult invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
