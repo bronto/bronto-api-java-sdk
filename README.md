@@ -46,12 +46,10 @@ asynchronously. This means there's two deritives of an API call:
 ``` java
 import com.bronto.api.*;
 import com.bronto.api.model.*;
-
-import java.util.concurrent.Executors;
+import static com.bronto.api.model.ObjectBuilder.newObject;
 
 String apiToken = "<You API token>";
-BrontoClientFactory factory = new BrontoClientFactory(new Executors.newCachedThreadPool());
-BrontoClient client = factory.getClient(apiToken);
+BrontoApi client = new BrontoClient(apiToken);
 
 String sessionId = client.login();
 ```
@@ -61,35 +59,20 @@ String sessionId = client.login();
 ``` java
 ContactOperations contactOps = new ContactOperations(client);
 
-ContactObject contact = contactOps.newObject();
-contact.setEmail("user@example.com");
-contact.setStatus(ContactStatus.ONBOARDING.getApiStatus());
-contact.getListIds().add(listId);
-
-CotactField field = new ContactField();
-field.setFieldId(fieldId);
-field.setContent(value);
-
-contact.getFields().add(field);
+ContactObject contact = contactOps.newObject()
+  .set("email", "user@example.com")
+  .set("status", ContactStatus.ONBOARDING)
+  .add("listIds", listId)
+  .add("fields", newObject(ContactField.class)
+      .set("fieldId", fieldId)
+      .set("content", value).get())
+  .get();
 
 try {
-    Future<WriteResult> result = contactOps.add(Arrays.asList(contact));
+    WriteResult result = contactOps.add(contact);
 } catch (Exception e) {
     // Handle exception
 }
-
-// OR
-contactOps.add(Arrays.asList(contact), new AsyncHandler() {
-    @Override
-    public void onSuccess(WriteResult result) {
-        // handle the result here
-    }
-
-    @Override
-    public void onError(Exception e) {
-        // handle the exception case here
-    }
-});
 ```
 
 ### Create / Update many Contacts
@@ -101,12 +84,12 @@ contactOps.addOrUpdate(contacts);
 ### Delete a contact
 
 ``` java
-contactOps.delete(Arrays.asList(contact));
+contactOps.delete(contact);
 ```
 
 ### Read Contacts using Read Request
 
-#### Option #1: Using Async recursion
+#### Option #1: Using while loop
 
 ``` java
 Calendar createdThreshold = Calendar.getInstance();
@@ -117,22 +100,13 @@ final ContactReadRequest readContacts = new ContactReadRequest()
     .withCreated(FilterOperator.AFTER, createdThreshold.getTime())
     .withListId(listId);
 
-contactOps.read(readContacts, new AsyncHandler() {
-    @Override
-    public void onSuccess(List<ContactObject> contacts) {
-        if (!contacts.isEmpty()) {
-            for (ContactObject contact: contacts) {
-                System.out.println(contact.getEmail());
-                contactOps.read(readContacts.next(), this);
-            }
-        }
+List<ContactObject> contacts = null;
+while(contacts = contactOps.read(readContacts); !contacts.isEmpty()) {
+    for (ContactObject contact: contacts) {
+        System.out.println(contact.getEmail());
     }
-
-    @Override
-    public void onError(Exception e) {
-        // Handle error
-    }
-});
+    readContacts.next();
+}
 ```
 
 #### Option #2: Using automatic pager
@@ -149,25 +123,25 @@ for (ContactObject contact : contactOps.readAll(readContacts)) {
 
 MailListOperations listOps = new MailListOperations(client);
 
-MailListObject list = listOps.get(new MailListReadRequest().withName("My Example List")).get();
+MailListObject list = listOps.get(new MailListReadRequest().withName("My Example List"));
 ```
 
 ### Clear List(s)
 
 ``` java
-listOps.clear(Arrays.asList(list));
+listOps.clear(list);
 ```
 
 ### Create new Field
 
 ``` java
-FieldObject field = new FieldObject();
-field.setName("API Field");
-field.setLabel("API Field Label");
-field.setVisibility(FieldVisibility.PRIVATE.getApiValue());
-field.setType(FieldType.TEXT.getApiValue());
+FieldObject field = newObject(FieldObject.class)
+    .with("name", "API Field")
+    .with("label", "API Field Label")
+    .with("visibility", FieldVisibility.PRIVATE)
+    .with("type", FieldType.TEXT).get();
 
-client.transport(FieldObject.class).add(Arrays.asList(field));
+client.transport(FieldObject.class).add(field);
 ```
 
 ### Get a ContentTag
@@ -175,7 +149,7 @@ client.transport(FieldObject.class).add(Arrays.asList(field));
 ``` java
 ObjectOperations<ContentTagObject> contentTagOps = client.transport(ContentTagObject.class);
 
-ContentTagObject tag = contentTagOps.get(new ContentTagReadRequest().withId("123")).get();
+ContentTagObject tag = contentTagOps.get(new ContentTagReadRequest().withId("123"));
 ```
 
 ### Retrieve a Message
@@ -183,7 +157,7 @@ ContentTagObject tag = contentTagOps.get(new ContentTagReadRequest().withId("123
 ``` java
 ObjectOperations<MessageObject> messageOps = client.transport(MessageObject.class);
 
-MessageObject message = messageOps.get(new MessageReadRequest().withId("123")).get();
+MessageObject message = messageOps.get(new MessageReadRequest().withId("123"));
 ```
 
 ### Create a Delivery
@@ -203,7 +177,7 @@ delivery.setFromEmail("user@example.com");
 delivery.setFromName("Example Sender");
 delivery.getRecipients().add(recipient);
 
-deliveryOps.add(Arrays.asList(delivery));
+deliveryOps.add(delivery);
 ```
 
 ### Read a Delivery
@@ -221,4 +195,67 @@ DeliveryRecipientReadRequest readDelivery = new DeliveryRecipientReadRequest().s
 for (DeliveryRecipientStatObject stat : deliveryStats.readAll(readDelivery)) {
     // Do something with stat
 }
+```
+
+## Asynchronous Operations
+
+There's an optional asynchronous version of these specific operations:
+
+- read
+- add
+- update
+- delete
+
+Asynchronous operations are suffixed with `Async`, in the class. The request
+building should be transferrable.
+
+## Example Code
+
+### Read Contacts
+```
+BrontoApiAsync ClientAsync client = new BrontoClientAsync(apiToken, executor);
+ContactOperationsAsync contactOps = new ContactOperationsAsync(client);
+
+Calendar createdThreshold = Calendar.getInstance();
+createdThreshold.add(Calendar.DATE, -7);
+
+final ContactReadRequest readContacts = new ContactReadRequest()
+    .withStatus(ContactStatus.TRANSACTIONAL)
+    .withCreated(FilterOperator.AFTER, createdThreshold.getTime())
+    .withListId(listId);
+
+contactOps.read(readContacts, new AsyncReadPager<ContactObject>() {
+    @Override
+    public void readObjects(List<ContactObject> contacts) {
+        for (ContactObject contact : contacts) {
+            System.out.println("Contact with email: " + contact.getEmail());
+        }
+    }
+    @Override
+    public void onError(Exception e) {
+        // Handle the exception case
+    }
+});
+```
+
+### Add Contacts
+```
+contactOps.addOrUpdate(Arrays.asList(contact), new AsyncWriteHandler() {
+    @Override
+    public void onSuccessItems(List<ResultItem> results) {
+        for (ResultItem result : results) {
+            System.out.println("Added/Updated contact with id: " + result.getId());
+        }
+    }
+    @Override
+    public void onErrorItems(List<ResultItem> results) {
+        for (ResultItem result : results) {
+            System.err.println(result.getErrorString());
+        }
+    }
+    @Override
+    public void onError(Exception e) {
+        // Handle the exception case
+    }
+});
 ```

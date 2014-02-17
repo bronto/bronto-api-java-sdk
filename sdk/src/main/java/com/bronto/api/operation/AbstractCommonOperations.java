@@ -5,6 +5,8 @@ import com.bronto.api.BrontoClientException;
 import com.bronto.api.CommonOperations;
 import com.bronto.api.reflect.ApiReflection;
 
+import com.bronto.api.model.ObjectBuilder;
+
 import com.bronto.api.request.BrontoReadRequest;
 import com.bronto.api.request.BrontoReadPager;
 
@@ -24,12 +26,8 @@ public abstract class AbstractCommonOperations<C extends BrontoApi, O> implement
     public abstract ApiReflection getSupportedWriteOperations();
 
     @Override
-    public O newObject() {
-        try {
-            return (O) clazz.newInstance();
-        } catch (Exception e) {
-            throw new BrontoClientException(e);
-        }
+    public ObjectBuilder<O> newObject() {
+        return ObjectBuilder.newObject(clazz);
     }
 
     @SuppressWarnings("unchecked")

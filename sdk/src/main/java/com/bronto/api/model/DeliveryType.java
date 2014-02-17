@@ -1,6 +1,6 @@
 package com.bronto.api.model;
 
-public enum DeliveryType {
+public enum DeliveryType implements ApiValue {
     NORMAL,
     TEST,
     TRANSACTIONAL,

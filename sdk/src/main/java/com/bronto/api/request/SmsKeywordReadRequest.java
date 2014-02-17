@@ -59,7 +59,7 @@ public class SmsKeywordReadRequest extends RichReadRequest<SmsKeywordFilter, Sms
     }
 
     public SmsKeywordReadRequest withKeywordType(KeywordType type) {
-        withKeywordType(type.getType());
+        withKeywordType(type.getApiValue());
         return this;
     }
 
