@@ -62,15 +62,15 @@ public class ObjectBuilder<T> {
         }
     }
 
-    public ObjectBuilder<T> add(String fieldName, Object...value) {
+    public ObjectBuilder<T> add(String fieldName, List<Object> value) {
         Field field = getField(fieldName);
         try {
             if (List.class.isAssignableFrom(field.getDeclaringClass())) {
                 Method getter = getterFor(fieldName);
                 List<Object> list = (List<Object>) getter.invoke(object);
-                list.addAll(Arrays.asList(value));
-            } else if (value.length > 0) {
-                set(fieldName, value[0]);
+                list.addAll(value);
+            } else if (value.size() > 0) {
+                set(fieldName, value.get(0));
             }
             return this;
         } catch (InvocationTargetException e) {
@@ -78,6 +78,10 @@ public class ObjectBuilder<T> {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ObjectBuilder<T> add(String fieldName, Object...value) {
+        return add(fieldName, Arrays.asList(value));
     }
 
     public T get() {
