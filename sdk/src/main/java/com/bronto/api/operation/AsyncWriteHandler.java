@@ -31,6 +31,11 @@ public abstract class AsyncWriteHandler implements AsyncHandler<WriteResult> {
         }
     }
 
+    @Override
+    public void onError(Exception e) {
+        throw new RuntimeException(e);
+    }
+
     public abstract void onErrorItems(List<ResultItem> errors);
     public abstract void onSuccessItems(List<ResultItem> items);
 }

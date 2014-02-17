@@ -1,6 +1,6 @@
 package com.bronto.api.request;
 
-import com.bronto.api.BrontoClient;
+import com.bronto.api.BrontoApi;
 
 import java.util.Collections;
 import java.util.concurrent.Future;
@@ -10,10 +10,10 @@ import java.util.List;
 @SuppressWarnings("unchecked")
 public class BrontoReadPager<T> implements Iterator<T> {
     private Iterator<T> objects;
-    private BrontoClient client;
+    private BrontoApi client;
     private BrontoReadRequest read;
 
-    public BrontoReadPager(BrontoClient client, BrontoReadRequest<T> read) {
+    public BrontoReadPager(BrontoApi client, BrontoReadRequest<T> read) {
         this.client = client;
         this.read = read.reset();
         this.objects = this.getCurrentObjects();
@@ -24,12 +24,7 @@ public class BrontoReadPager<T> implements Iterator<T> {
     }
 
     private Iterator<T> getCurrentObjects() {
-        Future<List<T>> future = client.async(read);
-        try {
-            return future.get().iterator();
-        } catch (Exception e) {
-            return Collections.<T>emptyList().iterator();
-        }
+        return ((List<T>) client.invoke(read)).iterator();
     }
 
     @Override

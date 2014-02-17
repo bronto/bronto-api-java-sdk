@@ -132,7 +132,7 @@ public class ContactReadRequest extends RichReadRequest<ContactFilter, ContactOb
 
     public ContactReadRequest withStatus(ContactStatus...statuses) {
         for (ContactStatus status : statuses) {
-            getFilter().getStatus().add(status.getApiStatus());
+            getFilter().getStatus().add(status.getApiValue());
         }
         return this;
     }

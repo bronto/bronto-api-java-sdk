@@ -1,6 +1,6 @@
 package com.bronto.api.model;
 
-public enum KeywordType {
+public enum KeywordType implements ApiValue {
     BASIC("basic"),
     SUBSCRIPTION("subscription"),
     TEXT_TO_JOIN("text2join");
@@ -11,11 +11,11 @@ public enum KeywordType {
         this.type = type;
     }
 
-    public String getType() {
+    public String getApiValue() {
         return type;
     }
 
     public boolean matches(String keywordType) {
-        return getType().equals(keywordType);
+        return getApiValue().equals(keywordType);
     }
 }

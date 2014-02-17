@@ -1,6 +1,6 @@
 package com.bronto.api.model;
 
-public enum FieldType {
+public enum FieldType implements ApiValue {
     TEXT,
     TEXTAREA,
     PASSWORD,
@@ -14,5 +14,9 @@ public enum FieldType {
 
     public String getApiValue() {
         return name().toLowerCase();
+    }
+
+    public boolean matches(String apiValue) {
+        return getApiValue().equals(apiValue);
     }
 }

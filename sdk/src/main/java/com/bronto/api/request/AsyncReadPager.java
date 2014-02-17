@@ -1,20 +1,20 @@
 package com.bronto.api.request;
 
 import com.bronto.api.AsyncHandler;
-import com.bronto.api.ObjectOperations;
+import com.bronto.api.ObjectOperationsAsync;
 
 import java.util.List;
 
 public abstract class AsyncReadPager<T> implements AsyncHandler<List<T>> {
-    private final ObjectOperations<T> ops;
+    private final ObjectOperationsAsync<T> ops;
     private final BrontoReadRequest<T> read;
 
-    public AsyncReadPager(ObjectOperations<T> ops, BrontoReadRequest<T> read) {
+    public AsyncReadPager(ObjectOperationsAsync<T> ops, BrontoReadRequest<T> read) {
         this.ops = ops;
         this.read = read;
     }
 
-    public ObjectOperations<T> getOperations() {
+    public ObjectOperationsAsync<T> getOperations() {
         return ops;
     }
 
@@ -32,6 +32,11 @@ public abstract class AsyncReadPager<T> implements AsyncHandler<List<T>> {
                 onError(e);
             }
         }
+    }
+
+    @Override
+    public void onError(Exception e) {
+        throw new RuntimeException(e);
     }
 
     public abstract void readObjects(List<T> objects);

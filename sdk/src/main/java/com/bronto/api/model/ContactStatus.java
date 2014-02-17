@@ -1,6 +1,6 @@
 package com.bronto.api.model;
 
-public enum ContactStatus {
+public enum ContactStatus implements ApiValue {
     ACTIVE("active"),
     ONBOARDING("onboarding"),
     TRANSACTIONAL("transactional"),
@@ -14,7 +14,11 @@ public enum ContactStatus {
         this.apiStatus = apiStatus;
     }
 
-    public String getApiStatus() {
+    public String getApiValue() {
         return apiStatus;
+    }
+
+    public boolean matches(String apiValue) {
+        return getApiValue().equals(apiValue);
     }
 }

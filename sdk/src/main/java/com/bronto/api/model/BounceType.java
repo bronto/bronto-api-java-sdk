@@ -1,6 +1,6 @@
 package com.bronto.api.model;
 
-public enum BounceType {
+public enum BounceType implements ApiValue {
     CONN_PERM,
     SUB_PERM,
     CONTENT_PERM,
@@ -10,8 +10,12 @@ public enum BounceType {
     CONTENT_TEMP,
     OTHER;
 
+    public String getApiValue() {
+        return name().toLowerCase();
+    }
+
     public boolean matches(String bounceType) {
-        return name().toLowerCase().equals(bounceType);
+        return getApiValue().equals(bounceType);
     }
 
     public static boolean isHardBounce(String bounceType) {

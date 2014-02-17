@@ -1,15 +1,15 @@
 package com.bronto.api.model;
 
-public enum RemailActivity {
+public enum RemailActivity implements ApiValue {
     NO_OPEN,
     OPEN_NO_CLICK,
     CLICK_NO_CONVERT;
 
-    public String getApiActivity() {
+    public String getApiValue() {
         return name().replace("_", "").toLowerCase();
     }
 
     public boolean matches(String activity) {
-        return getApiActivity().equals(activity);
+        return getApiValue().equals(activity);
     }
 }

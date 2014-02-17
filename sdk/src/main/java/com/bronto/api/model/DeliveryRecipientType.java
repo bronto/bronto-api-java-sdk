@@ -1,6 +1,6 @@
 package com.bronto.api.model;
 
-public enum DeliveryRecipientType {
+public enum DeliveryRecipientType implements ApiValue {
     CONTACT(ContactObject.class),
     LIST(MailListObject.class),
     SEGMENT(SegmentObject.class),

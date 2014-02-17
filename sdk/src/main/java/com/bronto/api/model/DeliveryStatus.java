@@ -1,6 +1,6 @@
 package com.bronto.api.model;
 
-public enum DeliveryStatus {
+public enum DeliveryStatus implements ApiValue {
     SENT,
     SENDING,
     UNSENT,

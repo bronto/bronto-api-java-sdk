@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class App {
 
     private static abstract class CompletionHandler<T> extends AsyncReadPager<T> {
-        public CompletionHandler(ObjectOperations<T> ops, BrontoReadRequest<T> read) {
+        public CompletionHandler(ObjectOperationsAsync<T> ops, BrontoReadRequest<T> read) {
             super(ops, read);
         }
 
@@ -33,15 +33,14 @@ public class App {
         }
 
         String token = args[0];
-        BrontoClientFactory factory = new BrontoClientFactory(Executors.newCachedThreadPool());
-        BrontoClient client = factory.getClient(token);
+        BrontoApiAsync client = new BrontoClientAsync(token, Executors.newCachedThreadPool());
         String sessionId = client.login();
         System.out.println("Successful login: " + sessionId);
 
-        final MailListOperations listOps = new MailListOperations(client);
-        ContactOperations contactOps = new ContactOperations(client);
-        ObjectOperations<FieldObject> fieldOps = client.transport(FieldObject.class);
-        ObjectOperations<DeliveryObject> deliveryOps = client.transport(DeliveryObject.class);
+        final MailListOperationsAsync listOps = new MailListOperationsAsync(client);
+        ContactOperationsAsync contactOps = new ContactOperationsAsync(client);
+        ObjectOperationsAsync<FieldObject> fieldOps = client.transportAsync(FieldObject.class);
+        ObjectOperationsAsync<DeliveryObject> deliveryOps = client.transportAsync(DeliveryObject.class);
 
         ContactReadRequest activeContacts = new ContactReadRequest()
             .withIncludeLists(true)
@@ -98,7 +97,7 @@ public class App {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         if (reader.readLine() != null) {
-            factory.shutdown();
+            client.shutdown();
         }
     }
 }
