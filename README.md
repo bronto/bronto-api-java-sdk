@@ -35,12 +35,6 @@ The project is built [SBT](http://www.scala-sbt.org/) because it is a Superior B
 
 ## Example Code
 
-All calls, with the exception of `login` and `readAll`, can be made
-asynchronously. This means there's two deritives of an API call:
-
-- The call itself, with expected arguments
-- The call with the expected arguments and an `AsyncHandler`, see below
-
 ### Login
 
 ``` java
@@ -199,20 +193,27 @@ for (DeliveryRecipientStatObject stat : deliveryStats.readAll(readDelivery)) {
 
 ## Asynchronous Operations
 
-There's an optional asynchronous version of these specific operations:
+All calls, with the exception of `login` and `readAll`, can be made
+asynchronously. This means there's two deritives of an asynchronous API call:
 
-- read
-- add
-- update
-- delete
+- The call itself, with expected arguments, returning a `Future`.
+- The call with the expected arguments and an `AsyncHandler` (see below)
 
-Asynchronous operations are suffixed with `Async`, in the class. The request
-building should be transferrable.
+Asynchronous operations are suffixed with `Async`, in the class name. The
+request building should be transferrable.
+
+For read calls, the `AsyncReadPager` exists as a convenience for paging.
+For write calls, the `AsyncWriteHandler` exists as a convenience for handling
+success and failure cases.
+
+In either class, you can override the `onError` method to handle exception
+cases.
 
 ## Example Code
 
 ### Read Contacts
-```
+
+``` java
 BrontoApiAsync ClientAsync client = new BrontoClientAsync(apiToken, executor);
 ContactOperationsAsync contactOps = new ContactOperationsAsync(client);
 
@@ -231,15 +232,12 @@ contactOps.read(readContacts, new AsyncReadPager<ContactObject>() {
             System.out.println("Contact with email: " + contact.getEmail());
         }
     }
-    @Override
-    public void onError(Exception e) {
-        // Handle the exception case
-    }
 });
 ```
 
 ### Add Contacts
-```
+
+``` java
 contactOps.addOrUpdate(Arrays.asList(contact), new AsyncWriteHandler() {
     @Override
     public void onSuccessItems(List<ResultItem> results) {
@@ -252,10 +250,6 @@ contactOps.addOrUpdate(Arrays.asList(contact), new AsyncWriteHandler() {
         for (ResultItem result : results) {
             System.err.println(result.getErrorString());
         }
-    }
-    @Override
-    public void onError(Exception e) {
-        // Handle the exception case
     }
 });
 ```

@@ -34,5 +34,10 @@ public abstract class AsyncReadPager<T> implements AsyncHandler<List<T>> {
         }
     }
 
+    @Override
+    public void onError(Exception e) {
+        throw new RuntimeException(e);
+    }
+
     public abstract void readObjects(List<T> objects);
 }
