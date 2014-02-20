@@ -16,6 +16,7 @@ public class BrontoClientException extends RuntimeException {
         CONNECTION_RESET("Connection reset by peer"),
         CONNECTION_FAILED("Could not connect to host"),
         SERVICE_UNAVAILABLE("Service Temporarily Unavailable"),
+        SOCKET_INTERRUPT("Unexpected end of file from server"),
         SERVER_ERROR("Internal Server Error");
 
         private String part;
