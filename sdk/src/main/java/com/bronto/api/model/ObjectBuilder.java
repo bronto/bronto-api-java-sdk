@@ -15,6 +15,7 @@ import java.util.List;
 public class ObjectBuilder<T> {
     protected Class<T> objectClass;
     protected T object;
+    private boolean empty = true;
 
     public ObjectBuilder(Class<T> objectClass) {
         this.objectClass = objectClass;
@@ -43,6 +44,10 @@ public class ObjectBuilder<T> {
         }
     }
 
+    public boolean isEmpty() {
+        return empty;
+    }
+
     public ObjectBuilder<T> set(String fieldName, Object value) {
         Field field = getField(fieldName);
         try {
@@ -57,6 +62,7 @@ public class ObjectBuilder<T> {
                 value = value.toString();
             }
             field.set(object, value);
+            empty = false;
             return this;
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
@@ -70,6 +76,7 @@ public class ObjectBuilder<T> {
                 Method getter = getterFor(fieldName);
                 List<V> list = (List<V>) getter.invoke(object);
                 list.addAll(value);
+                empty = false;
             } else if (value.size() > 0) {
                 set(fieldName, value.get(0));
             }

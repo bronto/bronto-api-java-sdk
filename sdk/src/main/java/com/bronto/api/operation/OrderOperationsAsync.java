@@ -5,7 +5,9 @@ import com.bronto.api.BrontoApiAsync;
 
 import com.bronto.api.reflect.ApiReflection;
 
+import com.bronto.api.model.ObjectBuilder;
 import com.bronto.api.model.OrderObject;
+import com.bronto.api.model.ProductObject;
 import com.bronto.api.model.WriteResult;
 
 import java.util.Arrays;
@@ -23,6 +25,10 @@ public class OrderOperationsAsync extends AbstractAsyncObjectOperations<OrderObj
     public ApiReflection getSupportedWriteOperations() {
         this.orderOps = new OrderOperations(client);
         return orderOps.getSupportedWriteOperations();
+    }
+
+    public ObjectBuilder<ProductObject> newProduct() {
+        return orderOps.newProduct();
     }
 
     public Future<WriteResult> addOrUpdate(List<OrderObject> orders) {

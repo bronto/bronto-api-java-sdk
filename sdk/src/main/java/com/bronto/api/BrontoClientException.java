@@ -1,5 +1,7 @@
 package com.bronto.api;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class BrontoClientException extends RuntimeException {
     private boolean recoverable = false;
 
@@ -26,14 +28,18 @@ public class BrontoClientException extends RuntimeException {
         }
 
         public boolean isRecoverable(String message) {
+            if (message == null) {
+                return false;
+            }
             return message.contains(this.part);
         }
     }
 
     public BrontoClientException(Throwable e) {
-        super(e);
+        super(e instanceof InvocationTargetException ?
+            ((InvocationTargetException) e).getTargetException() : e);
         for (Recoverable recover : Recoverable.values()) {
-            this.recoverable = recover.isRecoverable(e.getMessage());
+            this.recoverable = recover.isRecoverable(getCause().getMessage());
             if (this.recoverable) {
                 break;
             }

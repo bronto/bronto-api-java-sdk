@@ -5,7 +5,9 @@ import com.bronto.api.BrontoApi;
 
 import com.bronto.api.reflect.ApiReflection;
 
+import com.bronto.api.model.ObjectBuilder;
 import com.bronto.api.model.OrderObject;
+import com.bronto.api.model.ProductObject;
 import com.bronto.api.model.WriteResult;
 
 import java.util.Arrays;
@@ -21,6 +23,10 @@ public class OrderOperations extends AbstractObjectOperations<OrderObject> {
         return new ApiReflection("orders",
             "addOrUpdate",
             "delete");
+    }
+
+    public ObjectBuilder<ProductObject> newProduct() {
+        return ObjectBuilder.newObject(ProductObject.class);
     }
 
     public WriteResult addOrUpdate(List<OrderObject> orders) {
