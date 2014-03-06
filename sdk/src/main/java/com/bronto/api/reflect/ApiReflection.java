@@ -33,7 +33,7 @@ public class ApiReflection {
 
     public ApiReflection(Class<?> clazz, String...writeOps) {
         // TODO: move this special casing out of here
-        this(pluralize(lowerCaseFirst(clazz.getSimpleName().replace("Object", "").replace("Sms", "SMS"))), writeOps);
+        this(pluralize(lowerCaseFirst(clazz.getSimpleName().replace("Object", "").replace("Mail", "").replace("Sms", "SMS"))), writeOps);
     }
 
     public List<String> getSupportedWriteOperations() {
