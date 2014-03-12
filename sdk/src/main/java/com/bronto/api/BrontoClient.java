@@ -13,20 +13,34 @@ import java.util.Iterator;
 import java.util.List;
 
 public class BrontoClient implements BrontoApi {
+    private final long[] triesToBackOff;
     private final String apiToken;
-    private SessionHeader header;
-    private BrontoSoapPortType apiService;
     private final int retryLimit;
+    private final BrontoSoapPortType apiService;
+    private SessionHeader header;
+    private BrontoApiObserver observer;
 
-    public BrontoClient(String apiToken, int retryLimit) {
+    public BrontoClient(String apiToken, int retryLimit, long retryStep) {
         this.retryLimit = retryLimit;
         this.apiToken = apiToken;
-        apiService = new BrontoSoapApiImplService().getBrontoSoapApiImplPort();
+        this.triesToBackOff = new long[retryLimit];
         header = new SessionHeader();
+        apiService = new BrontoSoapApiImplService().getBrontoSoapApiImplPort();
+        for (int i = 0; i < retryLimit; i++) {
+            this.triesToBackOff[i] = retryStep * i;
+        }
     }
 
     public BrontoClient(String apiToken) {
-        this(apiToken, RETRY_LIMIT);
+        this(apiToken, RETRY_LIMIT, RETRY_STEP);
+    }
+
+    public BrontoClient(String apiToken, int retryLimit) {
+        this(apiToken, retryLimit, RETRY_STEP);
+    }
+
+    public BrontoClient(String apiToken, long retryStep) {
+        this(apiToken, RETRY_LIMIT, retryStep);
     }
 
     @Override
@@ -42,6 +56,16 @@ public class BrontoClient implements BrontoApi {
     @Override
     public boolean isAuthenticated() {
         return header.getSessionId() != null;
+    }
+
+    @Override
+    public String getToken() {
+        return apiToken;
+    }
+
+    @Override
+    public BrontoApiObserver getObserver() {
+        return observer;
     }
 
     @Override
@@ -64,9 +88,21 @@ public class BrontoClient implements BrontoApi {
                 return request.invoke(apiService, getSessionHeader());
             } catch (Exception e) {
                 BrontoClientException brontoEx = new BrontoClientException(e);
-                if (brontoEx.isRecoverable()) {
-                    login();
+                if (brontoEx.isInvalidSession()) {
+                    String sessionId = login();
+                    if (observer != null) {
+                        observer.onSessionRefresh(this, sessionId);
+                    }
+                } else if (brontoEx.isRecoverable()) {
                     retry++;
+                    if (retry < retryLimit) {
+                        // Backk off of the API a little bit
+                        try {
+                            Thread.sleep(triesToBackOff[retry]);
+                        } catch (InterruptedException ie) {
+                            throw new RuntimeException(ie);
+                        }
+                    }
                 } else {
                     throw brontoEx;
                 }

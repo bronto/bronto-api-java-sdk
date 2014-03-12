@@ -3,9 +3,9 @@ package com.bronto.api;
 import java.lang.reflect.InvocationTargetException;
 
 public class BrontoClientException extends RuntimeException {
-    private boolean recoverable = false;
+    private Recoverable recoverable;
 
-    public enum Recoverable {
+    public static enum Recoverable {
         UNKNOWN_ERROR("There was an unknown API error. Please try your request again shortly."),
         INVALID_SESSION_TOKEN("Your session is invalid. Please log in again."),
         INVALID_REQUEST("There was an error in your soap request. Please examine the request and try again."),
@@ -27,6 +27,10 @@ public class BrontoClientException extends RuntimeException {
             this.part = messagePart;
         }
 
+        public String getMessage() {
+            return part;
+        }
+
         public boolean isRecoverable(String message) {
             if (message == null) {
                 return false;
@@ -39,14 +43,26 @@ public class BrontoClientException extends RuntimeException {
         super(e instanceof InvocationTargetException ?
             ((InvocationTargetException) e).getTargetException() : e);
         for (Recoverable recover : Recoverable.values()) {
-            this.recoverable = recover.isRecoverable(getCause().getMessage());
-            if (this.recoverable) {
+            if (recover.isRecoverable(getCause().getMessage())) {
+                this.recoverable = recover;
                 break;
             }
         }
     }
 
     public boolean isRecoverable() {
+        return recoverable != null;
+    }
+
+    public Recoverable getRecoverable() {
         return recoverable;
+    }
+
+    public boolean isInvalidSession() {
+        return recoverable == Recoverable.INVALID_SESSION_TOKEN;
+    }
+
+    public boolean isUnderMaintenance() {
+        return recoverable == Recoverable.SHARD_OFFLINE;
     }
 }
