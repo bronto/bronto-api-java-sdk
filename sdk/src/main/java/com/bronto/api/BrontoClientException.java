@@ -1,9 +1,11 @@
 package com.bronto.api;
 
 import java.lang.reflect.InvocationTargetException;
+import com.bronto.api.model.ApiException_Exception;
 
 public class BrontoClientException extends RuntimeException {
     private Recoverable recoverable;
+    private int code = 0;
 
     public static enum Recoverable {
         UNKNOWN_ERROR("There was an unknown API error. Please try your request again shortly."),
@@ -42,12 +44,19 @@ public class BrontoClientException extends RuntimeException {
     public BrontoClientException(Throwable e) {
         super(e instanceof InvocationTargetException ?
             ((InvocationTargetException) e).getTargetException() : e);
+        if (getCause() instanceof ApiException_Exception) {
+            this.code = ((ApiException_Exception) getCause()).getFaultInfo().getErrorCode();
+        }
         for (Recoverable recover : Recoverable.values()) {
             if (recover.isRecoverable(getCause().getMessage())) {
                 this.recoverable = recover;
                 break;
             }
         }
+    }
+
+    public int getCode() {
+        return code;
     }
 
     public boolean isRecoverable() {

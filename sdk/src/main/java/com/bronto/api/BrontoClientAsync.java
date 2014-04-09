@@ -19,21 +19,13 @@ import java.util.concurrent.Future;
 public class BrontoClientAsync extends BrontoClient implements BrontoApiAsync {
     private ExecutorService executor;
 
-    public BrontoClientAsync(String apiToken, int retryLimit, long retryStep, ExecutorService executor) {
-        super(apiToken, retryLimit, retryStep);
+    public BrontoClientAsync(String apiToken, BrontoClientOptions options, ExecutorService executor) {
+        super(apiToken, options);
         this.executor = executor;
     }
 
-    public BrontoClientAsync(String apiToken, int retryLimit, ExecutorService executor) {
-        this(apiToken, retryLimit, RETRY_STEP, executor);
-    }
-
-    public BrontoClientAsync(String apiToken, long retryStep, ExecutorService executor) {
-        this(apiToken, RETRY_LIMIT, retryStep, executor);
-    }
-
     public BrontoClientAsync(String apiToken, ExecutorService executor) {
-        this(apiToken, RETRY_LIMIT, RETRY_STEP, executor);
+        this(apiToken, new BrontoClientOptions(), executor);
     }
 
     public BrontoClientAsync(String apiToken) {

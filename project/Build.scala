@@ -5,7 +5,7 @@ object Build extends sbt.Build {
   object Common {
     lazy val settings = Project.defaultSettings ++ Seq(
       javacOptions in (Compile, run) ++= Seq("-Xlint:deprecation", "-Xlint:unchecked"),
-      version := "1.0.0-SNAPSHOT",
+      version := "1.0.1-SNAPSHOT",
       organization := "com.bronto",
       publishArtifact in (Compile, packageDoc) := false,
       crossVersion := CrossVersion.Disabled

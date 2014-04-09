@@ -15,32 +15,24 @@ import java.util.List;
 public class BrontoClient implements BrontoApi {
     private final long[] triesToBackOff;
     private final String apiToken;
-    private final int retryLimit;
     private final BrontoSoapPortType apiService;
+    private final BrontoClientOptions options;
     private SessionHeader header;
     private BrontoApiObserver observer;
 
-    public BrontoClient(String apiToken, int retryLimit, long retryStep) {
-        this.retryLimit = retryLimit;
+    public BrontoClient(String apiToken, BrontoClientOptions options) {
         this.apiToken = apiToken;
-        this.triesToBackOff = new long[retryLimit];
+        this.options = options;
+        this.triesToBackOff = new long[options.getRetryLimit()];
         header = new SessionHeader();
         apiService = new BrontoSoapApiImplService().getBrontoSoapApiImplPort();
-        for (int i = 0; i < retryLimit; i++) {
-            this.triesToBackOff[i] = retryStep * i;
+        for (int i = 0; i < options.getRetryLimit(); i++) {
+            this.triesToBackOff[i] = options.getRetryStep() * i;
         }
     }
 
     public BrontoClient(String apiToken) {
-        this(apiToken, RETRY_LIMIT, RETRY_STEP);
-    }
-
-    public BrontoClient(String apiToken, int retryLimit) {
-        this(apiToken, retryLimit, RETRY_STEP);
-    }
-
-    public BrontoClient(String apiToken, long retryStep) {
-        this(apiToken, RETRY_LIMIT, retryStep);
+        this(apiToken, new BrontoClientOptions());
     }
 
     @Override
@@ -64,8 +56,8 @@ public class BrontoClient implements BrontoApi {
     }
 
     @Override
-    public BrontoApiObserver getObserver() {
-        return observer;
+    public BrontoClientOptions getOptions() {
+        return options;
     }
 
     @Override
@@ -83,32 +75,45 @@ public class BrontoClient implements BrontoApi {
     @Override
     public <T> T invoke(final BrontoClientRequest<T> request) {
         int retry = 0;
-        while (retry < retryLimit) {
+        do {
             try {
                 return request.invoke(apiService, getSessionHeader());
             } catch (Exception e) {
-                BrontoClientException brontoEx = new BrontoClientException(e);
+                BrontoWriteException writeEx = null;
+                BrontoClientException brontoEx = null;
+                if (e instanceof BrontoWriteException) {
+                    writeEx = (BrontoWriteException) e;
+                    brontoEx = writeEx;
+                } else {
+                    brontoEx = new BrontoClientException(e);
+                }
                 if (brontoEx.isInvalidSession()) {
                     String sessionId = login();
-                    if (observer != null) {
-                        observer.onSessionRefresh(this, sessionId);
+                    if (options.getObserver() != null) {
+                        options.getObserver().onSessionRefresh(this, sessionId);
                     }
                 } else if (brontoEx.isRecoverable()) {
                     retry++;
-                    if (retry < retryLimit) {
-                        // Backk off of the API a little bit
-                        try {
-                            Thread.sleep(triesToBackOff[retry]);
-                        } catch (InterruptedException ie) {
-                            throw new RuntimeException(ie);
-                        }
+                    if (retry < options.getRetryLimit()) {
+                        backOff(retry);
+                    } else if (options.getRetryer() != null && writeEx != null) {
+                        options.getRetryer().save(writeEx.getWriteContext());
                     }
                 } else {
                     throw brontoEx;
                 }
             }
-        }
+        } while (retry < options.getRetryLimit());
         throw new RuntimeException("Exceeded retry limit");
+    }
+
+    protected void backOff(int retry) {
+        // Back off of the API a little bit
+        try {
+            Thread.sleep(triesToBackOff[retry]);
+        } catch (InterruptedException ie) {
+            throw new RuntimeException(ie);
+        }
     }
 
     @Override
