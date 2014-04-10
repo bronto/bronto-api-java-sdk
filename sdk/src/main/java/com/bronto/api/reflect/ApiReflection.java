@@ -23,6 +23,7 @@ import java.util.List;
 // Default translator replaces sms stuff and maillist
 public class ApiReflection {
     protected final String canonicalName;
+    protected final String listMethodName;
     protected final List<String> writeOps;
     protected final Map<String, Class<?>> operations;
     protected final Map<String, Method> writeCache;
@@ -31,9 +32,10 @@ public class ApiReflection {
     public ApiReflection(String canonicalName, List<String> writeOps) {
         this.canonicalName = canonicalName;
         this.writeOps = writeOps;
-        this.operations = fillSupportedOperations();
         this.writeCache = new HashMap<String, Method>();
         this.callCache = new HashMap<String, Method>();
+        this.listMethodName = createGenericListMethod();
+        this.operations = fillSupportedOperations();
     }
 
     public ApiReflection(String canonicalName, String...writeOps) {
@@ -48,8 +50,11 @@ public class ApiReflection {
         return writeOps;
     }
 
-    // Override for specific handling
-    protected String getListMethodForName(String name) {
+    public String getCanonicalName() {
+        return canonicalName;
+    }
+
+    protected String createGenericListMethod() {
         if (canonicalName.equals("sMSKeywords")) {
             return "getKeyword";
         } else if (canonicalName.equals("sMSMessages")) {
@@ -59,6 +64,11 @@ public class ApiReflection {
         } else {
             return "get" + upperCaseFirst(canonicalName);
         }
+    }
+
+    // Override for specific handling
+    protected String getListMethodForName(String name) {
+        return listMethodName;
     }
 
     public Method getResultsMethod(String methodName) {

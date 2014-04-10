@@ -1,6 +1,6 @@
 package com.bronto.api;
 
-public interface BrontoApiRetryer {
-    public boolean save(WriteContext context);
-    public boolean retry(Object id);
+public interface BrontoApiRetryer<A> {
+    public boolean storeAttempt(WriteContext context);
+    public boolean retry(A attempt);
 }

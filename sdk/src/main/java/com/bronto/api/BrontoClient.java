@@ -79,6 +79,7 @@ public class BrontoClient implements BrontoApi {
             try {
                 return request.invoke(apiService, getSessionHeader());
             } catch (Exception e) {
+                // TODO: fix this...
                 BrontoWriteException writeEx = null;
                 BrontoClientException brontoEx = null;
                 if (e instanceof BrontoWriteException) {
@@ -97,7 +98,7 @@ public class BrontoClient implements BrontoApi {
                     if (retry < options.getRetryLimit()) {
                         backOff(retry);
                     } else if (options.getRetryer() != null && writeEx != null) {
-                        options.getRetryer().save(writeEx.getWriteContext());
+                        options.getRetryer().storeAttempt(writeEx.getWriteContext());
                     }
                 } else {
                     throw brontoEx;

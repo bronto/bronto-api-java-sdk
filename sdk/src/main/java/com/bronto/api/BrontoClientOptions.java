@@ -7,7 +7,7 @@ public class BrontoClientOptions {
     private int retryLimit = RETRY_LIMIT;
     private long retryStep = RETRY_STEP;
     private BrontoApiObserver observer;
-    private BrontoApiRetryer retryer;
+    private BrontoApiRetryer<?> retryer;
 
     public int getRetryLimit() {
         return retryLimit;
@@ -17,7 +17,7 @@ public class BrontoClientOptions {
         return retryStep;
     }
 
-    public BrontoApiRetryer getRetryer() {
+    public BrontoApiRetryer<?> getRetryer() {
         return retryer;
     }
 
@@ -35,7 +35,7 @@ public class BrontoClientOptions {
         return this;
     }
 
-    public BrontoClientOptions setRetryer(BrontoApiRetryer retryer) {
+    public BrontoClientOptions setRetryer(BrontoApiRetryer<?> retryer) {
         this.retryer = retryer;
         return this;
     }
