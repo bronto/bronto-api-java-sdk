@@ -10,9 +10,6 @@
     <packaging>jar</packaging>
     <description>bronto-api-sdk</description>
     <name>bronto-api-sdk</name>
-    <organization>
-        <name>com.bronto</name>
-    </organization>
     <dependencies>
         <dependency>
             <groupId>com.bronto</groupId>
