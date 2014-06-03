@@ -10,7 +10,4 @@
     <packaging>jar</packaging>
     <description>bronto-api-client</description>
     <name>bronto-api-client</name>
-    <organization>
-        <name>com.bronto</name>
-    </organization>
 </project>
