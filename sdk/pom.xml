@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.bronto</groupId>
+        <artifactId>bronto-api-java-sdk</artifactId>
+        <version>1.0.1</version>
+    </parent>
+    <artifactId>bronto-api-sdk</artifactId>
+    <packaging>jar</packaging>
+    <description>bronto-api-sdk</description>
+    <name>bronto-api-sdk</name>
+    <dependencies>
+        <dependency>
+            <groupId>com.bronto</groupId>
+            <artifactId>bronto-api-client</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+    </dependencies>
+</project>
