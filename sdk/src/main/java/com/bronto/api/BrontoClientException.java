@@ -21,6 +21,8 @@ public class BrontoClientException extends RuntimeException {
         CONNECTION_FAILED("Could not connect to host"),
         SERVICE_UNAVAILABLE("Service Temporarily Unavailable"),
         SOCKET_INTERRUPT("Unexpected end of file from server"),
+        READ_TIMEOUT("Read timed out"),
+        CONNECTION_TIMEOUT("connect timed out"),
         SERVER_ERROR("Internal Server Error");
 
         private String part;
@@ -65,6 +67,13 @@ public class BrontoClientException extends RuntimeException {
 
     public Recoverable getRecoverable() {
         return recoverable;
+    }
+
+    public boolean isTimeout() {
+        return (
+            recoverable == Recoverable.READ_TIMEOUT ||
+            recoverable == Recoverable.CONNECTION_TIMEOUT
+        );
     }
 
     public boolean isInvalidSession() {
