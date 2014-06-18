@@ -1,15 +1,16 @@
 package com.bronto.api;
 
 public class BrontoClientOptions {
-    public static int RETRY_LIMIT = 5;
-    public static int RETRY_STEP = 5000;
-    public static int CONNECTION_TIMEOUT = 5000;
-    public static int READ_TIMEOUT = 30000;
+    public static int WAIT_FOREVER = -1;
+    public static int DEFAULT_RETRY_LIMIT = 5;
+    public static int DEFAULT_RETRY_STEP = 5000;
+    public static int DEFAULT_CONNECT_TIMEOUT= 5000;
+    public static int DEFAULT_REQUEST_TIMEOUT= 30000;
 
-    private int retryLimit = RETRY_LIMIT;
-    private int retryStep = RETRY_STEP;
-    private int connectionTimeout = CONNECTION_TIMEOUT;
-    private int readTimeout = READ_TIMEOUT;
+    private int retryLimit = DEFAULT_RETRY_LIMIT;
+    private int retryStep = DEFAULT_RETRY_STEP;
+    private int connectionTimeout = DEFAULT_CONNECT_TIMEOUT;
+    private int readTimeout = DEFAULT_REQUEST_TIMEOUT;
     private BrontoApiObserver observer;
     private BrontoApiRetryer<?> retryer;
 

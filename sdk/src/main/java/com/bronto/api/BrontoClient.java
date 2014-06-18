@@ -47,20 +47,41 @@ public class BrontoClient implements BrontoApi {
         this(apiToken, new BrontoClientOptions());
     }
 
-    protected void setTimeouts(BrontoSoapPortType port, int adjust) {
+    protected void backOff(int retry) {
+        try {
+            Thread.sleep(triesToBackOff[retry]);
+        } catch (InterruptedException ie) {
+            throw new BrontoClientException(ie);
+        }
+    }
+
+    protected void setRequestTimeout(BrontoSoapPortType port, int adjust) {
         Map<String, Object> requestContext = ((BindingProvider) port).getRequestContext();
         for (String requestKey : SOAP_REQUEST_TIMEOUT) {
             requestContext.put(requestKey, options.getReadTimeout() + adjust);
         }
+    }
+
+    protected void setConnectTimeout(BrontoSoapPortType port, int adjust) {
+        Map<String, Object> requestContext = ((BindingProvider) port).getRequestContext();
         for (String connectKey : SOAP_CONNECT_TIMEOUT) {
             requestContext.put(connectKey, options.getConnectionTimeout() + adjust);
+        }
+    }
+
+    protected void setTimeouts(BrontoSoapPortType port, int adjust, BrontoClientException.Recoverable timeout) {
+        Map<String, Object> requestContext = ((BindingProvider) port).getRequestContext();
+        if (timeout == BrontoClientException.Recoverable.READ_TIMEOUT) {
+            setRequestTimeout(port, adjust);
+        } else if (timeout == BrontoClientException.Recoverable.CONNECTION_TIMEOUT) {
+            setConnectTimeout(port, adjust);
         }
     }
 
     @Override
     public BrontoSoapPortType getService() {
         BrontoSoapPortType port = apiService.getBrontoSoapApiImplPort();
-        setTimeouts(port, 0);
+        setTimeouts(port, 0, null);
         return port;
     }
 
@@ -125,8 +146,13 @@ public class BrontoClient implements BrontoApi {
                     }
                     retry++;
                     if (retry < options.getRetryLimit()) {
-                        // backoff the API by setting longer timeouts
-                        setTimeouts(port, triesToBackOff[retry]);
+                        if (brontoEx.isTimeout()) {
+                            // Extend wait on a read timeout
+                            setTimeouts(port, triesToBackOff[retry], brontoEx.getRecoverable());
+                        } else {
+                            // Service is unresponsive, delay and try again
+                            backOff(retry);
+                        }
                     } else if (options.getRetryer() != null && writeEx != null) {
                         options.getRetryer().storeAttempt(writeEx.getWriteContext());
                     }
