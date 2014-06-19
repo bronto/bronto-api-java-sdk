@@ -1,21 +1,33 @@
 package com.bronto.api;
 
-import com.bronto.api.reflect.ApiReflection;
-import com.bronto.api.request.BrontoClientRequest;
-import com.bronto.api.operation.AbstractObjectOperations;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.xml.ws.BindingProvider;
 
 import com.bronto.api.model.BrontoSoapApiImplService;
 import com.bronto.api.model.BrontoSoapPortType;
 import com.bronto.api.model.SessionHeader;
-
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import com.bronto.api.operation.AbstractObjectOperations;
+import com.bronto.api.reflect.ApiReflection;
+import com.bronto.api.request.BrontoClientRequest;
 
 public class BrontoClient implements BrontoApi {
-    private final long[] triesToBackOff;
+    private static final String[] SOAP_REQUEST_TIMEOUT = new String[] {
+        "javax.xml.ws.client.receiveTimeout",
+        "com.sun.xml.ws.request.timeout",
+        "com.sun.xml.internal.ws.request.timeout"
+    };
+    private static final String[] SOAP_CONNECT_TIMEOUT = new String[] {
+        "javax.xml.ws.client.connectionTimeout",
+        "com.sun.xml.ws.connect.timeout",
+        "com.sun.xml.internal.ws.connect.timeout"
+    };
+
+    private final int[] triesToBackOff;
     private final String apiToken;
-    private final BrontoSoapPortType apiService;
+    private final BrontoSoapApiImplService apiService;
     private final BrontoClientOptions options;
     private SessionHeader header;
     private BrontoApiObserver observer;
@@ -23,9 +35,9 @@ public class BrontoClient implements BrontoApi {
     public BrontoClient(String apiToken, BrontoClientOptions options) {
         this.apiToken = apiToken;
         this.options = options;
-        this.triesToBackOff = new long[options.getRetryLimit()];
+        this.apiService = new BrontoSoapApiImplService();
+        this.triesToBackOff = new int[options.getRetryLimit()];
         header = new SessionHeader();
-        apiService = new BrontoSoapApiImplService().getBrontoSoapApiImplPort();
         for (int i = 0; i < options.getRetryLimit(); i++) {
             this.triesToBackOff[i] = options.getRetryStep() * i;
         }
@@ -35,9 +47,42 @@ public class BrontoClient implements BrontoApi {
         this(apiToken, new BrontoClientOptions());
     }
 
+    protected void backOff(int retry) {
+        try {
+            Thread.sleep(triesToBackOff[retry]);
+        } catch (InterruptedException ie) {
+            throw new BrontoClientException(ie);
+        }
+    }
+
+    protected void setRequestTimeout(BrontoSoapPortType port, int adjust) {
+        Map<String, Object> requestContext = ((BindingProvider) port).getRequestContext();
+        for (String requestKey : SOAP_REQUEST_TIMEOUT) {
+            requestContext.put(requestKey, options.getReadTimeout() + adjust);
+        }
+    }
+
+    protected void setConnectTimeout(BrontoSoapPortType port, int adjust) {
+        Map<String, Object> requestContext = ((BindingProvider) port).getRequestContext();
+        for (String connectKey : SOAP_CONNECT_TIMEOUT) {
+            requestContext.put(connectKey, options.getConnectionTimeout() + adjust);
+        }
+    }
+
+    protected void setTimeouts(BrontoSoapPortType port, int adjust, BrontoClientException.Recoverable timeout) {
+        Map<String, Object> requestContext = ((BindingProvider) port).getRequestContext();
+        if (timeout == BrontoClientException.Recoverable.READ_TIMEOUT) {
+            setRequestTimeout(port, adjust);
+        } else if (timeout == BrontoClientException.Recoverable.CONNECTION_TIMEOUT) {
+            setConnectTimeout(port, adjust);
+        }
+    }
+
     @Override
     public BrontoSoapPortType getService() {
-        return apiService;
+        BrontoSoapPortType port = apiService.getBrontoSoapApiImplPort();
+        setTimeouts(port, 0, null);
+        return port;
     }
 
     @Override
@@ -75,11 +120,12 @@ public class BrontoClient implements BrontoApi {
     @Override
     public <T> T invoke(final BrontoClientRequest<T> request) {
         int retry = 0;
+        BrontoSoapPortType port = getService();
         do {
             try {
-                return request.invoke(apiService, getSessionHeader());
+                return request.invoke(port, getSessionHeader());
             } catch (Exception e) {
-                // TODO: fix this...
+                // TODO: fix this... error handler logic should be an implemented strategy
                 BrontoWriteException writeEx = null;
                 BrontoClientException brontoEx = null;
                 if (e instanceof BrontoWriteException) {
@@ -94,9 +140,19 @@ public class BrontoClient implements BrontoApi {
                         options.getObserver().onSessionRefresh(this, sessionId);
                     }
                 } else if (brontoEx.isRecoverable()) {
+                    // Received a timeout on a write, bail
+                    if (brontoEx.isTimeout() && writeEx != null) {
+                        throw brontoEx;
+                    }
                     retry++;
                     if (retry < options.getRetryLimit()) {
-                        backOff(retry);
+                        if (brontoEx.isTimeout()) {
+                            // Extend wait on a read timeout
+                            setTimeouts(port, triesToBackOff[retry], brontoEx.getRecoverable());
+                        } else {
+                            // Service is unresponsive, delay and try again
+                            backOff(retry);
+                        }
                     } else if (options.getRetryer() != null && writeEx != null) {
                         options.getRetryer().storeAttempt(writeEx.getWriteContext());
                     }
@@ -106,15 +162,6 @@ public class BrontoClient implements BrontoApi {
             }
         } while (retry < options.getRetryLimit());
         throw new RuntimeException("Exceeded retry limit");
-    }
-
-    protected void backOff(int retry) {
-        // Back off of the API a little bit
-        try {
-            Thread.sleep(triesToBackOff[retry]);
-        } catch (InterruptedException ie) {
-            throw new RuntimeException(ie);
-        }
     }
 
     @Override
