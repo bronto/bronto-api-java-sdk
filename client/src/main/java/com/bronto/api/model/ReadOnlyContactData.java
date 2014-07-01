@@ -35,6 +35,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="totalOrders" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="totalRevenue" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
  *         &lt;element name="averageOrderValue" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *         &lt;element name="lastDeliveryDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="lastOpenDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="lastClickDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -60,7 +63,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "lastOrderTotal",
     "totalOrders",
     "totalRevenue",
-    "averageOrderValue"
+    "averageOrderValue",
+    "lastDeliveryDate",
+    "lastOpenDate",
+    "lastClickDate"
 })
 public class ReadOnlyContactData {
 
@@ -82,6 +88,12 @@ public class ReadOnlyContactData {
     protected Long totalOrders;
     protected BigDecimal totalRevenue;
     protected BigDecimal averageOrderValue;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar lastDeliveryDate;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar lastOpenDate;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar lastClickDate;
 
     /**
      * Gets the value of the geoIPCity property.
@@ -465,6 +477,78 @@ public class ReadOnlyContactData {
      */
     public void setAverageOrderValue(BigDecimal value) {
         this.averageOrderValue = value;
+    }
+
+    /**
+     * Gets the value of the lastDeliveryDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getLastDeliveryDate() {
+        return lastDeliveryDate;
+    }
+
+    /**
+     * Sets the value of the lastDeliveryDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setLastDeliveryDate(XMLGregorianCalendar value) {
+        this.lastDeliveryDate = value;
+    }
+
+    /**
+     * Gets the value of the lastOpenDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getLastOpenDate() {
+        return lastOpenDate;
+    }
+
+    /**
+     * Sets the value of the lastOpenDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setLastOpenDate(XMLGregorianCalendar value) {
+        this.lastOpenDate = value;
+    }
+
+    /**
+     * Gets the value of the lastClickDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getLastClickDate() {
+        return lastClickDate;
+    }
+
+    /**
+     * Sets the value of the lastClickDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setLastClickDate(XMLGregorianCalendar value) {
+        this.lastClickDate = value;
     }
 
 }

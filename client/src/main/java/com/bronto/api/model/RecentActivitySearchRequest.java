@@ -20,6 +20,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="start" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="end" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="contactId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="deliveryId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="size" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="readDirection" type="{http://api.bronto.com/v4}readDirection" minOccurs="0"/>
  *       &lt;/sequence>
@@ -33,6 +36,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "recentActivitySearchRequest", propOrder = {
     "start",
+    "end",
+    "contactId",
+    "deliveryId",
     "size",
     "readDirection"
 })
@@ -44,6 +50,10 @@ public abstract class RecentActivitySearchRequest {
 
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar start;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar end;
+    protected String contactId;
+    protected String deliveryId;
     protected int size;
     protected ReadDirection readDirection;
 
@@ -69,6 +79,78 @@ public abstract class RecentActivitySearchRequest {
      */
     public void setStart(XMLGregorianCalendar value) {
         this.start = value;
+    }
+
+    /**
+     * Gets the value of the end property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getEnd() {
+        return end;
+    }
+
+    /**
+     * Sets the value of the end property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setEnd(XMLGregorianCalendar value) {
+        this.end = value;
+    }
+
+    /**
+     * Gets the value of the contactId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getContactId() {
+        return contactId;
+    }
+
+    /**
+     * Sets the value of the contactId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setContactId(String value) {
+        this.contactId = value;
+    }
+
+    /**
+     * Gets the value of the deliveryId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDeliveryId() {
+        return deliveryId;
+    }
+
+    /**
+     * Sets the value of the deliveryId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDeliveryId(String value) {
+        this.deliveryId = value;
     }
 
     /**
