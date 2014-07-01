@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="includeGeoIPData" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="includeTechnologyData" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="includeRFMData" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="includeEngagementData" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -43,7 +44,8 @@ import javax.xml.bind.annotation.XmlType;
     "includeSMSKeywords",
     "includeGeoIPData",
     "includeTechnologyData",
-    "includeRFMData"
+    "includeRFMData",
+    "includeEngagementData"
 })
 public class ReadContacts {
 
@@ -55,6 +57,7 @@ public class ReadContacts {
     protected Boolean includeGeoIPData;
     protected Boolean includeTechnologyData;
     protected Boolean includeRFMData;
+    protected Boolean includeEngagementData;
 
     /**
      * Gets the value of the filter property.
@@ -243,6 +246,30 @@ public class ReadContacts {
      */
     public void setIncludeRFMData(Boolean value) {
         this.includeRFMData = value;
+    }
+
+    /**
+     * Gets the value of the includeEngagementData property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isIncludeEngagementData() {
+        return includeEngagementData;
+    }
+
+    /**
+     * Sets the value of the includeEngagementData property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIncludeEngagementData(Boolean value) {
+        this.includeEngagementData = value;
     }
 
 }

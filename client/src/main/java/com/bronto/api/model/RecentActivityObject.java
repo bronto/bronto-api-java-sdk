@@ -52,6 +52,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="webformType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="webformAction" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="webformName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="webformId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -95,7 +96,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "socialActivity",
     "webformType",
     "webformAction",
-    "webformName"
+    "webformName",
+    "webformId"
 })
 public class RecentActivityObject {
 
@@ -135,6 +137,7 @@ public class RecentActivityObject {
     protected String webformType;
     protected String webformAction;
     protected String webformName;
+    protected String webformId;
 
     /**
      * Gets the value of the createdDate property.
@@ -950,6 +953,30 @@ public class RecentActivityObject {
      */
     public void setWebformName(String value) {
         this.webformName = value;
+    }
+
+    /**
+     * Gets the value of the webformId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getWebformId() {
+        return webformId;
+    }
+
+    /**
+     * Sets the value of the webformId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setWebformId(String value) {
+        this.webformId = value;
     }
 
 }
