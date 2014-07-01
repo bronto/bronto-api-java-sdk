@@ -5,7 +5,7 @@
     <artifactId>bronto-api-java-sdk</artifactId>
     <packaging>pom</packaging>
     <description>bronto-api-java-sdk</description>
-    <version>1.0.3</version>
+    <version>1.0.4-SNAPSHOT</version>
     <name>bronto-api-java-sdk</name>
     <organization>
         <name>com.bronto</name>
