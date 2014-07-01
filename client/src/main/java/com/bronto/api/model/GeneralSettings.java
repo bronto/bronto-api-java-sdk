@@ -1,6 +1,7 @@
 
 package com.bronto.api.model;
 
+import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -27,7 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="usageAlertEmail" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="currentContacts" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="maxContacts" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="currentMonthlyEmails" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="currentMonthlyEmails" type="{http://www.w3.org/2001/XMLSchema}integer" minOccurs="0"/>
  *         &lt;element name="currentHostingSize" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="maxHostingSize" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="agencyTemplateuploadPerm" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -78,7 +79,7 @@ public class GeneralSettings {
     protected String usageAlertEmail;
     protected Long currentContacts;
     protected Long maxContacts;
-    protected Long currentMonthlyEmails;
+    protected BigInteger currentMonthlyEmails;
     protected Long currentHostingSize;
     protected Long maxHostingSize;
     protected Boolean agencyTemplateuploadPerm;
@@ -356,10 +357,10 @@ public class GeneralSettings {
      * 
      * @return
      *     possible object is
-     *     {@link Long }
+     *     {@link BigInteger }
      *     
      */
-    public Long getCurrentMonthlyEmails() {
+    public BigInteger getCurrentMonthlyEmails() {
         return currentMonthlyEmails;
     }
 
@@ -368,10 +369,10 @@ public class GeneralSettings {
      * 
      * @param value
      *     allowed object is
-     *     {@link Long }
+     *     {@link BigInteger }
      *     
      */
-    public void setCurrentMonthlyEmails(Long value) {
+    public void setCurrentMonthlyEmails(BigInteger value) {
         this.currentMonthlyEmails = value;
     }
 

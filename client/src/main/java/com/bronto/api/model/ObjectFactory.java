@@ -38,8 +38,8 @@ public class ObjectFactory {
     private final static QName _ReadSegments_QNAME = new QName("http://api.bronto.com/v4", "readSegments");
     private final static QName _ReadDeliveryRecipientsResponse_QNAME = new QName("http://api.bronto.com/v4", "readDeliveryRecipientsResponse");
     private final static QName _UpdateMessageFolders_QNAME = new QName("http://api.bronto.com/v4", "updateMessageFolders");
-    private final static QName _AddToSMSKeywordResponse_QNAME = new QName("http://api.bronto.com/v4", "addToSMSKeywordResponse");
     private final static QName _ReadActivities_QNAME = new QName("http://api.bronto.com/v4", "readActivities");
+    private final static QName _AddToSMSKeywordResponse_QNAME = new QName("http://api.bronto.com/v4", "addToSMSKeywordResponse");
     private final static QName _ReadRecentOutboundActivities_QNAME = new QName("http://api.bronto.com/v4", "readRecentOutboundActivities");
     private final static QName _UpdateMessageFoldersResponse_QNAME = new QName("http://api.bronto.com/v4", "updateMessageFoldersResponse");
     private final static QName _AddOrUpdateOrders_QNAME = new QName("http://api.bronto.com/v4", "addOrUpdateOrders");
@@ -56,7 +56,6 @@ public class ObjectFactory {
     private final static QName _UpdateLists_QNAME = new QName("http://api.bronto.com/v4", "updateLists");
     private final static QName _ReadSMSDeliveries_QNAME = new QName("http://api.bronto.com/v4", "readSMSDeliveries");
     private final static QName _DeleteListsResponse_QNAME = new QName("http://api.bronto.com/v4", "deleteListsResponse");
-    private final static QName _UpdateWorkflowsResponse_QNAME = new QName("http://api.bronto.com/v4", "updateWorkflowsResponse");
     private final static QName _UpdateSMSKeywords_QNAME = new QName("http://api.bronto.com/v4", "updateSMSKeywords");
     private final static QName _ReadHeaderFootersResponse_QNAME = new QName("http://api.bronto.com/v4", "readHeaderFootersResponse");
     private final static QName _ReadDeliveryRecipients_QNAME = new QName("http://api.bronto.com/v4", "readDeliveryRecipients");
@@ -80,7 +79,6 @@ public class ObjectFactory {
     private final static QName _ReadContentTags_QNAME = new QName("http://api.bronto.com/v4", "readContentTags");
     private final static QName _DeleteOrders_QNAME = new QName("http://api.bronto.com/v4", "deleteOrders");
     private final static QName _AddHeaderFootersResponse_QNAME = new QName("http://api.bronto.com/v4", "addHeaderFootersResponse");
-    private final static QName _DeleteWorkflowsResponse_QNAME = new QName("http://api.bronto.com/v4", "deleteWorkflowsResponse");
     private final static QName _AddOrUpdateContacts_QNAME = new QName("http://api.bronto.com/v4", "addOrUpdateContacts");
     private final static QName _DeleteMessages_QNAME = new QName("http://api.bronto.com/v4", "deleteMessages");
     private final static QName _AddMessageRules_QNAME = new QName("http://api.bronto.com/v4", "addMessageRules");
@@ -131,8 +129,8 @@ public class ObjectFactory {
     private final static QName _UpdateDeliveries_QNAME = new QName("http://api.bronto.com/v4", "updateDeliveries");
     private final static QName _AddToSMSKeyword_QNAME = new QName("http://api.bronto.com/v4", "addToSMSKeyword");
     private final static QName _AddSMSDeliveries_QNAME = new QName("http://api.bronto.com/v4", "addSMSDeliveries");
-    private final static QName _AddContacts_QNAME = new QName("http://api.bronto.com/v4", "addContacts");
     private final static QName _UpdateSMSMessagesResponse_QNAME = new QName("http://api.bronto.com/v4", "updateSMSMessagesResponse");
+    private final static QName _AddContacts_QNAME = new QName("http://api.bronto.com/v4", "addContacts");
     private final static QName _AddLists_QNAME = new QName("http://api.bronto.com/v4", "addLists");
     private final static QName _ReadSMSMessagesResponse_QNAME = new QName("http://api.bronto.com/v4", "readSMSMessagesResponse");
     private final static QName _DeleteSMSMessages_QNAME = new QName("http://api.bronto.com/v4", "deleteSMSMessages");
@@ -142,7 +140,6 @@ public class ObjectFactory {
     private final static QName _ReadHeaderFooters_QNAME = new QName("http://api.bronto.com/v4", "readHeaderFooters");
     private final static QName _AddConversion_QNAME = new QName("http://api.bronto.com/v4", "addConversion");
     private final static QName _AddDeliveryGroup_QNAME = new QName("http://api.bronto.com/v4", "addDeliveryGroup");
-    private final static QName _AddWorkflows_QNAME = new QName("http://api.bronto.com/v4", "addWorkflows");
     private final static QName _AddSMSMessages_QNAME = new QName("http://api.bronto.com/v4", "addSMSMessages");
     private final static QName _UpdateSMSDeliveriesResponse_QNAME = new QName("http://api.bronto.com/v4", "updateSMSDeliveriesResponse");
     private final static QName _AddAccountsResponse_QNAME = new QName("http://api.bronto.com/v4", "addAccountsResponse");
@@ -159,11 +156,9 @@ public class ObjectFactory {
     private final static QName _AddOrUpdateOrdersResponse_QNAME = new QName("http://api.bronto.com/v4", "addOrUpdateOrdersResponse");
     private final static QName _DeleteFromDeliveryGroupResponse_QNAME = new QName("http://api.bronto.com/v4", "deleteFromDeliveryGroupResponse");
     private final static QName _AddOrUpdateDeliveryGroup_QNAME = new QName("http://api.bronto.com/v4", "addOrUpdateDeliveryGroup");
-    private final static QName _AddWorkflowsResponse_QNAME = new QName("http://api.bronto.com/v4", "addWorkflowsResponse");
     private final static QName _AddFields_QNAME = new QName("http://api.bronto.com/v4", "addFields");
     private final static QName _UpdateContactsResponse_QNAME = new QName("http://api.bronto.com/v4", "updateContactsResponse");
     private final static QName _ReadRecentInboundActivitiesResponse_QNAME = new QName("http://api.bronto.com/v4", "readRecentInboundActivitiesResponse");
-    private final static QName _DeleteWorkflows_QNAME = new QName("http://api.bronto.com/v4", "deleteWorkflows");
     private final static QName _ReadWorkflows_QNAME = new QName("http://api.bronto.com/v4", "readWorkflows");
     private final static QName _ReadSegmentsResponse_QNAME = new QName("http://api.bronto.com/v4", "readSegmentsResponse");
     private final static QName _ReadRecentInboundActivities_QNAME = new QName("http://api.bronto.com/v4", "readRecentInboundActivities");
@@ -192,7 +187,6 @@ public class ObjectFactory {
     private final static QName _UpdateMessagesResponse_QNAME = new QName("http://api.bronto.com/v4", "updateMessagesResponse");
     private final static QName _DeleteFromDeliveryGroup_QNAME = new QName("http://api.bronto.com/v4", "deleteFromDeliveryGroup");
     private final static QName _ReadDeliveriesResponse_QNAME = new QName("http://api.bronto.com/v4", "readDeliveriesResponse");
-    private final static QName _UpdateWorkflows_QNAME = new QName("http://api.bronto.com/v4", "updateWorkflows");
     private final static QName _AddSMSKeywordsResponse_QNAME = new QName("http://api.bronto.com/v4", "addSMSKeywordsResponse");
     private final static QName _AddApiTokens_QNAME = new QName("http://api.bronto.com/v4", "addApiTokens");
     private final static QName _ReadMessageFolders_QNAME = new QName("http://api.bronto.com/v4", "readMessageFolders");
@@ -217,723 +211,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ReadContactsResponse }
-     * 
-     */
-    public ReadContactsResponse createReadContactsResponse() {
-        return new ReadContactsResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateHeaderFooters }
-     * 
-     */
-    public UpdateHeaderFooters createUpdateHeaderFooters() {
-        return new UpdateHeaderFooters();
-    }
-
-    /**
-     * Create an instance of {@link OrderObject }
-     * 
-     */
-    public OrderObject createOrderObject() {
-        return new OrderObject();
-    }
-
-    /**
-     * Create an instance of {@link MailListObject }
-     * 
-     */
-    public MailListObject createMailListObject() {
-        return new MailListObject();
-    }
-
-    /**
-     * Create an instance of {@link DeliveryGroupObject }
-     * 
-     */
-    public DeliveryGroupObject createDeliveryGroupObject() {
-        return new DeliveryGroupObject();
-    }
-
-    /**
-     * Create an instance of {@link UpdateSMSDeliveriesResponse }
-     * 
-     */
-    public UpdateSMSDeliveriesResponse createUpdateSMSDeliveriesResponse() {
-        return new UpdateSMSDeliveriesResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteHeaderFooters }
-     * 
-     */
-    public DeleteHeaderFooters createDeleteHeaderFooters() {
-        return new DeleteHeaderFooters();
-    }
-
-    /**
-     * Create an instance of {@link DeleteContentTags }
-     * 
-     */
-    public DeleteContentTags createDeleteContentTags() {
-        return new DeleteContentTags();
-    }
-
-    /**
-     * Create an instance of {@link ConversionObject }
-     * 
-     */
-    public ConversionObject createConversionObject() {
-        return new ConversionObject();
-    }
-
-    /**
-     * Create an instance of {@link DeleteListsResponse }
-     * 
-     */
-    public DeleteListsResponse createDeleteListsResponse() {
-        return new DeleteListsResponse();
-    }
-
-    /**
-     * Create an instance of {@link ReadMessageFoldersResponse }
-     * 
-     */
-    public ReadMessageFoldersResponse createReadMessageFoldersResponse() {
-        return new ReadMessageFoldersResponse();
-    }
-
-    /**
-     * Create an instance of {@link ReadLoginsResponse }
-     * 
-     */
-    public ReadLoginsResponse createReadLoginsResponse() {
-        return new ReadLoginsResponse();
-    }
-
-    /**
-     * Create an instance of {@link SmsKeywordObject }
-     * 
-     */
-    public SmsKeywordObject createSmsKeywordObject() {
-        return new SmsKeywordObject();
-    }
-
-    /**
-     * Create an instance of {@link ContactInformation }
-     * 
-     */
-    public ContactInformation createContactInformation() {
-        return new ContactInformation();
-    }
-
-    /**
-     * Create an instance of {@link UpdateSMSDeliveries }
-     * 
-     */
-    public UpdateSMSDeliveries createUpdateSMSDeliveries() {
-        return new UpdateSMSDeliveries();
-    }
-
-    /**
-     * Create an instance of {@link AddConversion }
-     * 
-     */
-    public AddConversion createAddConversion() {
-        return new AddConversion();
-    }
-
-    /**
-     * Create an instance of {@link WorkflowFilter }
-     * 
-     */
-    public WorkflowFilter createWorkflowFilter() {
-        return new WorkflowFilter();
-    }
-
-    /**
-     * Create an instance of {@link ReadSegmentsResponse }
-     * 
-     */
-    public ReadSegmentsResponse createReadSegmentsResponse() {
-        return new ReadSegmentsResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateApiTokensResponse }
-     * 
-     */
-    public UpdateApiTokensResponse createUpdateApiTokensResponse() {
-        return new UpdateApiTokensResponse();
-    }
-
-    /**
-     * Create an instance of {@link FieldsFilter }
-     * 
-     */
-    public FieldsFilter createFieldsFilter() {
-        return new FieldsFilter();
-    }
-
-    /**
-     * Create an instance of {@link ReadActivities }
-     * 
-     */
-    public ReadActivities createReadActivities() {
-        return new ReadActivities();
-    }
-
-    /**
-     * Create an instance of {@link AddOrUpdateContacts }
-     * 
-     */
-    public AddOrUpdateContacts createAddOrUpdateContacts() {
-        return new AddOrUpdateContacts();
-    }
-
-    /**
-     * Create an instance of {@link ReadMessageRules }
-     * 
-     */
-    public ReadMessageRules createReadMessageRules() {
-        return new ReadMessageRules();
-    }
-
-    /**
-     * Create an instance of {@link ReadFieldsResponse }
-     * 
-     */
-    public ReadFieldsResponse createReadFieldsResponse() {
-        return new ReadFieldsResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteSMSMessages }
-     * 
-     */
-    public DeleteSMSMessages createDeleteSMSMessages() {
-        return new DeleteSMSMessages();
-    }
-
-    /**
-     * Create an instance of {@link UpdateSMSKeywordsResponse }
-     * 
-     */
-    public UpdateSMSKeywordsResponse createUpdateSMSKeywordsResponse() {
-        return new UpdateSMSKeywordsResponse();
-    }
-
-    /**
-     * Create an instance of {@link ReadSMSDeliveries }
-     * 
-     */
-    public ReadSMSDeliveries createReadSMSDeliveries() {
-        return new ReadSMSDeliveries();
-    }
-
-    /**
-     * Create an instance of {@link ReadConversions }
-     * 
-     */
-    public ReadConversions createReadConversions() {
-        return new ReadConversions();
-    }
-
-    /**
-     * Create an instance of {@link ReadDeliveryRecipientsResponse }
-     * 
-     */
-    public ReadDeliveryRecipientsResponse createReadDeliveryRecipientsResponse() {
-        return new ReadDeliveryRecipientsResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateDeliveryGroupResponse }
-     * 
-     */
-    public UpdateDeliveryGroupResponse createUpdateDeliveryGroupResponse() {
-        return new UpdateDeliveryGroupResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddAccountsResponse }
-     * 
-     */
-    public AddAccountsResponse createAddAccountsResponse() {
-        return new AddAccountsResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateWorkflows }
-     * 
-     */
-    public UpdateWorkflows createUpdateWorkflows() {
-        return new UpdateWorkflows();
-    }
-
-    /**
-     * Create an instance of {@link DeleteContentTagsResponse }
-     * 
-     */
-    public DeleteContentTagsResponse createDeleteContentTagsResponse() {
-        return new DeleteContentTagsResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteSMSKeywordsResponse }
-     * 
-     */
-    public DeleteSMSKeywordsResponse createDeleteSMSKeywordsResponse() {
-        return new DeleteSMSKeywordsResponse();
-    }
-
-    /**
-     * Create an instance of {@link RemoveFromListResponse }
-     * 
-     */
-    public RemoveFromListResponse createRemoveFromListResponse() {
-        return new RemoveFromListResponse();
-    }
-
-    /**
-     * Create an instance of {@link WorkflowObject }
-     * 
-     */
-    public WorkflowObject createWorkflowObject() {
-        return new WorkflowObject();
-    }
-
-    /**
-     * Create an instance of {@link UpdateMessages }
-     * 
-     */
-    public UpdateMessages createUpdateMessages() {
-        return new UpdateMessages();
-    }
-
-    /**
-     * Create an instance of {@link DeleteSMSMessagesResponse }
-     * 
-     */
-    public DeleteSMSMessagesResponse createDeleteSMSMessagesResponse() {
-        return new DeleteSMSMessagesResponse();
-    }
-
-    /**
-     * Create an instance of {@link WebformObject }
-     * 
-     */
-    public WebformObject createWebformObject() {
-        return new WebformObject();
-    }
-
-    /**
-     * Create an instance of {@link UpdateApiTokens }
-     * 
-     */
-    public UpdateApiTokens createUpdateApiTokens() {
-        return new UpdateApiTokens();
-    }
-
-    /**
-     * Create an instance of {@link AccountAllocations }
-     * 
-     */
-    public AccountAllocations createAccountAllocations() {
-        return new AccountAllocations();
-    }
-
-    /**
-     * Create an instance of {@link ReadSMSMessagesResponse }
-     * 
-     */
-    public ReadSMSMessagesResponse createReadSMSMessagesResponse() {
-        return new ReadSMSMessagesResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddUpdateOrder }
-     * 
-     */
-    public AddUpdateOrder createAddUpdateOrder() {
-        return new AddUpdateOrder();
-    }
-
-    /**
-     * Create an instance of {@link DeliveryFilter }
-     * 
-     */
-    public DeliveryFilter createDeliveryFilter() {
-        return new DeliveryFilter();
-    }
-
-    /**
-     * Create an instance of {@link AddToList }
-     * 
-     */
-    public AddToList createAddToList() {
-        return new AddToList();
-    }
-
-    /**
-     * Create an instance of {@link AddOrUpdateContactsResponse }
-     * 
-     */
-    public AddOrUpdateContactsResponse createAddOrUpdateContactsResponse() {
-        return new AddOrUpdateContactsResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateListsResponse }
-     * 
-     */
-    public UpdateListsResponse createUpdateListsResponse() {
-        return new UpdateListsResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteApiTokens }
-     * 
-     */
-    public DeleteApiTokens createDeleteApiTokens() {
-        return new DeleteApiTokens();
-    }
-
-    /**
-     * Create an instance of {@link AddContactsResponse }
-     * 
-     */
-    public AddContactsResponse createAddContactsResponse() {
-        return new AddContactsResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeliveryRecipientObject }
-     * 
-     */
-    public DeliveryRecipientObject createDeliveryRecipientObject() {
-        return new DeliveryRecipientObject();
-    }
-
-    /**
-     * Create an instance of {@link ReadWorkflowsResponse }
-     * 
-     */
-    public ReadWorkflowsResponse createReadWorkflowsResponse() {
-        return new ReadWorkflowsResponse();
-    }
-
-    /**
-     * Create an instance of {@link SegmentRuleObject }
-     * 
-     */
-    public SegmentRuleObject createSegmentRuleObject() {
-        return new SegmentRuleObject();
-    }
-
-    /**
-     * Create an instance of {@link Login }
-     * 
-     */
-    public Login createLogin() {
-        return new Login();
-    }
-
-    /**
-     * Create an instance of {@link DeleteMessageRulesResponse }
-     * 
-     */
-    public DeleteMessageRulesResponse createDeleteMessageRulesResponse() {
-        return new DeleteMessageRulesResponse();
-    }
-
-    /**
-     * Create an instance of {@link RepliesSettings }
-     * 
-     */
-    public RepliesSettings createRepliesSettings() {
-        return new RepliesSettings();
-    }
-
-    /**
-     * Create an instance of {@link ReadRecentOutboundActivities }
-     * 
-     */
-    public ReadRecentOutboundActivities createReadRecentOutboundActivities() {
-        return new ReadRecentOutboundActivities();
-    }
-
-    /**
      * Create an instance of {@link ReadListsResponse }
      * 
      */
     public ReadListsResponse createReadListsResponse() {
         return new ReadListsResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddConversionResponse }
-     * 
-     */
-    public AddConversionResponse createAddConversionResponse() {
-        return new AddConversionResponse();
-    }
-
-    /**
-     * Create an instance of {@link ResultItem }
-     * 
-     */
-    public ResultItem createResultItem() {
-        return new ResultItem();
-    }
-
-    /**
-     * Create an instance of {@link ReadMessageRulesResponse }
-     * 
-     */
-    public ReadMessageRulesResponse createReadMessageRulesResponse() {
-        return new ReadMessageRulesResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteMessageFoldersResponse }
-     * 
-     */
-    public DeleteMessageFoldersResponse createDeleteMessageFoldersResponse() {
-        return new DeleteMessageFoldersResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddOrUpdateOrders }
-     * 
-     */
-    public AddOrUpdateOrders createAddOrUpdateOrders() {
-        return new AddOrUpdateOrders();
-    }
-
-    /**
-     * Create an instance of {@link UpdateFields }
-     * 
-     */
-    public UpdateFields createUpdateFields() {
-        return new UpdateFields();
-    }
-
-    /**
-     * Create an instance of {@link ReadMessagesResponse }
-     * 
-     */
-    public ReadMessagesResponse createReadMessagesResponse() {
-        return new ReadMessagesResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateSMSMessagesResponse }
-     * 
-     */
-    public UpdateSMSMessagesResponse createUpdateSMSMessagesResponse() {
-        return new UpdateSMSMessagesResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddContactsToWorkflow }
-     * 
-     */
-    public AddContactsToWorkflow createAddContactsToWorkflow() {
-        return new AddContactsToWorkflow();
-    }
-
-    /**
-     * Create an instance of {@link FormatSettings }
-     * 
-     */
-    public FormatSettings createFormatSettings() {
-        return new FormatSettings();
-    }
-
-    /**
-     * Create an instance of {@link LoginResponse }
-     * 
-     */
-    public LoginResponse createLoginResponse() {
-        return new LoginResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteLoginsResponse }
-     * 
-     */
-    public DeleteLoginsResponse createDeleteLoginsResponse() {
-        return new DeleteLoginsResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateContactsResponse }
-     * 
-     */
-    public UpdateContactsResponse createUpdateContactsResponse() {
-        return new UpdateContactsResponse();
-    }
-
-    /**
-     * Create an instance of {@link ReadLogins }
-     * 
-     */
-    public ReadLogins createReadLogins() {
-        return new ReadLogins();
-    }
-
-    /**
-     * Create an instance of {@link AddWorkflowsResponse }
-     * 
-     */
-    public AddWorkflowsResponse createAddWorkflowsResponse() {
-        return new AddWorkflowsResponse();
-    }
-
-    /**
-     * Create an instance of {@link RecentActivityObject }
-     * 
-     */
-    public RecentActivityObject createRecentActivityObject() {
-        return new RecentActivityObject();
-    }
-
-    /**
-     * Create an instance of {@link ReadWebforms }
-     * 
-     */
-    public ReadWebforms createReadWebforms() {
-        return new ReadWebforms();
-    }
-
-    /**
-     * Create an instance of {@link ApiTokenFilter }
-     * 
-     */
-    public ApiTokenFilter createApiTokenFilter() {
-        return new ApiTokenFilter();
-    }
-
-    /**
-     * Create an instance of {@link DeleteAccountsResponse }
-     * 
-     */
-    public DeleteAccountsResponse createDeleteAccountsResponse() {
-        return new DeleteAccountsResponse();
-    }
-
-    /**
-     * Create an instance of {@link ReadFields }
-     * 
-     */
-    public ReadFields createReadFields() {
-        return new ReadFields();
-    }
-
-    /**
-     * Create an instance of {@link MessageFolderObject }
-     * 
-     */
-    public MessageFolderObject createMessageFolderObject() {
-        return new MessageFolderObject();
-    }
-
-    /**
-     * Create an instance of {@link MessageFolderFilter }
-     * 
-     */
-    public MessageFolderFilter createMessageFolderFilter() {
-        return new MessageFolderFilter();
-    }
-
-    /**
-     * Create an instance of {@link DeleteHeaderFootersResponse }
-     * 
-     */
-    public DeleteHeaderFootersResponse createDeleteHeaderFootersResponse() {
-        return new DeleteHeaderFootersResponse();
-    }
-
-    /**
-     * Create an instance of {@link SmsKeywordFilter }
-     * 
-     */
-    public SmsKeywordFilter createSmsKeywordFilter() {
-        return new SmsKeywordFilter();
-    }
-
-    /**
-     * Create an instance of {@link UpdateLogins }
-     * 
-     */
-    public UpdateLogins createUpdateLogins() {
-        return new UpdateLogins();
-    }
-
-    /**
-     * Create an instance of {@link ContactObject }
-     * 
-     */
-    public ContactObject createContactObject() {
-        return new ContactObject();
-    }
-
-    /**
-     * Create an instance of {@link AddContactEventResponse }
-     * 
-     */
-    public AddContactEventResponse createAddContactEventResponse() {
-        return new AddContactEventResponse();
-    }
-
-    /**
-     * Create an instance of {@link ReadHeaderFootersResponse }
-     * 
-     */
-    public ReadHeaderFootersResponse createReadHeaderFootersResponse() {
-        return new ReadHeaderFootersResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddSMSMessagesResponse }
-     * 
-     */
-    public AddSMSMessagesResponse createAddSMSMessagesResponse() {
-        return new AddSMSMessagesResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateSMSKeywords }
-     * 
-     */
-    public UpdateSMSKeywords createUpdateSMSKeywords() {
-        return new UpdateSMSKeywords();
-    }
-
-    /**
-     * Create an instance of {@link AddSMSKeywordsResponse }
-     * 
-     */
-    public AddSMSKeywordsResponse createAddSMSKeywordsResponse() {
-        return new AddSMSKeywordsResponse();
-    }
-
-    /**
-     * Create an instance of {@link ReadMessages }
-     * 
-     */
-    public ReadMessages createReadMessages() {
-        return new ReadMessages();
-    }
-
-    /**
-     * Create an instance of {@link SmsDeliveryFilter }
-     * 
-     */
-    public SmsDeliveryFilter createSmsDeliveryFilter() {
-        return new SmsDeliveryFilter();
     }
 
     /**
@@ -945,142 +227,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UpdateMessageFoldersResponse }
-     * 
-     */
-    public UpdateMessageFoldersResponse createUpdateMessageFoldersResponse() {
-        return new UpdateMessageFoldersResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddContactEvent }
-     * 
-     */
-    public AddContactEvent createAddContactEvent() {
-        return new AddContactEvent();
-    }
-
-    /**
-     * Create an instance of {@link DeleteMessageFolders }
-     * 
-     */
-    public DeleteMessageFolders createDeleteMessageFolders() {
-        return new DeleteMessageFolders();
-    }
-
-    /**
-     * Create an instance of {@link AddApiTokens }
-     * 
-     */
-    public AddApiTokens createAddApiTokens() {
-        return new AddApiTokens();
-    }
-
-    /**
-     * Create an instance of {@link DeleteAccounts }
-     * 
-     */
-    public DeleteAccounts createDeleteAccounts() {
-        return new DeleteAccounts();
-    }
-
-    /**
-     * Create an instance of {@link UpdateHeaderFootersResponse }
-     * 
-     */
-    public UpdateHeaderFootersResponse createUpdateHeaderFootersResponse() {
-        return new UpdateHeaderFootersResponse();
-    }
-
-    /**
-     * Create an instance of {@link ContentTagFilter }
-     * 
-     */
-    public ContentTagFilter createContentTagFilter() {
-        return new ContentTagFilter();
-    }
-
-    /**
-     * Create an instance of {@link DeleteApiTokensResponse }
-     * 
-     */
-    public DeleteApiTokensResponse createDeleteApiTokensResponse() {
-        return new DeleteApiTokensResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateWorkflowsResponse }
-     * 
-     */
-    public UpdateWorkflowsResponse createUpdateWorkflowsResponse() {
-        return new UpdateWorkflowsResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteMessages }
-     * 
-     */
-    public DeleteMessages createDeleteMessages() {
-        return new DeleteMessages();
-    }
-
-    /**
-     * Create an instance of {@link AddSMSDeliveries }
-     * 
-     */
-    public AddSMSDeliveries createAddSMSDeliveries() {
-        return new AddSMSDeliveries();
-    }
-
-    /**
-     * Create an instance of {@link ReadSMSDeliveriesResponse }
-     * 
-     */
-    public ReadSMSDeliveriesResponse createReadSMSDeliveriesResponse() {
-        return new ReadSMSDeliveriesResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddOrUpdateDeliveryGroupResponse }
-     * 
-     */
-    public AddOrUpdateDeliveryGroupResponse createAddOrUpdateDeliveryGroupResponse() {
-        return new AddOrUpdateDeliveryGroupResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateLoginsResponse }
-     * 
-     */
-    public UpdateLoginsResponse createUpdateLoginsResponse() {
-        return new UpdateLoginsResponse();
-    }
-
-    /**
-     * Create an instance of {@link ReadConversionsResponse }
-     * 
-     */
-    public ReadConversionsResponse createReadConversionsResponse() {
-        return new ReadConversionsResponse();
-    }
-
-    /**
-     * Create an instance of {@link ReadActivitiesResponse }
-     * 
-     */
-    public ReadActivitiesResponse createReadActivitiesResponse() {
-        return new ReadActivitiesResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddOrUpdateOrdersResponse }
-     * 
-     */
-    public AddOrUpdateOrdersResponse createAddOrUpdateOrdersResponse() {
-        return new AddOrUpdateOrdersResponse();
-    }
-
-    /**
      * Create an instance of {@link UpdateSMSMessages }
      * 
      */
@@ -1089,475 +235,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConversionFilter }
+     * Create an instance of {@link UpdateMessages }
      * 
      */
-    public ConversionFilter createConversionFilter() {
-        return new ConversionFilter();
-    }
-
-    /**
-     * Create an instance of {@link AddToDeliveryGroup }
-     * 
-     */
-    public AddToDeliveryGroup createAddToDeliveryGroup() {
-        return new AddToDeliveryGroup();
-    }
-
-    /**
-     * Create an instance of {@link MessageContentObject }
-     * 
-     */
-    public MessageContentObject createMessageContentObject() {
-        return new MessageContentObject();
-    }
-
-    /**
-     * Create an instance of {@link ActivityObject }
-     * 
-     */
-    public ActivityObject createActivityObject() {
-        return new ActivityObject();
-    }
-
-    /**
-     * Create an instance of {@link RecentOutboundActivitySearchRequest }
-     * 
-     */
-    public RecentOutboundActivitySearchRequest createRecentOutboundActivitySearchRequest() {
-        return new RecentOutboundActivitySearchRequest();
-    }
-
-    /**
-     * Create an instance of {@link ReadApiTokensResponse }
-     * 
-     */
-    public ReadApiTokensResponse createReadApiTokensResponse() {
-        return new ReadApiTokensResponse();
-    }
-
-    /**
-     * Create an instance of {@link ReadDeliveriesResponse }
-     * 
-     */
-    public ReadDeliveriesResponse createReadDeliveriesResponse() {
-        return new ReadDeliveriesResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddToSMSKeyword }
-     * 
-     */
-    public AddToSMSKeyword createAddToSMSKeyword() {
-        return new AddToSMSKeyword();
-    }
-
-    /**
-     * Create an instance of {@link ReadContentTags }
-     * 
-     */
-    public ReadContentTags createReadContentTags() {
-        return new ReadContentTags();
-    }
-
-    /**
-     * Create an instance of {@link MessageObject }
-     * 
-     */
-    public MessageObject createMessageObject() {
-        return new MessageObject();
-    }
-
-    /**
-     * Create an instance of {@link MessageRuleFilter }
-     * 
-     */
-    public MessageRuleFilter createMessageRuleFilter() {
-        return new MessageRuleFilter();
-    }
-
-    /**
-     * Create an instance of {@link ReadSMSKeywordsResponse }
-     * 
-     */
-    public ReadSMSKeywordsResponse createReadSMSKeywordsResponse() {
-        return new ReadSMSKeywordsResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddToListResponse }
-     * 
-     */
-    public AddToListResponse createAddToListResponse() {
-        return new AddToListResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddDeliveryGroupResponse }
-     * 
-     */
-    public AddDeliveryGroupResponse createAddDeliveryGroupResponse() {
-        return new AddDeliveryGroupResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteDeliveryGroup }
-     * 
-     */
-    public DeleteDeliveryGroup createDeleteDeliveryGroup() {
-        return new DeleteDeliveryGroup();
-    }
-
-    /**
-     * Create an instance of {@link GeneralSettings }
-     * 
-     */
-    public GeneralSettings createGeneralSettings() {
-        return new GeneralSettings();
-    }
-
-    /**
-     * Create an instance of {@link UpdateMessageRulesResponse }
-     * 
-     */
-    public UpdateMessageRulesResponse createUpdateMessageRulesResponse() {
-        return new UpdateMessageRulesResponse();
-    }
-
-    /**
-     * Create an instance of {@link ProductObject }
-     * 
-     */
-    public ProductObject createProductObject() {
-        return new ProductObject();
-    }
-
-    /**
-     * Create an instance of {@link SegmentFilter }
-     * 
-     */
-    public SegmentFilter createSegmentFilter() {
-        return new SegmentFilter();
-    }
-
-    /**
-     * Create an instance of {@link DeleteSMSDeliveries }
-     * 
-     */
-    public DeleteSMSDeliveries createDeleteSMSDeliveries() {
-        return new DeleteSMSDeliveries();
-    }
-
-    /**
-     * Create an instance of {@link StringValue }
-     * 
-     */
-    public StringValue createStringValue() {
-        return new StringValue();
-    }
-
-    /**
-     * Create an instance of {@link DeleteFromDeliveryGroup }
-     * 
-     */
-    public DeleteFromDeliveryGroup createDeleteFromDeliveryGroup() {
-        return new DeleteFromDeliveryGroup();
-    }
-
-    /**
-     * Create an instance of {@link DateValue }
-     * 
-     */
-    public DateValue createDateValue() {
-        return new DateValue();
-    }
-
-    /**
-     * Create an instance of {@link ReadContacts }
-     * 
-     */
-    public ReadContacts createReadContacts() {
-        return new ReadContacts();
-    }
-
-    /**
-     * Create an instance of {@link ReadMessageFolders }
-     * 
-     */
-    public ReadMessageFolders createReadMessageFolders() {
-        return new ReadMessageFolders();
-    }
-
-    /**
-     * Create an instance of {@link RemoveFromSMSKeywordResponse }
-     * 
-     */
-    public RemoveFromSMSKeywordResponse createRemoveFromSMSKeywordResponse() {
-        return new RemoveFromSMSKeywordResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateContacts }
-     * 
-     */
-    public UpdateContacts createUpdateContacts() {
-        return new UpdateContacts();
-    }
-
-    /**
-     * Create an instance of {@link WebformFilter }
-     * 
-     */
-    public WebformFilter createWebformFilter() {
-        return new WebformFilter();
-    }
-
-    /**
-     * Create an instance of {@link ClearListsResponse }
-     * 
-     */
-    public ClearListsResponse createClearListsResponse() {
-        return new ClearListsResponse();
-    }
-
-    /**
-     * Create an instance of {@link FieldOptionObject }
-     * 
-     */
-    public FieldOptionObject createFieldOptionObject() {
-        return new FieldOptionObject();
-    }
-
-    /**
-     * Create an instance of {@link AddListsResponse }
-     * 
-     */
-    public AddListsResponse createAddListsResponse() {
-        return new AddListsResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddFieldsResponse }
-     * 
-     */
-    public AddFieldsResponse createAddFieldsResponse() {
-        return new AddFieldsResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddUpdateOrderResponse }
-     * 
-     */
-    public AddUpdateOrderResponse createAddUpdateOrderResponse() {
-        return new AddUpdateOrderResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteWorkflows }
-     * 
-     */
-    public DeleteWorkflows createDeleteWorkflows() {
-        return new DeleteWorkflows();
-    }
-
-    /**
-     * Create an instance of {@link DeleteOrders }
-     * 
-     */
-    public DeleteOrders createDeleteOrders() {
-        return new DeleteOrders();
-    }
-
-    /**
-     * Create an instance of {@link UpdateContentTagsResponse }
-     * 
-     */
-    public UpdateContentTagsResponse createUpdateContentTagsResponse() {
-        return new UpdateContentTagsResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteFields }
-     * 
-     */
-    public DeleteFields createDeleteFields() {
-        return new DeleteFields();
-    }
-
-    /**
-     * Create an instance of {@link FieldObject }
-     * 
-     */
-    public FieldObject createFieldObject() {
-        return new FieldObject();
-    }
-
-    /**
-     * Create an instance of {@link UpdateContentTags }
-     * 
-     */
-    public UpdateContentTags createUpdateContentTags() {
-        return new UpdateContentTags();
-    }
-
-    /**
-     * Create an instance of {@link AddMessagesResponse }
-     * 
-     */
-    public AddMessagesResponse createAddMessagesResponse() {
-        return new AddMessagesResponse();
-    }
-
-    /**
-     * Create an instance of {@link ActivityFilter }
-     * 
-     */
-    public ActivityFilter createActivityFilter() {
-        return new ActivityFilter();
-    }
-
-    /**
-     * Create an instance of {@link DeleteMessageRules }
-     * 
-     */
-    public DeleteMessageRules createDeleteMessageRules() {
-        return new DeleteMessageRules();
-    }
-
-    /**
-     * Create an instance of {@link RecentInboundActivitySearchRequest }
-     * 
-     */
-    public RecentInboundActivitySearchRequest createRecentInboundActivitySearchRequest() {
-        return new RecentInboundActivitySearchRequest();
-    }
-
-    /**
-     * Create an instance of {@link DeleteContactsResponse }
-     * 
-     */
-    public DeleteContactsResponse createDeleteContactsResponse() {
-        return new DeleteContactsResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateMessageRules }
-     * 
-     */
-    public UpdateMessageRules createUpdateMessageRules() {
-        return new UpdateMessageRules();
-    }
-
-    /**
-     * Create an instance of {@link AddToDeliveryGroupResponse }
-     * 
-     */
-    public AddToDeliveryGroupResponse createAddToDeliveryGroupResponse() {
-        return new AddToDeliveryGroupResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteSMSDeliveriesResponse }
-     * 
-     */
-    public DeleteSMSDeliveriesResponse createDeleteSMSDeliveriesResponse() {
-        return new DeleteSMSDeliveriesResponse();
-    }
-
-    /**
-     * Create an instance of {@link ReadAccounts }
-     * 
-     */
-    public ReadAccounts createReadAccounts() {
-        return new ReadAccounts();
-    }
-
-    /**
-     * Create an instance of {@link BrandingSettings }
-     * 
-     */
-    public BrandingSettings createBrandingSettings() {
-        return new BrandingSettings();
-    }
-
-    /**
-     * Create an instance of {@link DeleteDeliveryGroupResponse }
-     * 
-     */
-    public DeleteDeliveryGroupResponse createDeleteDeliveryGroupResponse() {
-        return new DeleteDeliveryGroupResponse();
-    }
-
-    /**
-     * Create an instance of {@link LoginObject }
-     * 
-     */
-    public LoginObject createLoginObject() {
-        return new LoginObject();
-    }
-
-    /**
-     * Create an instance of {@link AddWorkflows }
-     * 
-     */
-    public AddWorkflows createAddWorkflows() {
-        return new AddWorkflows();
-    }
-
-    /**
-     * Create an instance of {@link DeleteOrdersResponse }
-     * 
-     */
-    public DeleteOrdersResponse createDeleteOrdersResponse() {
-        return new DeleteOrdersResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateAccounts }
-     * 
-     */
-    public UpdateAccounts createUpdateAccounts() {
-        return new UpdateAccounts();
-    }
-
-    /**
-     * Create an instance of {@link UpdateLists }
-     * 
-     */
-    public UpdateLists createUpdateLists() {
-        return new UpdateLists();
-    }
-
-    /**
-     * Create an instance of {@link ReadWebformsResponse }
-     * 
-     */
-    public ReadWebformsResponse createReadWebformsResponse() {
-        return new ReadWebformsResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateMessagesResponse }
-     * 
-     */
-    public UpdateMessagesResponse createUpdateMessagesResponse() {
-        return new UpdateMessagesResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteSMSKeywords }
-     * 
-     */
-    public DeleteSMSKeywords createDeleteSMSKeywords() {
-        return new DeleteSMSKeywords();
-    }
-
-    /**
-     * Create an instance of {@link ReadDeliveryGroupsResponse }
-     * 
-     */
-    public ReadDeliveryGroupsResponse createReadDeliveryGroupsResponse() {
-        return new ReadDeliveryGroupsResponse();
+    public UpdateMessages createUpdateMessages() {
+        return new UpdateMessages();
     }
 
     /**
@@ -1569,195 +251,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddOrUpdateDeliveryGroup }
+     * Create an instance of {@link UpdateFieldsResponse }
      * 
      */
-    public AddOrUpdateDeliveryGroup createAddOrUpdateDeliveryGroup() {
-        return new AddOrUpdateDeliveryGroup();
+    public UpdateFieldsResponse createUpdateFieldsResponse() {
+        return new UpdateFieldsResponse();
     }
 
     /**
-     * Create an instance of {@link ApiException }
+     * Create an instance of {@link AddToSMSKeyword }
      * 
      */
-    public ApiException createApiException() {
-        return new ApiException();
-    }
-
-    /**
-     * Create an instance of {@link AddLogins }
-     * 
-     */
-    public AddLogins createAddLogins() {
-        return new AddLogins();
-    }
-
-    /**
-     * Create an instance of {@link AccountObject }
-     * 
-     */
-    public AccountObject createAccountObject() {
-        return new AccountObject();
-    }
-
-    /**
-     * Create an instance of {@link WriteResult }
-     * 
-     */
-    public WriteResult createWriteResult() {
-        return new WriteResult();
-    }
-
-    /**
-     * Create an instance of {@link AddDeliveryGroup }
-     * 
-     */
-    public AddDeliveryGroup createAddDeliveryGroup() {
-        return new AddDeliveryGroup();
-    }
-
-    /**
-     * Create an instance of {@link DeleteDeliveries }
-     * 
-     */
-    public DeleteDeliveries createDeleteDeliveries() {
-        return new DeleteDeliveries();
-    }
-
-    /**
-     * Create an instance of {@link AddMessageRules }
-     * 
-     */
-    public AddMessageRules createAddMessageRules() {
-        return new AddMessageRules();
-    }
-
-    /**
-     * Create an instance of {@link DeleteWorkflowsResponse }
-     * 
-     */
-    public DeleteWorkflowsResponse createDeleteWorkflowsResponse() {
-        return new DeleteWorkflowsResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddSMSDeliveriesResponse }
-     * 
-     */
-    public AddSMSDeliveriesResponse createAddSMSDeliveriesResponse() {
-        return new AddSMSDeliveriesResponse();
-    }
-
-    /**
-     * Create an instance of {@link SmsDeliveryObject }
-     * 
-     */
-    public SmsDeliveryObject createSmsDeliveryObject() {
-        return new SmsDeliveryObject();
-    }
-
-    /**
-     * Create an instance of {@link ReadSMSMessages }
-     * 
-     */
-    public ReadSMSMessages createReadSMSMessages() {
-        return new ReadSMSMessages();
-    }
-
-    /**
-     * Create an instance of {@link ReadWorkflows }
-     * 
-     */
-    public ReadWorkflows createReadWorkflows() {
-        return new ReadWorkflows();
-    }
-
-    /**
-     * Create an instance of {@link DeleteDeliveriesResponse }
-     * 
-     */
-    public DeleteDeliveriesResponse createDeleteDeliveriesResponse() {
-        return new DeleteDeliveriesResponse();
-    }
-
-    /**
-     * Create an instance of {@link RemoveFromList }
-     * 
-     */
-    public RemoveFromList createRemoveFromList() {
-        return new RemoveFromList();
-    }
-
-    /**
-     * Create an instance of {@link DeleteLists }
-     * 
-     */
-    public DeleteLists createDeleteLists() {
-        return new DeleteLists();
-    }
-
-    /**
-     * Create an instance of {@link ApiTokenObject }
-     * 
-     */
-    public ApiTokenObject createApiTokenObject() {
-        return new ApiTokenObject();
-    }
-
-    /**
-     * Create an instance of {@link RemoveFromSMSKeyword }
-     * 
-     */
-    public RemoveFromSMSKeyword createRemoveFromSMSKeyword() {
-        return new RemoveFromSMSKeyword();
-    }
-
-    /**
-     * Create an instance of {@link AddSMSMessages }
-     * 
-     */
-    public AddSMSMessages createAddSMSMessages() {
-        return new AddSMSMessages();
-    }
-
-    /**
-     * Create an instance of {@link AddHeaderFooters }
-     * 
-     */
-    public AddHeaderFooters createAddHeaderFooters() {
-        return new AddHeaderFooters();
-    }
-
-    /**
-     * Create an instance of {@link SegmentCriteriaObject }
-     * 
-     */
-    public SegmentCriteriaObject createSegmentCriteriaObject() {
-        return new SegmentCriteriaObject();
-    }
-
-    /**
-     * Create an instance of {@link MailListFilter }
-     * 
-     */
-    public MailListFilter createMailListFilter() {
-        return new MailListFilter();
-    }
-
-    /**
-     * Create an instance of {@link ReadRecentOutboundActivitiesResponse }
-     * 
-     */
-    public ReadRecentOutboundActivitiesResponse createReadRecentOutboundActivitiesResponse() {
-        return new ReadRecentOutboundActivitiesResponse();
-    }
-
-    /**
-     * Create an instance of {@link LoginFilter }
-     * 
-     */
-    public LoginFilter createLoginFilter() {
-        return new LoginFilter();
+    public AddToSMSKeyword createAddToSMSKeyword() {
+        return new AddToSMSKeyword();
     }
 
     /**
@@ -1769,147 +275,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddApiTokensResponse }
+     * Create an instance of {@link ReadDeliveryGroupsResponse }
      * 
      */
-    public AddApiTokensResponse createAddApiTokensResponse() {
-        return new AddApiTokensResponse();
+    public ReadDeliveryGroupsResponse createReadDeliveryGroupsResponse() {
+        return new ReadDeliveryGroupsResponse();
     }
 
     /**
-     * Create an instance of {@link UpdateAccountsResponse }
+     * Create an instance of {@link UpdateDeliveryGroupResponse }
      * 
      */
-    public UpdateAccountsResponse createUpdateAccountsResponse() {
-        return new UpdateAccountsResponse();
+    public UpdateDeliveryGroupResponse createUpdateDeliveryGroupResponse() {
+        return new UpdateDeliveryGroupResponse();
     }
 
     /**
-     * Create an instance of {@link ContentTagObject }
+     * Create an instance of {@link AddToDeliveryGroupResponse }
      * 
      */
-    public ContentTagObject createContentTagObject() {
-        return new ContentTagObject();
+    public AddToDeliveryGroupResponse createAddToDeliveryGroupResponse() {
+        return new AddToDeliveryGroupResponse();
     }
 
     /**
-     * Create an instance of {@link ReadOnlyContactData }
+     * Create an instance of {@link UpdateSMSMessagesResponse }
      * 
      */
-    public ReadOnlyContactData createReadOnlyContactData() {
-        return new ReadOnlyContactData();
-    }
-
-    /**
-     * Create an instance of {@link ContactField }
-     * 
-     */
-    public ContactField createContactField() {
-        return new ContactField();
-    }
-
-    /**
-     * Create an instance of {@link AddAccounts }
-     * 
-     */
-    public AddAccounts createAddAccounts() {
-        return new AddAccounts();
-    }
-
-    /**
-     * Create an instance of {@link DeliveryGroupFilter }
-     * 
-     */
-    public DeliveryGroupFilter createDeliveryGroupFilter() {
-        return new DeliveryGroupFilter();
-    }
-
-    /**
-     * Create an instance of {@link ReadDeliveries }
-     * 
-     */
-    public ReadDeliveries createReadDeliveries() {
-        return new ReadDeliveries();
-    }
-
-    /**
-     * Create an instance of {@link DeleteFromDeliveryGroupResponse }
-     * 
-     */
-    public DeleteFromDeliveryGroupResponse createDeleteFromDeliveryGroupResponse() {
-        return new DeleteFromDeliveryGroupResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddSMSKeywords }
-     * 
-     */
-    public AddSMSKeywords createAddSMSKeywords() {
-        return new AddSMSKeywords();
-    }
-
-    /**
-     * Create an instance of {@link UpdateDeliveryGroup }
-     * 
-     */
-    public UpdateDeliveryGroup createUpdateDeliveryGroup() {
-        return new UpdateDeliveryGroup();
-    }
-
-    /**
-     * Create an instance of {@link ReadAccountsResponse }
-     * 
-     */
-    public ReadAccountsResponse createReadAccountsResponse() {
-        return new ReadAccountsResponse();
-    }
-
-    /**
-     * Create an instance of {@link ReadDeliveryGroups }
-     * 
-     */
-    public ReadDeliveryGroups createReadDeliveryGroups() {
-        return new ReadDeliveryGroups();
-    }
-
-    /**
-     * Create an instance of {@link AddMessages }
-     * 
-     */
-    public AddMessages createAddMessages() {
-        return new AddMessages();
-    }
-
-    /**
-     * Create an instance of {@link DeleteContacts }
-     * 
-     */
-    public DeleteContacts createDeleteContacts() {
-        return new DeleteContacts();
-    }
-
-    /**
-     * Create an instance of {@link AddContentTags }
-     * 
-     */
-    public AddContentTags createAddContentTags() {
-        return new AddContentTags();
-    }
-
-    /**
-     * Create an instance of {@link DeliveryRecipientStatObject }
-     * 
-     */
-    public DeliveryRecipientStatObject createDeliveryRecipientStatObject() {
-        return new DeliveryRecipientStatObject();
-    }
-
-    /**
-     * Create an instance of {@link ReadLists }
-     * 
-     */
-    public ReadLists createReadLists() {
-        return new ReadLists();
+    public UpdateSMSMessagesResponse createUpdateSMSMessagesResponse() {
+        return new UpdateSMSMessagesResponse();
     }
 
     /**
@@ -1921,99 +315,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddDeliveries }
+     * Create an instance of {@link AddSMSDeliveries }
      * 
      */
-    public AddDeliveries createAddDeliveries() {
-        return new AddDeliveries();
-    }
-
-    /**
-     * Create an instance of {@link HeaderFooterFilter }
-     * 
-     */
-    public HeaderFooterFilter createHeaderFooterFilter() {
-        return new HeaderFooterFilter();
-    }
-
-    /**
-     * Create an instance of {@link HeaderFooterObject }
-     * 
-     */
-    public HeaderFooterObject createHeaderFooterObject() {
-        return new HeaderFooterObject();
-    }
-
-    /**
-     * Create an instance of {@link MessageRuleObject }
-     * 
-     */
-    public MessageRuleObject createMessageRuleObject() {
-        return new MessageRuleObject();
-    }
-
-    /**
-     * Create an instance of {@link AddMessageFolders }
-     * 
-     */
-    public AddMessageFolders createAddMessageFolders() {
-        return new AddMessageFolders();
-    }
-
-    /**
-     * Create an instance of {@link SegmentObject }
-     * 
-     */
-    public SegmentObject createSegmentObject() {
-        return new SegmentObject();
-    }
-
-    /**
-     * Create an instance of {@link AddLoginsResponse }
-     * 
-     */
-    public AddLoginsResponse createAddLoginsResponse() {
-        return new AddLoginsResponse();
-    }
-
-    /**
-     * Create an instance of {@link MessageFilter }
-     * 
-     */
-    public MessageFilter createMessageFilter() {
-        return new MessageFilter();
-    }
-
-    /**
-     * Create an instance of {@link AddFields }
-     * 
-     */
-    public AddFields createAddFields() {
-        return new AddFields();
-    }
-
-    /**
-     * Create an instance of {@link DeleteFieldsResponse }
-     * 
-     */
-    public DeleteFieldsResponse createDeleteFieldsResponse() {
-        return new DeleteFieldsResponse();
-    }
-
-    /**
-     * Create an instance of {@link AddDeliveriesResponse }
-     * 
-     */
-    public AddDeliveriesResponse createAddDeliveriesResponse() {
-        return new AddDeliveriesResponse();
-    }
-
-    /**
-     * Create an instance of {@link ClearLists }
-     * 
-     */
-    public ClearLists createClearLists() {
-        return new ClearLists();
+    public AddSMSDeliveries createAddSMSDeliveries() {
+        return new AddSMSDeliveries();
     }
 
     /**
@@ -2025,179 +331,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddMessageRulesResponse }
+     * Create an instance of {@link AddDeliveryGroup }
      * 
      */
-    public AddMessageRulesResponse createAddMessageRulesResponse() {
-        return new AddMessageRulesResponse();
+    public AddDeliveryGroup createAddDeliveryGroup() {
+        return new AddDeliveryGroup();
     }
 
     /**
-     * Create an instance of {@link MessageFieldObject }
+     * Create an instance of {@link ReadWebformsResponse }
      * 
      */
-    public MessageFieldObject createMessageFieldObject() {
-        return new MessageFieldObject();
-    }
-
-    /**
-     * Create an instance of {@link SmsDeliveryContactsObject }
-     * 
-     */
-    public SmsDeliveryContactsObject createSmsDeliveryContactsObject() {
-        return new SmsDeliveryContactsObject();
-    }
-
-    /**
-     * Create an instance of {@link SessionHeader }
-     * 
-     */
-    public SessionHeader createSessionHeader() {
-        return new SessionHeader();
-    }
-
-    /**
-     * Create an instance of {@link AddHeaderFootersResponse }
-     * 
-     */
-    public AddHeaderFootersResponse createAddHeaderFootersResponse() {
-        return new AddHeaderFootersResponse();
-    }
-
-    /**
-     * Create an instance of {@link SmsMessageObject }
-     * 
-     */
-    public SmsMessageObject createSmsMessageObject() {
-        return new SmsMessageObject();
-    }
-
-    /**
-     * Create an instance of {@link AccountFilter }
-     * 
-     */
-    public AccountFilter createAccountFilter() {
-        return new AccountFilter();
-    }
-
-    /**
-     * Create an instance of {@link DeliveryRecipientFilter }
-     * 
-     */
-    public DeliveryRecipientFilter createDeliveryRecipientFilter() {
-        return new DeliveryRecipientFilter();
-    }
-
-    /**
-     * Create an instance of {@link ReadRecentInboundActivities }
-     * 
-     */
-    public ReadRecentInboundActivities createReadRecentInboundActivities() {
-        return new ReadRecentInboundActivities();
-    }
-
-    /**
-     * Create an instance of {@link DeleteLogins }
-     * 
-     */
-    public DeleteLogins createDeleteLogins() {
-        return new DeleteLogins();
-    }
-
-    /**
-     * Create an instance of {@link UpdateMessageFolders }
-     * 
-     */
-    public UpdateMessageFolders createUpdateMessageFolders() {
-        return new UpdateMessageFolders();
-    }
-
-    /**
-     * Create an instance of {@link UpdateDeliveriesResponse }
-     * 
-     */
-    public UpdateDeliveriesResponse createUpdateDeliveriesResponse() {
-        return new UpdateDeliveriesResponse();
-    }
-
-    /**
-     * Create an instance of {@link ReadSegments }
-     * 
-     */
-    public ReadSegments createReadSegments() {
-        return new ReadSegments();
-    }
-
-    /**
-     * Create an instance of {@link ReadSMSKeywords }
-     * 
-     */
-    public ReadSMSKeywords createReadSMSKeywords() {
-        return new ReadSMSKeywords();
-    }
-
-    /**
-     * Create an instance of {@link AddContentTagsResponse }
-     * 
-     */
-    public AddContentTagsResponse createAddContentTagsResponse() {
-        return new AddContentTagsResponse();
-    }
-
-    /**
-     * Create an instance of {@link ReadContentTagsResponse }
-     * 
-     */
-    public ReadContentTagsResponse createReadContentTagsResponse() {
-        return new ReadContentTagsResponse();
-    }
-
-    /**
-     * Create an instance of {@link RemailObject }
-     * 
-     */
-    public RemailObject createRemailObject() {
-        return new RemailObject();
-    }
-
-    /**
-     * Create an instance of {@link AddContactsToWorkflowResponse }
-     * 
-     */
-    public AddContactsToWorkflowResponse createAddContactsToWorkflowResponse() {
-        return new AddContactsToWorkflowResponse();
-    }
-
-    /**
-     * Create an instance of {@link ReadDeliveryRecipients }
-     * 
-     */
-    public ReadDeliveryRecipients createReadDeliveryRecipients() {
-        return new ReadDeliveryRecipients();
-    }
-
-    /**
-     * Create an instance of {@link AddMessageFoldersResponse }
-     * 
-     */
-    public AddMessageFoldersResponse createAddMessageFoldersResponse() {
-        return new AddMessageFoldersResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeliveryObject }
-     * 
-     */
-    public DeliveryObject createDeliveryObject() {
-        return new DeliveryObject();
-    }
-
-    /**
-     * Create an instance of {@link SmsMessageFieldObject }
-     * 
-     */
-    public SmsMessageFieldObject createSmsMessageFieldObject() {
-        return new SmsMessageFieldObject();
+    public ReadWebformsResponse createReadWebformsResponse() {
+        return new ReadWebformsResponse();
     }
 
     /**
@@ -2209,11 +355,211 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UpdateFieldsResponse }
+     * Create an instance of {@link AddConversion }
      * 
      */
-    public UpdateFieldsResponse createUpdateFieldsResponse() {
-        return new UpdateFieldsResponse();
+    public AddConversion createAddConversion() {
+        return new AddConversion();
+    }
+
+    /**
+     * Create an instance of {@link DeleteSMSMessages }
+     * 
+     */
+    public DeleteSMSMessages createDeleteSMSMessages() {
+        return new DeleteSMSMessages();
+    }
+
+    /**
+     * Create an instance of {@link ReadSMSMessagesResponse }
+     * 
+     */
+    public ReadSMSMessagesResponse createReadSMSMessagesResponse() {
+        return new ReadSMSMessagesResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateApiTokens }
+     * 
+     */
+    public UpdateApiTokens createUpdateApiTokens() {
+        return new UpdateApiTokens();
+    }
+
+    /**
+     * Create an instance of {@link DeleteLoginsResponse }
+     * 
+     */
+    public DeleteLoginsResponse createDeleteLoginsResponse() {
+        return new DeleteLoginsResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteMessageRules }
+     * 
+     */
+    public DeleteMessageRules createDeleteMessageRules() {
+        return new DeleteMessageRules();
+    }
+
+    /**
+     * Create an instance of {@link DeleteContacts }
+     * 
+     */
+    public DeleteContacts createDeleteContacts() {
+        return new DeleteContacts();
+    }
+
+    /**
+     * Create an instance of {@link UpdateApiTokensResponse }
+     * 
+     */
+    public UpdateApiTokensResponse createUpdateApiTokensResponse() {
+        return new UpdateApiTokensResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddAccountsResponse }
+     * 
+     */
+    public AddAccountsResponse createAddAccountsResponse() {
+        return new AddAccountsResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateSMSDeliveriesResponse }
+     * 
+     */
+    public UpdateSMSDeliveriesResponse createUpdateSMSDeliveriesResponse() {
+        return new UpdateSMSDeliveriesResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddSMSMessages }
+     * 
+     */
+    public AddSMSMessages createAddSMSMessages() {
+        return new AddSMSMessages();
+    }
+
+    /**
+     * Create an instance of {@link AddUpdateOrder }
+     * 
+     */
+    public AddUpdateOrder createAddUpdateOrder() {
+        return new AddUpdateOrder();
+    }
+
+    /**
+     * Create an instance of {@link DeleteFields }
+     * 
+     */
+    public DeleteFields createDeleteFields() {
+        return new DeleteFields();
+    }
+
+    /**
+     * Create an instance of {@link DeleteHeaderFootersResponse }
+     * 
+     */
+    public DeleteHeaderFootersResponse createDeleteHeaderFootersResponse() {
+        return new DeleteHeaderFootersResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddToDeliveryGroup }
+     * 
+     */
+    public AddToDeliveryGroup createAddToDeliveryGroup() {
+        return new AddToDeliveryGroup();
+    }
+
+    /**
+     * Create an instance of {@link UpdateLogins }
+     * 
+     */
+    public UpdateLogins createUpdateLogins() {
+        return new UpdateLogins();
+    }
+
+    /**
+     * Create an instance of {@link AddContactEventResponse }
+     * 
+     */
+    public AddContactEventResponse createAddContactEventResponse() {
+        return new AddContactEventResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateContactsResponse }
+     * 
+     */
+    public UpdateContactsResponse createUpdateContactsResponse() {
+        return new UpdateContactsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddFields }
+     * 
+     */
+    public AddFields createAddFields() {
+        return new AddFields();
+    }
+
+    /**
+     * Create an instance of {@link AddOrUpdateOrdersResponse }
+     * 
+     */
+    public AddOrUpdateOrdersResponse createAddOrUpdateOrdersResponse() {
+        return new AddOrUpdateOrdersResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadMessagesResponse }
+     * 
+     */
+    public ReadMessagesResponse createReadMessagesResponse() {
+        return new ReadMessagesResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddOrUpdateDeliveryGroup }
+     * 
+     */
+    public AddOrUpdateDeliveryGroup createAddOrUpdateDeliveryGroup() {
+        return new AddOrUpdateDeliveryGroup();
+    }
+
+    /**
+     * Create an instance of {@link DeleteFromDeliveryGroupResponse }
+     * 
+     */
+    public DeleteFromDeliveryGroupResponse createDeleteFromDeliveryGroupResponse() {
+        return new DeleteFromDeliveryGroupResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadWorkflows }
+     * 
+     */
+    public ReadWorkflows createReadWorkflows() {
+        return new ReadWorkflows();
+    }
+
+    /**
+     * Create an instance of {@link ReadRecentInboundActivities }
+     * 
+     */
+    public ReadRecentInboundActivities createReadRecentInboundActivities() {
+        return new ReadRecentInboundActivities();
+    }
+
+    /**
+     * Create an instance of {@link ReadSegmentsResponse }
+     * 
+     */
+    public ReadSegmentsResponse createReadSegmentsResponse() {
+        return new ReadSegmentsResponse();
     }
 
     /**
@@ -2225,6 +571,430 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DeleteContentTags }
+     * 
+     */
+    public DeleteContentTags createDeleteContentTags() {
+        return new DeleteContentTags();
+    }
+
+    /**
+     * Create an instance of {@link DeleteSMSKeywordsResponse }
+     * 
+     */
+    public DeleteSMSKeywordsResponse createDeleteSMSKeywordsResponse() {
+        return new DeleteSMSKeywordsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddLoginsResponse }
+     * 
+     */
+    public AddLoginsResponse createAddLoginsResponse() {
+        return new AddLoginsResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateMessageRulesResponse }
+     * 
+     */
+    public UpdateMessageRulesResponse createUpdateMessageRulesResponse() {
+        return new UpdateMessageRulesResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteSMSDeliveries }
+     * 
+     */
+    public DeleteSMSDeliveries createDeleteSMSDeliveries() {
+        return new DeleteSMSDeliveries();
+    }
+
+    /**
+     * Create an instance of {@link ReadActivitiesResponse }
+     * 
+     */
+    public ReadActivitiesResponse createReadActivitiesResponse() {
+        return new ReadActivitiesResponse();
+    }
+
+    /**
+     * Create an instance of {@link RemoveFromSMSKeyword }
+     * 
+     */
+    public RemoveFromSMSKeyword createRemoveFromSMSKeyword() {
+        return new RemoveFromSMSKeyword();
+    }
+
+    /**
+     * Create an instance of {@link DeleteContentTagsResponse }
+     * 
+     */
+    public DeleteContentTagsResponse createDeleteContentTagsResponse() {
+        return new DeleteContentTagsResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateMessageRules }
+     * 
+     */
+    public UpdateMessageRules createUpdateMessageRules() {
+        return new UpdateMessageRules();
+    }
+
+    /**
+     * Create an instance of {@link ReadDeliveryGroups }
+     * 
+     */
+    public ReadDeliveryGroups createReadDeliveryGroups() {
+        return new ReadDeliveryGroups();
+    }
+
+    /**
+     * Create an instance of {@link ApiException }
+     * 
+     */
+    public ApiException createApiException() {
+        return new ApiException();
+    }
+
+    /**
+     * Create an instance of {@link UpdateAccountsResponse }
+     * 
+     */
+    public UpdateAccountsResponse createUpdateAccountsResponse() {
+        return new UpdateAccountsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadFieldsResponse }
+     * 
+     */
+    public ReadFieldsResponse createReadFieldsResponse() {
+        return new ReadFieldsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddToList }
+     * 
+     */
+    public AddToList createAddToList() {
+        return new AddToList();
+    }
+
+    /**
+     * Create an instance of {@link ReadLogins }
+     * 
+     */
+    public ReadLogins createReadLogins() {
+        return new ReadLogins();
+    }
+
+    /**
+     * Create an instance of {@link DeleteLogins }
+     * 
+     */
+    public DeleteLogins createDeleteLogins() {
+        return new DeleteLogins();
+    }
+
+    /**
+     * Create an instance of {@link UpdateMessagesResponse }
+     * 
+     */
+    public UpdateMessagesResponse createUpdateMessagesResponse() {
+        return new UpdateMessagesResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteFromDeliveryGroup }
+     * 
+     */
+    public DeleteFromDeliveryGroup createDeleteFromDeliveryGroup() {
+        return new DeleteFromDeliveryGroup();
+    }
+
+    /**
+     * Create an instance of {@link ReadSMSDeliveriesResponse }
+     * 
+     */
+    public ReadSMSDeliveriesResponse createReadSMSDeliveriesResponse() {
+        return new ReadSMSDeliveriesResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteDeliveryGroup }
+     * 
+     */
+    public DeleteDeliveryGroup createDeleteDeliveryGroup() {
+        return new DeleteDeliveryGroup();
+    }
+
+    /**
+     * Create an instance of {@link DeleteOrdersResponse }
+     * 
+     */
+    public DeleteOrdersResponse createDeleteOrdersResponse() {
+        return new DeleteOrdersResponse();
+    }
+
+    /**
+     * Create an instance of {@link LoginResponse }
+     * 
+     */
+    public LoginResponse createLoginResponse() {
+        return new LoginResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateContentTags }
+     * 
+     */
+    public UpdateContentTags createUpdateContentTags() {
+        return new UpdateContentTags();
+    }
+
+    /**
+     * Create an instance of {@link UpdateDeliveriesResponse }
+     * 
+     */
+    public UpdateDeliveriesResponse createUpdateDeliveriesResponse() {
+        return new UpdateDeliveriesResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadMessageFolders }
+     * 
+     */
+    public ReadMessageFolders createReadMessageFolders() {
+        return new ReadMessageFolders();
+    }
+
+    /**
+     * Create an instance of {@link UpdateAccounts }
+     * 
+     */
+    public UpdateAccounts createUpdateAccounts() {
+        return new UpdateAccounts();
+    }
+
+    /**
+     * Create an instance of {@link AddSMSKeywordsResponse }
+     * 
+     */
+    public AddSMSKeywordsResponse createAddSMSKeywordsResponse() {
+        return new AddSMSKeywordsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadDeliveriesResponse }
+     * 
+     */
+    public ReadDeliveriesResponse createReadDeliveriesResponse() {
+        return new ReadDeliveriesResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddApiTokens }
+     * 
+     */
+    public AddApiTokens createAddApiTokens() {
+        return new AddApiTokens();
+    }
+
+    /**
+     * Create an instance of {@link UpdateSMSDeliveries }
+     * 
+     */
+    public UpdateSMSDeliveries createUpdateSMSDeliveries() {
+        return new UpdateSMSDeliveries();
+    }
+
+    /**
+     * Create an instance of {@link UpdateHeaderFooters }
+     * 
+     */
+    public UpdateHeaderFooters createUpdateHeaderFooters() {
+        return new UpdateHeaderFooters();
+    }
+
+    /**
+     * Create an instance of {@link DeleteAccountsResponse }
+     * 
+     */
+    public DeleteAccountsResponse createDeleteAccountsResponse() {
+        return new DeleteAccountsResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteHeaderFooters }
+     * 
+     */
+    public DeleteHeaderFooters createDeleteHeaderFooters() {
+        return new DeleteHeaderFooters();
+    }
+
+    /**
+     * Create an instance of {@link AddContactsToWorkflowResponse }
+     * 
+     */
+    public AddContactsToWorkflowResponse createAddContactsToWorkflowResponse() {
+        return new AddContactsToWorkflowResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateSMSKeywordsResponse }
+     * 
+     */
+    public UpdateSMSKeywordsResponse createUpdateSMSKeywordsResponse() {
+        return new UpdateSMSKeywordsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadDeliveries }
+     * 
+     */
+    public ReadDeliveries createReadDeliveries() {
+        return new ReadDeliveries();
+    }
+
+    /**
+     * Create an instance of {@link SessionHeader }
+     * 
+     */
+    public SessionHeader createSessionHeader() {
+        return new SessionHeader();
+    }
+
+    /**
+     * Create an instance of {@link DeleteFieldsResponse }
+     * 
+     */
+    public DeleteFieldsResponse createDeleteFieldsResponse() {
+        return new DeleteFieldsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddSMSDeliveriesResponse }
+     * 
+     */
+    public AddSMSDeliveriesResponse createAddSMSDeliveriesResponse() {
+        return new AddSMSDeliveriesResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddMessageFolders }
+     * 
+     */
+    public AddMessageFolders createAddMessageFolders() {
+        return new AddMessageFolders();
+    }
+
+    /**
+     * Create an instance of {@link AddApiTokensResponse }
+     * 
+     */
+    public AddApiTokensResponse createAddApiTokensResponse() {
+        return new AddApiTokensResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteDeliveriesResponse }
+     * 
+     */
+    public DeleteDeliveriesResponse createDeleteDeliveriesResponse() {
+        return new DeleteDeliveriesResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateContentTagsResponse }
+     * 
+     */
+    public UpdateContentTagsResponse createUpdateContentTagsResponse() {
+        return new UpdateContentTagsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddConversionResponse }
+     * 
+     */
+    public AddConversionResponse createAddConversionResponse() {
+        return new AddConversionResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadContactsResponse }
+     * 
+     */
+    public ReadContactsResponse createReadContactsResponse() {
+        return new ReadContactsResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteApiTokensResponse }
+     * 
+     */
+    public DeleteApiTokensResponse createDeleteApiTokensResponse() {
+        return new DeleteApiTokensResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadSegments }
+     * 
+     */
+    public ReadSegments createReadSegments() {
+        return new ReadSegments();
+    }
+
+    /**
+     * Create an instance of {@link ReadDeliveryRecipientsResponse }
+     * 
+     */
+    public ReadDeliveryRecipientsResponse createReadDeliveryRecipientsResponse() {
+        return new ReadDeliveryRecipientsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadMessageFoldersResponse }
+     * 
+     */
+    public ReadMessageFoldersResponse createReadMessageFoldersResponse() {
+        return new ReadMessageFoldersResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadConversionsResponse }
+     * 
+     */
+    public ReadConversionsResponse createReadConversionsResponse() {
+        return new ReadConversionsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadRecentOutboundActivitiesResponse }
+     * 
+     */
+    public ReadRecentOutboundActivitiesResponse createReadRecentOutboundActivitiesResponse() {
+        return new ReadRecentOutboundActivitiesResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadFields }
+     * 
+     */
+    public ReadFields createReadFields() {
+        return new ReadFields();
+    }
+
+    /**
+     * Create an instance of {@link AddSMSKeywords }
+     * 
+     */
+    public AddSMSKeywords createAddSMSKeywords() {
+        return new AddSMSKeywords();
+    }
+
+    /**
      * Create an instance of {@link AddToSMSKeywordResponse }
      * 
      */
@@ -2233,11 +1003,1195 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ReadActivities }
+     * 
+     */
+    public ReadActivities createReadActivities() {
+        return new ReadActivities();
+    }
+
+    /**
+     * Create an instance of {@link ReadRecentOutboundActivities }
+     * 
+     */
+    public ReadRecentOutboundActivities createReadRecentOutboundActivities() {
+        return new ReadRecentOutboundActivities();
+    }
+
+    /**
+     * Create an instance of {@link UpdateMessageFolders }
+     * 
+     */
+    public UpdateMessageFolders createUpdateMessageFolders() {
+        return new UpdateMessageFolders();
+    }
+
+    /**
+     * Create an instance of {@link AddLogins }
+     * 
+     */
+    public AddLogins createAddLogins() {
+        return new AddLogins();
+    }
+
+    /**
+     * Create an instance of {@link ClearLists }
+     * 
+     */
+    public ClearLists createClearLists() {
+        return new ClearLists();
+    }
+
+    /**
+     * Create an instance of {@link AddDeliveryGroupResponse }
+     * 
+     */
+    public AddDeliveryGroupResponse createAddDeliveryGroupResponse() {
+        return new AddDeliveryGroupResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddMessages }
+     * 
+     */
+    public AddMessages createAddMessages() {
+        return new AddMessages();
+    }
+
+    /**
+     * Create an instance of {@link DeleteDeliveries }
+     * 
+     */
+    public DeleteDeliveries createDeleteDeliveries() {
+        return new DeleteDeliveries();
+    }
+
+    /**
+     * Create an instance of {@link Login }
+     * 
+     */
+    public Login createLogin() {
+        return new Login();
+    }
+
+    /**
+     * Create an instance of {@link UpdateMessageFoldersResponse }
+     * 
+     */
+    public UpdateMessageFoldersResponse createUpdateMessageFoldersResponse() {
+        return new UpdateMessageFoldersResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadConversions }
+     * 
+     */
+    public ReadConversions createReadConversions() {
+        return new ReadConversions();
+    }
+
+    /**
+     * Create an instance of {@link AddOrUpdateOrders }
+     * 
+     */
+    public AddOrUpdateOrders createAddOrUpdateOrders() {
+        return new AddOrUpdateOrders();
+    }
+
+    /**
+     * Create an instance of {@link ReadAccountsResponse }
+     * 
+     */
+    public ReadAccountsResponse createReadAccountsResponse() {
+        return new ReadAccountsResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteListsResponse }
+     * 
+     */
+    public DeleteListsResponse createDeleteListsResponse() {
+        return new DeleteListsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadApiTokensResponse }
+     * 
+     */
+    public ReadApiTokensResponse createReadApiTokensResponse() {
+        return new ReadApiTokensResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateDeliveryGroup }
+     * 
+     */
+    public UpdateDeliveryGroup createUpdateDeliveryGroup() {
+        return new UpdateDeliveryGroup();
+    }
+
+    /**
+     * Create an instance of {@link ReadSMSDeliveries }
+     * 
+     */
+    public ReadSMSDeliveries createReadSMSDeliveries() {
+        return new ReadSMSDeliveries();
+    }
+
+    /**
+     * Create an instance of {@link UpdateLists }
+     * 
+     */
+    public UpdateLists createUpdateLists() {
+        return new UpdateLists();
+    }
+
+    /**
+     * Create an instance of {@link AddSMSMessagesResponse }
+     * 
+     */
+    public AddSMSMessagesResponse createAddSMSMessagesResponse() {
+        return new AddSMSMessagesResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadHeaderFootersResponse }
+     * 
+     */
+    public ReadHeaderFootersResponse createReadHeaderFootersResponse() {
+        return new ReadHeaderFootersResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateSMSKeywords }
+     * 
+     */
+    public UpdateSMSKeywords createUpdateSMSKeywords() {
+        return new UpdateSMSKeywords();
+    }
+
+    /**
+     * Create an instance of {@link DeleteDeliveryGroupResponse }
+     * 
+     */
+    public DeleteDeliveryGroupResponse createDeleteDeliveryGroupResponse() {
+        return new DeleteDeliveryGroupResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadDeliveryRecipients }
+     * 
+     */
+    public ReadDeliveryRecipients createReadDeliveryRecipients() {
+        return new ReadDeliveryRecipients();
+    }
+
+    /**
+     * Create an instance of {@link ReadSMSMessages }
+     * 
+     */
+    public ReadSMSMessages createReadSMSMessages() {
+        return new ReadSMSMessages();
+    }
+
+    /**
+     * Create an instance of {@link AddContactEvent }
+     * 
+     */
+    public AddContactEvent createAddContactEvent() {
+        return new AddContactEvent();
+    }
+
+    /**
+     * Create an instance of {@link DeleteSMSMessagesResponse }
+     * 
+     */
+    public DeleteSMSMessagesResponse createDeleteSMSMessagesResponse() {
+        return new DeleteSMSMessagesResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadMessages }
+     * 
+     */
+    public ReadMessages createReadMessages() {
+        return new ReadMessages();
+    }
+
+    /**
+     * Create an instance of {@link UpdateHeaderFootersResponse }
+     * 
+     */
+    public UpdateHeaderFootersResponse createUpdateHeaderFootersResponse() {
+        return new UpdateHeaderFootersResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteSMSDeliveriesResponse }
+     * 
+     */
+    public DeleteSMSDeliveriesResponse createDeleteSMSDeliveriesResponse() {
+        return new DeleteSMSDeliveriesResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddMessageRulesResponse }
+     * 
+     */
+    public AddMessageRulesResponse createAddMessageRulesResponse() {
+        return new AddMessageRulesResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddHeaderFooters }
+     * 
+     */
+    public AddHeaderFooters createAddHeaderFooters() {
+        return new AddHeaderFooters();
+    }
+
+    /**
+     * Create an instance of {@link DeleteLists }
+     * 
+     */
+    public DeleteLists createDeleteLists() {
+        return new DeleteLists();
+    }
+
+    /**
+     * Create an instance of {@link DeleteMessageRulesResponse }
+     * 
+     */
+    public DeleteMessageRulesResponse createDeleteMessageRulesResponse() {
+        return new DeleteMessageRulesResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddUpdateOrderResponse }
+     * 
+     */
+    public AddUpdateOrderResponse createAddUpdateOrderResponse() {
+        return new AddUpdateOrderResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteApiTokens }
+     * 
+     */
+    public DeleteApiTokens createDeleteApiTokens() {
+        return new DeleteApiTokens();
+    }
+
+    /**
+     * Create an instance of {@link AddHeaderFootersResponse }
+     * 
+     */
+    public AddHeaderFootersResponse createAddHeaderFootersResponse() {
+        return new AddHeaderFootersResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadContentTags }
+     * 
+     */
+    public ReadContentTags createReadContentTags() {
+        return new ReadContentTags();
+    }
+
+    /**
+     * Create an instance of {@link AddContactsToWorkflow }
+     * 
+     */
+    public AddContactsToWorkflow createAddContactsToWorkflow() {
+        return new AddContactsToWorkflow();
+    }
+
+    /**
+     * Create an instance of {@link ReadWebforms }
+     * 
+     */
+    public ReadWebforms createReadWebforms() {
+        return new ReadWebforms();
+    }
+
+    /**
+     * Create an instance of {@link ReadMessageRules }
+     * 
+     */
+    public ReadMessageRules createReadMessageRules() {
+        return new ReadMessageRules();
+    }
+
+    /**
+     * Create an instance of {@link DeleteOrders }
+     * 
+     */
+    public DeleteOrders createDeleteOrders() {
+        return new DeleteOrders();
+    }
+
+    /**
+     * Create an instance of {@link AddToListResponse }
+     * 
+     */
+    public AddToListResponse createAddToListResponse() {
+        return new AddToListResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadLists }
+     * 
+     */
+    public ReadLists createReadLists() {
+        return new ReadLists();
+    }
+
+    /**
+     * Create an instance of {@link AddListsResponse }
+     * 
+     */
+    public AddListsResponse createAddListsResponse() {
+        return new AddListsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ClearListsResponse }
+     * 
+     */
+    public ClearListsResponse createClearListsResponse() {
+        return new ClearListsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddMessageRules }
+     * 
+     */
+    public AddMessageRules createAddMessageRules() {
+        return new AddMessageRules();
+    }
+
+    /**
+     * Create an instance of {@link DeleteMessages }
+     * 
+     */
+    public DeleteMessages createDeleteMessages() {
+        return new DeleteMessages();
+    }
+
+    /**
+     * Create an instance of {@link AddOrUpdateContacts }
+     * 
+     */
+    public AddOrUpdateContacts createAddOrUpdateContacts() {
+        return new AddOrUpdateContacts();
+    }
+
+    /**
+     * Create an instance of {@link RemoveFromSMSKeywordResponse }
+     * 
+     */
+    public RemoveFromSMSKeywordResponse createRemoveFromSMSKeywordResponse() {
+        return new RemoveFromSMSKeywordResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadSMSKeywords }
+     * 
+     */
+    public ReadSMSKeywords createReadSMSKeywords() {
+        return new ReadSMSKeywords();
+    }
+
+    /**
+     * Create an instance of {@link AddAccounts }
+     * 
+     */
+    public AddAccounts createAddAccounts() {
+        return new AddAccounts();
+    }
+
+    /**
+     * Create an instance of {@link ReadLoginsResponse }
+     * 
+     */
+    public ReadLoginsResponse createReadLoginsResponse() {
+        return new ReadLoginsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddMessageFoldersResponse }
+     * 
+     */
+    public AddMessageFoldersResponse createAddMessageFoldersResponse() {
+        return new AddMessageFoldersResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateFields }
+     * 
+     */
+    public UpdateFields createUpdateFields() {
+        return new UpdateFields();
+    }
+
+    /**
+     * Create an instance of {@link ReadMessageRulesResponse }
+     * 
+     */
+    public ReadMessageRulesResponse createReadMessageRulesResponse() {
+        return new ReadMessageRulesResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddFieldsResponse }
+     * 
+     */
+    public AddFieldsResponse createAddFieldsResponse() {
+        return new AddFieldsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadWorkflowsResponse }
+     * 
+     */
+    public ReadWorkflowsResponse createReadWorkflowsResponse() {
+        return new ReadWorkflowsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddContentTagsResponse }
+     * 
+     */
+    public AddContentTagsResponse createAddContentTagsResponse() {
+        return new AddContentTagsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadAccounts }
+     * 
+     */
+    public ReadAccounts createReadAccounts() {
+        return new ReadAccounts();
+    }
+
+    /**
+     * Create an instance of {@link UpdateListsResponse }
+     * 
+     */
+    public UpdateListsResponse createUpdateListsResponse() {
+        return new UpdateListsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadSMSKeywordsResponse }
+     * 
+     */
+    public ReadSMSKeywordsResponse createReadSMSKeywordsResponse() {
+        return new ReadSMSKeywordsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadContentTagsResponse }
+     * 
+     */
+    public ReadContentTagsResponse createReadContentTagsResponse() {
+        return new ReadContentTagsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddMessagesResponse }
+     * 
+     */
+    public AddMessagesResponse createAddMessagesResponse() {
+        return new AddMessagesResponse();
+    }
+
+    /**
+     * Create an instance of {@link RemoveFromListResponse }
+     * 
+     */
+    public RemoveFromListResponse createRemoveFromListResponse() {
+        return new RemoveFromListResponse();
+    }
+
+    /**
+     * Create an instance of {@link RemoveFromList }
+     * 
+     */
+    public RemoveFromList createRemoveFromList() {
+        return new RemoveFromList();
+    }
+
+    /**
+     * Create an instance of {@link UpdateLoginsResponse }
+     * 
+     */
+    public UpdateLoginsResponse createUpdateLoginsResponse() {
+        return new UpdateLoginsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddOrUpdateDeliveryGroupResponse }
+     * 
+     */
+    public AddOrUpdateDeliveryGroupResponse createAddOrUpdateDeliveryGroupResponse() {
+        return new AddOrUpdateDeliveryGroupResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteMessageFoldersResponse }
+     * 
+     */
+    public DeleteMessageFoldersResponse createDeleteMessageFoldersResponse() {
+        return new DeleteMessageFoldersResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteSMSKeywords }
+     * 
+     */
+    public DeleteSMSKeywords createDeleteSMSKeywords() {
+        return new DeleteSMSKeywords();
+    }
+
+    /**
+     * Create an instance of {@link DeleteAccounts }
+     * 
+     */
+    public DeleteAccounts createDeleteAccounts() {
+        return new DeleteAccounts();
+    }
+
+    /**
+     * Create an instance of {@link DeleteContactsResponse }
+     * 
+     */
+    public DeleteContactsResponse createDeleteContactsResponse() {
+        return new DeleteContactsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddContentTags }
+     * 
+     */
+    public AddContentTags createAddContentTags() {
+        return new AddContentTags();
+    }
+
+    /**
+     * Create an instance of {@link ReadContacts }
+     * 
+     */
+    public ReadContacts createReadContacts() {
+        return new ReadContacts();
+    }
+
+    /**
+     * Create an instance of {@link AddDeliveries }
+     * 
+     */
+    public AddDeliveries createAddDeliveries() {
+        return new AddDeliveries();
+    }
+
+    /**
+     * Create an instance of {@link AddDeliveriesResponse }
+     * 
+     */
+    public AddDeliveriesResponse createAddDeliveriesResponse() {
+        return new AddDeliveriesResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddOrUpdateContactsResponse }
+     * 
+     */
+    public AddOrUpdateContactsResponse createAddOrUpdateContactsResponse() {
+        return new AddOrUpdateContactsResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddContactsResponse }
+     * 
+     */
+    public AddContactsResponse createAddContactsResponse() {
+        return new AddContactsResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateContacts }
+     * 
+     */
+    public UpdateContacts createUpdateContacts() {
+        return new UpdateContacts();
+    }
+
+    /**
+     * Create an instance of {@link DeleteMessageFolders }
+     * 
+     */
+    public DeleteMessageFolders createDeleteMessageFolders() {
+        return new DeleteMessageFolders();
+    }
+
+    /**
+     * Create an instance of {@link WriteResult }
+     * 
+     */
+    public WriteResult createWriteResult() {
+        return new WriteResult();
+    }
+
+    /**
+     * Create an instance of {@link MessageFieldObject }
+     * 
+     */
+    public MessageFieldObject createMessageFieldObject() {
+        return new MessageFieldObject();
+    }
+
+    /**
+     * Create an instance of {@link AccountFilter }
+     * 
+     */
+    public AccountFilter createAccountFilter() {
+        return new AccountFilter();
+    }
+
+    /**
+     * Create an instance of {@link FieldsFilter }
+     * 
+     */
+    public FieldsFilter createFieldsFilter() {
+        return new FieldsFilter();
+    }
+
+    /**
+     * Create an instance of {@link FieldOptionObject }
+     * 
+     */
+    public FieldOptionObject createFieldOptionObject() {
+        return new FieldOptionObject();
+    }
+
+    /**
+     * Create an instance of {@link DeliveryGroupFilter }
+     * 
+     */
+    public DeliveryGroupFilter createDeliveryGroupFilter() {
+        return new DeliveryGroupFilter();
+    }
+
+    /**
+     * Create an instance of {@link RecentInboundActivitySearchRequest }
+     * 
+     */
+    public RecentInboundActivitySearchRequest createRecentInboundActivitySearchRequest() {
+        return new RecentInboundActivitySearchRequest();
+    }
+
+    /**
+     * Create an instance of {@link MessageRuleFilter }
+     * 
+     */
+    public MessageRuleFilter createMessageRuleFilter() {
+        return new MessageRuleFilter();
+    }
+
+    /**
+     * Create an instance of {@link ApiTokenObject }
+     * 
+     */
+    public ApiTokenObject createApiTokenObject() {
+        return new ApiTokenObject();
+    }
+
+    /**
      * Create an instance of {@link ContactFilter }
      * 
      */
     public ContactFilter createContactFilter() {
         return new ContactFilter();
+    }
+
+    /**
+     * Create an instance of {@link ApiTokenFilter }
+     * 
+     */
+    public ApiTokenFilter createApiTokenFilter() {
+        return new ApiTokenFilter();
+    }
+
+    /**
+     * Create an instance of {@link MessageObject }
+     * 
+     */
+    public MessageObject createMessageObject() {
+        return new MessageObject();
+    }
+
+    /**
+     * Create an instance of {@link SmsKeywordObject }
+     * 
+     */
+    public SmsKeywordObject createSmsKeywordObject() {
+        return new SmsKeywordObject();
+    }
+
+    /**
+     * Create an instance of {@link MailListObject }
+     * 
+     */
+    public MailListObject createMailListObject() {
+        return new MailListObject();
+    }
+
+    /**
+     * Create an instance of {@link MessageFilter }
+     * 
+     */
+    public MessageFilter createMessageFilter() {
+        return new MessageFilter();
+    }
+
+    /**
+     * Create an instance of {@link MailListFilter }
+     * 
+     */
+    public MailListFilter createMailListFilter() {
+        return new MailListFilter();
+    }
+
+    /**
+     * Create an instance of {@link SmsDeliveryContactsObject }
+     * 
+     */
+    public SmsDeliveryContactsObject createSmsDeliveryContactsObject() {
+        return new SmsDeliveryContactsObject();
+    }
+
+    /**
+     * Create an instance of {@link MessageFolderFilter }
+     * 
+     */
+    public MessageFolderFilter createMessageFolderFilter() {
+        return new MessageFolderFilter();
+    }
+
+    /**
+     * Create an instance of {@link StringValue }
+     * 
+     */
+    public StringValue createStringValue() {
+        return new StringValue();
+    }
+
+    /**
+     * Create an instance of {@link MessageContentObject }
+     * 
+     */
+    public MessageContentObject createMessageContentObject() {
+        return new MessageContentObject();
+    }
+
+    /**
+     * Create an instance of {@link DeliveryGroupObject }
+     * 
+     */
+    public DeliveryGroupObject createDeliveryGroupObject() {
+        return new DeliveryGroupObject();
+    }
+
+    /**
+     * Create an instance of {@link SegmentRuleObject }
+     * 
+     */
+    public SegmentRuleObject createSegmentRuleObject() {
+        return new SegmentRuleObject();
+    }
+
+    /**
+     * Create an instance of {@link DeliveryRecipientStatObject }
+     * 
+     */
+    public DeliveryRecipientStatObject createDeliveryRecipientStatObject() {
+        return new DeliveryRecipientStatObject();
+    }
+
+    /**
+     * Create an instance of {@link SegmentObject }
+     * 
+     */
+    public SegmentObject createSegmentObject() {
+        return new SegmentObject();
+    }
+
+    /**
+     * Create an instance of {@link ProductObject }
+     * 
+     */
+    public ProductObject createProductObject() {
+        return new ProductObject();
+    }
+
+    /**
+     * Create an instance of {@link LoginObject }
+     * 
+     */
+    public LoginObject createLoginObject() {
+        return new LoginObject();
+    }
+
+    /**
+     * Create an instance of {@link ResultItem }
+     * 
+     */
+    public ResultItem createResultItem() {
+        return new ResultItem();
+    }
+
+    /**
+     * Create an instance of {@link HeaderFooterObject }
+     * 
+     */
+    public HeaderFooterObject createHeaderFooterObject() {
+        return new HeaderFooterObject();
+    }
+
+    /**
+     * Create an instance of {@link SmsDeliveryFilter }
+     * 
+     */
+    public SmsDeliveryFilter createSmsDeliveryFilter() {
+        return new SmsDeliveryFilter();
+    }
+
+    /**
+     * Create an instance of {@link SegmentCriteriaObject }
+     * 
+     */
+    public SegmentCriteriaObject createSegmentCriteriaObject() {
+        return new SegmentCriteriaObject();
+    }
+
+    /**
+     * Create an instance of {@link DeliveryRecipientFilter }
+     * 
+     */
+    public DeliveryRecipientFilter createDeliveryRecipientFilter() {
+        return new DeliveryRecipientFilter();
+    }
+
+    /**
+     * Create an instance of {@link BrandingSettings }
+     * 
+     */
+    public BrandingSettings createBrandingSettings() {
+        return new BrandingSettings();
+    }
+
+    /**
+     * Create an instance of {@link ContentTagFilter }
+     * 
+     */
+    public ContentTagFilter createContentTagFilter() {
+        return new ContentTagFilter();
+    }
+
+    /**
+     * Create an instance of {@link SmsMessageFieldObject }
+     * 
+     */
+    public SmsMessageFieldObject createSmsMessageFieldObject() {
+        return new SmsMessageFieldObject();
+    }
+
+    /**
+     * Create an instance of {@link SmsMessageObject }
+     * 
+     */
+    public SmsMessageObject createSmsMessageObject() {
+        return new SmsMessageObject();
+    }
+
+    /**
+     * Create an instance of {@link DeliveryFilter }
+     * 
+     */
+    public DeliveryFilter createDeliveryFilter() {
+        return new DeliveryFilter();
+    }
+
+    /**
+     * Create an instance of {@link AccountAllocations }
+     * 
+     */
+    public AccountAllocations createAccountAllocations() {
+        return new AccountAllocations();
+    }
+
+    /**
+     * Create an instance of {@link ActivityFilter }
+     * 
+     */
+    public ActivityFilter createActivityFilter() {
+        return new ActivityFilter();
+    }
+
+    /**
+     * Create an instance of {@link FormatSettings }
+     * 
+     */
+    public FormatSettings createFormatSettings() {
+        return new FormatSettings();
+    }
+
+    /**
+     * Create an instance of {@link RecentOutboundActivitySearchRequest }
+     * 
+     */
+    public RecentOutboundActivitySearchRequest createRecentOutboundActivitySearchRequest() {
+        return new RecentOutboundActivitySearchRequest();
+    }
+
+    /**
+     * Create an instance of {@link ContactInformation }
+     * 
+     */
+    public ContactInformation createContactInformation() {
+        return new ContactInformation();
+    }
+
+    /**
+     * Create an instance of {@link WebformObject }
+     * 
+     */
+    public WebformObject createWebformObject() {
+        return new WebformObject();
+    }
+
+    /**
+     * Create an instance of {@link GeneralSettings }
+     * 
+     */
+    public GeneralSettings createGeneralSettings() {
+        return new GeneralSettings();
+    }
+
+    /**
+     * Create an instance of {@link LoginFilter }
+     * 
+     */
+    public LoginFilter createLoginFilter() {
+        return new LoginFilter();
+    }
+
+    /**
+     * Create an instance of {@link SmsKeywordFilter }
+     * 
+     */
+    public SmsKeywordFilter createSmsKeywordFilter() {
+        return new SmsKeywordFilter();
+    }
+
+    /**
+     * Create an instance of {@link ContentTagObject }
+     * 
+     */
+    public ContentTagObject createContentTagObject() {
+        return new ContentTagObject();
+    }
+
+    /**
+     * Create an instance of {@link DateValue }
+     * 
+     */
+    public DateValue createDateValue() {
+        return new DateValue();
+    }
+
+    /**
+     * Create an instance of {@link ConversionFilter }
+     * 
+     */
+    public ConversionFilter createConversionFilter() {
+        return new ConversionFilter();
+    }
+
+    /**
+     * Create an instance of {@link RepliesSettings }
+     * 
+     */
+    public RepliesSettings createRepliesSettings() {
+        return new RepliesSettings();
+    }
+
+    /**
+     * Create an instance of {@link AccountObject }
+     * 
+     */
+    public AccountObject createAccountObject() {
+        return new AccountObject();
+    }
+
+    /**
+     * Create an instance of {@link OrderObject }
+     * 
+     */
+    public OrderObject createOrderObject() {
+        return new OrderObject();
+    }
+
+    /**
+     * Create an instance of {@link DeliveryRecipientObject }
+     * 
+     */
+    public DeliveryRecipientObject createDeliveryRecipientObject() {
+        return new DeliveryRecipientObject();
+    }
+
+    /**
+     * Create an instance of {@link ConversionObject }
+     * 
+     */
+    public ConversionObject createConversionObject() {
+        return new ConversionObject();
+    }
+
+    /**
+     * Create an instance of {@link RemailObject }
+     * 
+     */
+    public RemailObject createRemailObject() {
+        return new RemailObject();
+    }
+
+    /**
+     * Create an instance of {@link MessageRuleObject }
+     * 
+     */
+    public MessageRuleObject createMessageRuleObject() {
+        return new MessageRuleObject();
+    }
+
+    /**
+     * Create an instance of {@link MessageFolderObject }
+     * 
+     */
+    public MessageFolderObject createMessageFolderObject() {
+        return new MessageFolderObject();
+    }
+
+    /**
+     * Create an instance of {@link WorkflowObject }
+     * 
+     */
+    public WorkflowObject createWorkflowObject() {
+        return new WorkflowObject();
+    }
+
+    /**
+     * Create an instance of {@link SegmentFilter }
+     * 
+     */
+    public SegmentFilter createSegmentFilter() {
+        return new SegmentFilter();
+    }
+
+    /**
+     * Create an instance of {@link WorkflowFilter }
+     * 
+     */
+    public WorkflowFilter createWorkflowFilter() {
+        return new WorkflowFilter();
+    }
+
+    /**
+     * Create an instance of {@link WebformFilter }
+     * 
+     */
+    public WebformFilter createWebformFilter() {
+        return new WebformFilter();
+    }
+
+    /**
+     * Create an instance of {@link HeaderFooterFilter }
+     * 
+     */
+    public HeaderFooterFilter createHeaderFooterFilter() {
+        return new HeaderFooterFilter();
+    }
+
+    /**
+     * Create an instance of {@link DateTime }
+     * 
+     */
+    public DateTime createDateTime() {
+        return new DateTime();
+    }
+
+    /**
+     * Create an instance of {@link FieldObject }
+     * 
+     */
+    public FieldObject createFieldObject() {
+        return new FieldObject();
+    }
+
+    /**
+     * Create an instance of {@link ContactObject }
+     * 
+     */
+    public ContactObject createContactObject() {
+        return new ContactObject();
+    }
+
+    /**
+     * Create an instance of {@link ActivityObject }
+     * 
+     */
+    public ActivityObject createActivityObject() {
+        return new ActivityObject();
+    }
+
+    /**
+     * Create an instance of {@link SmsDeliveryObject }
+     * 
+     */
+    public SmsDeliveryObject createSmsDeliveryObject() {
+        return new SmsDeliveryObject();
+    }
+
+    /**
+     * Create an instance of {@link ContactField }
+     * 
+     */
+    public ContactField createContactField() {
+        return new ContactField();
+    }
+
+    /**
+     * Create an instance of {@link ReadOnlyContactData }
+     * 
+     */
+    public ReadOnlyContactData createReadOnlyContactData() {
+        return new ReadOnlyContactData();
+    }
+
+    /**
+     * Create an instance of {@link RecentActivityObject }
+     * 
+     */
+    public RecentActivityObject createRecentActivityObject() {
+        return new RecentActivityObject();
+    }
+
+    /**
+     * Create an instance of {@link DeliveryObject }
+     * 
+     */
+    public DeliveryObject createDeliveryObject() {
+        return new DeliveryObject();
     }
 
     /**
@@ -2367,21 +2321,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AddToSMSKeywordResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "addToSMSKeywordResponse")
-    public JAXBElement<AddToSMSKeywordResponse> createAddToSMSKeywordResponse(AddToSMSKeywordResponse value) {
-        return new JAXBElement<AddToSMSKeywordResponse>(_AddToSMSKeywordResponse_QNAME, AddToSMSKeywordResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ReadActivities }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readActivities")
     public JAXBElement<ReadActivities> createReadActivities(ReadActivities value) {
         return new JAXBElement<ReadActivities>(_ReadActivities_QNAME, ReadActivities.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddToSMSKeywordResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "addToSMSKeywordResponse")
+    public JAXBElement<AddToSMSKeywordResponse> createAddToSMSKeywordResponse(AddToSMSKeywordResponse value) {
+        return new JAXBElement<AddToSMSKeywordResponse>(_AddToSMSKeywordResponse_QNAME, AddToSMSKeywordResponse.class, null, value);
     }
 
     /**
@@ -2526,15 +2480,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "deleteListsResponse")
     public JAXBElement<DeleteListsResponse> createDeleteListsResponse(DeleteListsResponse value) {
         return new JAXBElement<DeleteListsResponse>(_DeleteListsResponse_QNAME, DeleteListsResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateWorkflowsResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "updateWorkflowsResponse")
-    public JAXBElement<UpdateWorkflowsResponse> createUpdateWorkflowsResponse(UpdateWorkflowsResponse value) {
-        return new JAXBElement<UpdateWorkflowsResponse>(_UpdateWorkflowsResponse_QNAME, UpdateWorkflowsResponse.class, null, value);
     }
 
     /**
@@ -2742,15 +2687,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "addHeaderFootersResponse")
     public JAXBElement<AddHeaderFootersResponse> createAddHeaderFootersResponse(AddHeaderFootersResponse value) {
         return new JAXBElement<AddHeaderFootersResponse>(_AddHeaderFootersResponse_QNAME, AddHeaderFootersResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteWorkflowsResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "deleteWorkflowsResponse")
-    public JAXBElement<DeleteWorkflowsResponse> createDeleteWorkflowsResponse(DeleteWorkflowsResponse value) {
-        return new JAXBElement<DeleteWorkflowsResponse>(_DeleteWorkflowsResponse_QNAME, DeleteWorkflowsResponse.class, null, value);
     }
 
     /**
@@ -3204,21 +3140,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AddContacts }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "addContacts")
-    public JAXBElement<AddContacts> createAddContacts(AddContacts value) {
-        return new JAXBElement<AddContacts>(_AddContacts_QNAME, AddContacts.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link UpdateSMSMessagesResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "updateSMSMessagesResponse")
     public JAXBElement<UpdateSMSMessagesResponse> createUpdateSMSMessagesResponse(UpdateSMSMessagesResponse value) {
         return new JAXBElement<UpdateSMSMessagesResponse>(_UpdateSMSMessagesResponse_QNAME, UpdateSMSMessagesResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddContacts }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "addContacts")
+    public JAXBElement<AddContacts> createAddContacts(AddContacts value) {
+        return new JAXBElement<AddContacts>(_AddContacts_QNAME, AddContacts.class, null, value);
     }
 
     /**
@@ -3300,15 +3236,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "addDeliveryGroup")
     public JAXBElement<AddDeliveryGroup> createAddDeliveryGroup(AddDeliveryGroup value) {
         return new JAXBElement<AddDeliveryGroup>(_AddDeliveryGroup_QNAME, AddDeliveryGroup.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AddWorkflows }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "addWorkflows")
-    public JAXBElement<AddWorkflows> createAddWorkflows(AddWorkflows value) {
-        return new JAXBElement<AddWorkflows>(_AddWorkflows_QNAME, AddWorkflows.class, null, value);
     }
 
     /**
@@ -3456,15 +3383,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AddWorkflowsResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "addWorkflowsResponse")
-    public JAXBElement<AddWorkflowsResponse> createAddWorkflowsResponse(AddWorkflowsResponse value) {
-        return new JAXBElement<AddWorkflowsResponse>(_AddWorkflowsResponse_QNAME, AddWorkflowsResponse.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AddFields }{@code >}}
      * 
      */
@@ -3489,15 +3407,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readRecentInboundActivitiesResponse")
     public JAXBElement<ReadRecentInboundActivitiesResponse> createReadRecentInboundActivitiesResponse(ReadRecentInboundActivitiesResponse value) {
         return new JAXBElement<ReadRecentInboundActivitiesResponse>(_ReadRecentInboundActivitiesResponse_QNAME, ReadRecentInboundActivitiesResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteWorkflows }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "deleteWorkflows")
-    public JAXBElement<DeleteWorkflows> createDeleteWorkflows(DeleteWorkflows value) {
-        return new JAXBElement<DeleteWorkflows>(_DeleteWorkflows_QNAME, DeleteWorkflows.class, null, value);
     }
 
     /**
@@ -3750,15 +3659,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readDeliveriesResponse")
     public JAXBElement<ReadDeliveriesResponse> createReadDeliveriesResponse(ReadDeliveriesResponse value) {
         return new JAXBElement<ReadDeliveriesResponse>(_ReadDeliveriesResponse_QNAME, ReadDeliveriesResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateWorkflows }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "updateWorkflows")
-    public JAXBElement<UpdateWorkflows> createUpdateWorkflows(UpdateWorkflows value) {
-        return new JAXBElement<UpdateWorkflows>(_UpdateWorkflows_QNAME, UpdateWorkflows.class, null, value);
     }
 
     /**

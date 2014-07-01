@@ -1,6 +1,7 @@
 
 package com.bronto.api.model;
 
+import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSchemaType;
@@ -20,14 +21,14 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence>
  *         &lt;element name="canExceedAllocation" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="canExceedSmsAllocation" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="emails" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="emails" type="{http://www.w3.org/2001/XMLSchema}integer" minOccurs="0"/>
  *         &lt;element name="contacts" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="hosting" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="logins" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="api" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="fields" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="startDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="periodFrequency" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="periodFrequency" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="bundle" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="defaultTemplates" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="branding" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
@@ -59,7 +60,7 @@ public class AccountAllocations {
 
     protected Boolean canExceedAllocation;
     protected Boolean canExceedSmsAllocation;
-    protected Long emails;
+    protected BigInteger emails;
     protected Long contacts;
     protected Long hosting;
     protected Long logins;
@@ -67,7 +68,7 @@ public class AccountAllocations {
     protected Long fields;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar startDate;
-    protected Integer periodFrequency;
+    protected Long periodFrequency;
     protected String bundle;
     protected Boolean defaultTemplates;
     protected Boolean branding;
@@ -125,10 +126,10 @@ public class AccountAllocations {
      * 
      * @return
      *     possible object is
-     *     {@link Long }
+     *     {@link BigInteger }
      *     
      */
-    public Long getEmails() {
+    public BigInteger getEmails() {
         return emails;
     }
 
@@ -137,10 +138,10 @@ public class AccountAllocations {
      * 
      * @param value
      *     allowed object is
-     *     {@link Long }
+     *     {@link BigInteger }
      *     
      */
-    public void setEmails(Long value) {
+    public void setEmails(BigInteger value) {
         this.emails = value;
     }
 
@@ -293,10 +294,10 @@ public class AccountAllocations {
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link Long }
      *     
      */
-    public Integer getPeriodFrequency() {
+    public Long getPeriodFrequency() {
         return periodFrequency;
     }
 
@@ -305,10 +306,10 @@ public class AccountAllocations {
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link Long }
      *     
      */
-    public void setPeriodFrequency(Integer value) {
+    public void setPeriodFrequency(Long value) {
         this.periodFrequency = value;
     }
 
