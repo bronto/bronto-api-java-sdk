@@ -71,9 +71,9 @@ public class BrontoClient implements BrontoApi {
 
     protected void setTimeouts(BrontoSoapPortType port, int adjust, BrontoClientException.Recoverable timeout) {
         Map<String, Object> requestContext = ((BindingProvider) port).getRequestContext();
-        if (timeout == BrontoClientException.Recoverable.READ_TIMEOUT) {
+        if (timeout == null || timeout == BrontoClientException.Recoverable.READ_TIMEOUT) {
             setRequestTimeout(port, adjust);
-        } else if (timeout == BrontoClientException.Recoverable.CONNECTION_TIMEOUT) {
+        } else if (timeout == null || timeout == BrontoClientException.Recoverable.CONNECTION_TIMEOUT) {
             setConnectTimeout(port, adjust);
         }
     }
