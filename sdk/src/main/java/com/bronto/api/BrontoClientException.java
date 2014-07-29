@@ -77,7 +77,10 @@ public class BrontoClientException extends RuntimeException {
     }
 
     public boolean isInvalidSession() {
-        return recoverable == Recoverable.INVALID_SESSION_TOKEN;
+        return (
+            recoverable == Recoverable.INVALID_SESSION_TOKEN ||
+            recoverable == Recoverable.INVALID_REQUEST
+        );
     }
 
     public boolean isUnderMaintenance() {

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import javax.xml.ws.BindingProvider;
 
+import com.bronto.api.model.ApiException_Exception;
 import com.bronto.api.model.BrontoSoapApiImplService;
 import com.bronto.api.model.BrontoSoapPortType;
 import com.bronto.api.model.SessionHeader;
@@ -107,27 +108,42 @@ public class BrontoClient implements BrontoApi {
 
     @Override
     public String login() {
-        final String sessionId = invoke(new BrontoClientRequest<String>() {
+        return invoke(new BrontoClientRequest<String>() {
             @Override
             public String invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-                return service.login(apiToken);
+                return internalAuth(service);
             }
         });
-        header.setSessionId(sessionId);
-        return sessionId;
+    }
+
+    private String internalAuth(BrontoSoapPortType service) {
+        // TODO: place injectable session from observer
+        try {
+            String sessionId = service.login(apiToken);
+            if (options.getObserver() != null) {
+                options.getObserver().onSessionRefresh(this, sessionId);
+            }
+            header.setSessionId(sessionId);
+            return sessionId;
+        } catch (ApiException_Exception ex) {
+            throw new BrontoClientException(ex);
+        }
     }
 
     @Override
     public <T> T invoke(final BrontoClientRequest<T> request) {
         int retry = 0;
+        BrontoClientException brontoEx = null;
         BrontoSoapPortType port = getService();
         do {
             try {
+                if (!isAuthenticated()) {
+                    internalAuth(port);
+                }
                 return request.invoke(port, getSessionHeader());
             } catch (Exception e) {
                 // TODO: fix this... error handler logic should be an implemented strategy
                 BrontoWriteException writeEx = null;
-                BrontoClientException brontoEx = null;
                 if (e instanceof BrontoWriteException) {
                     writeEx = (BrontoWriteException) e;
                     brontoEx = writeEx;
@@ -135,10 +151,7 @@ public class BrontoClient implements BrontoApi {
                     brontoEx = new BrontoClientException(e);
                 }
                 if (brontoEx.isInvalidSession()) {
-                    String sessionId = login();
-                    if (options.getObserver() != null) {
-                        options.getObserver().onSessionRefresh(this, sessionId);
-                    }
+                    internalAuth(port);
                 } else if (brontoEx.isRecoverable()) {
                     // Received a timeout on a write, bail
                     if (brontoEx.isTimeout() && writeEx != null) {
@@ -161,7 +174,7 @@ public class BrontoClient implements BrontoApi {
                 }
             }
         } while (retry < options.getRetryLimit());
-        throw new RuntimeException("Exceeded retry limit");
+        throw new RetryLimitExceededException(brontoEx);
     }
 
     @Override
