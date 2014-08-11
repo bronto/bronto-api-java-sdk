@@ -111,7 +111,7 @@ public class BrontoClient implements BrontoApi {
         return invoke(new BrontoClientRequest<String>() {
             @Override
             public String invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-                return internalAuth(service);
+                return header.getSessionId();
             }
         });
     }
@@ -133,6 +133,7 @@ public class BrontoClient implements BrontoApi {
     @Override
     public <T> T invoke(final BrontoClientRequest<T> request) {
         int retry = 0;
+        boolean reAuthed = false;
         BrontoClientException brontoEx = null;
         BrontoSoapPortType port = getService();
         do {
@@ -151,7 +152,12 @@ public class BrontoClient implements BrontoApi {
                     brontoEx = new BrontoClientException(e);
                 }
                 if (brontoEx.isInvalidSession()) {
-                    internalAuth(port);
+                    if (reAuthed) {
+                        retry++;
+                    } else {
+                        reAuthed = true;
+                        internalAuth(port);
+                    }
                 } else if (brontoEx.isRecoverable()) {
                     // Received a timeout on a write, bail
                     if (brontoEx.isTimeout() && writeEx != null) {
