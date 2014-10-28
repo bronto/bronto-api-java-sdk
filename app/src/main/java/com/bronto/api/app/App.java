@@ -88,7 +88,6 @@ public class App {
               .withStatus(DeliveryStatus.SENT)
               .withDeliveryType(DeliveryType.NORMAL)
               .withIncludeRecipients(true);
-        
         System.out.println("Reading sent bulk deliveries");
         for (DeliveryObject delivery : deliveryOps.readAll(deliveries)) {
             System.out.println(String.format("Delivery %s: status %s went to:", delivery.getId(), delivery.getStatus()));
@@ -97,21 +96,21 @@ public class App {
             }
         }
 
-        HeaderFooterReadRequest headerFooters = 
+        HeaderFooterReadRequest headerFooters =
         		new HeaderFooterReadRequest().withIncludeContent(true);
-        for (HeaderFooterObject headerFooter : 
+        for (HeaderFooterObject headerFooter :
         	headerFooterOps.readAll(headerFooters)) {
         	System.out.println(String.format("Header/Footer %s (name: %s): "
-        			+ "html:\n\t%s\ntext:\n\t%s\tHeader? - %b", 
-        			headerFooter.getId(), headerFooter.getName(), 
-        			headerFooter.getHtml(), headerFooter.getText(), 
+        			+ "html:\n\t%s\ntext:\n\t%s\tHeader? - %b",
+        			headerFooter.getId(), headerFooter.getName(),
+        			headerFooter.getHtml(), headerFooter.getText(),
         			headerFooter.isIsHeader()));
         }
-        
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         if (reader.readLine() != null) {
             client.shutdown();
         }
-                
+
     }
 }
