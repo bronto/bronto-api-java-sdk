@@ -58,6 +58,11 @@ public class HeaderFooterReadRequest
 		return this;
 	}
 	
+	public HeaderFooterReadRequest withPosition(String...positions) {
+		setStrings(getFilter().getPosition(), positions);
+		return this;
+	}
+	
 	public HeaderFooterReadRequest withIncludeContent(boolean includeContent) {
 		headerFooters.setIncludeContent(includeContent);
 		return this;
