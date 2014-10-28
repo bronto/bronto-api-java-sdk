@@ -61,6 +61,8 @@ public class ApiReflection {
             return "getMessages";
         } else if (canonicalName.equals("sMSDeliveries")) {
             return "getSmsdeliveries";
+        } else if (canonicalName.equalsIgnoreCase("headerFooters")) {
+        	return "getFooters";
         } else {
             return "get" + upperCaseFirst(canonicalName);
         }
