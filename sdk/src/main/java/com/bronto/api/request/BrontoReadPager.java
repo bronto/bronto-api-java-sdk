@@ -4,6 +4,7 @@ import com.bronto.api.BrontoApi;
 
 import java.util.Collections;
 import java.util.concurrent.Future;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -24,7 +25,15 @@ public class BrontoReadPager<T> implements Iterator<T> {
     }
 
     private Iterator<T> getCurrentObjects() {
-        return ((List<T>) client.invoke(read)).iterator();
+		try {
+			return ((List<T>) client.invoke(read)).iterator();
+		} catch (Exception e) {
+			if (e.getMessage().contains("End of result set")) {
+				return new ArrayList<T>().iterator();
+			} else {
+				throw e;
+			}
+		}
     }
 
     @Override

@@ -107,6 +107,21 @@ public class App {
         			headerFooter.isIsHeader()));
         }
 
+		/*
+		 * The conversion calls are slow, so it's recommended that the
+		 * conversion checks be left commented-out by default unless you're
+		 * actively testing conversions.
+		 */
+		// ObjectOperationsAsync<ConversionObject> conversionOps =
+		// client.transportAsync(ConversionObject.class);
+		// ConversionReadRequest conversions = new ConversionReadRequest();
+		// for (ConversionObject conversion :
+		// conversionOps.readAll(conversions)) {
+		// System.out.println(String.format("Conversion id: %s (email: %s) "
+		// + "- item = %s", conversion.getId(), conversion.getEmail(),
+		// conversion.getItem()));
+		// }
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         if (reader.readLine() != null) {
             client.shutdown();
