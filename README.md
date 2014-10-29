@@ -273,3 +273,16 @@ Future<String> json = fieldOps.get(read, new AsyncHandler<FieldObject, String>()
 
 System.out.println(json.get());
 ```
+
+### Read Conversions
+
+``` java
+ObjectOperationsAsync<ConversionObject> conversionOps =
+        client.transportAsync(ConversionObject.class);
+ConversionReadRequest conversions = new ConversionReadRequest();
+for (ConversionObject conversion : conversionOps.readAll(conversions)) {
+    System.out.println(String.format("Conversion id: %s (email: %s) "
+            + "- item = %s", conversion.getId(), conversion.getEmail(),
+            conversion.getItem()));
+}
+```
