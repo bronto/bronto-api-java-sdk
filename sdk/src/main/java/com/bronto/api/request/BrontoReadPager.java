@@ -28,6 +28,14 @@ public class BrontoReadPager<T> implements Iterator<T> {
 		try {
 			return ((List<T>) client.invoke(read)).iterator();
 		} catch (Exception e) {
+			/*
+			 * The "end of result set" error should be handled cleanly (by
+			 * returning an empty iterator), but everything else should still be
+			 * handled by the existing error handling logic. So far this has
+			 * only affected conversion calls, but there's no telling what other
+			 * calls (if any). If there are other calls impacted, this will fix
+			 * them as well.
+			 */
 			if (e.getMessage().contains("End of result set")) {
 				return new ArrayList<T>().iterator();
 			} else {
