@@ -1,6 +1,9 @@
 package com.bronto.api;
 
 import java.lang.reflect.InvocationTargetException;
+
+import javax.xml.ws.soap.SOAPFaultException;
+
 import com.bronto.api.model.ApiException_Exception;
 
 public class BrontoClientException extends RuntimeException {
@@ -48,6 +51,9 @@ public class BrontoClientException extends RuntimeException {
             ((InvocationTargetException) e).getTargetException() : e);
         if (getCause() instanceof ApiException_Exception) {
             this.code = ((ApiException_Exception) getCause()).getFaultInfo().getErrorCode();
+		} else if (getCause() instanceof SOAPFaultException) {
+			this.code =
+			        parseCodeFromMessage(((SOAPFaultException) e).getMessage());
         }
         for (Recoverable recover : Recoverable.values()) {
             if (recover.isRecoverable(getCause().getMessage())) {
@@ -83,4 +89,17 @@ public class BrontoClientException extends RuntimeException {
     public boolean isUnderMaintenance() {
         return recoverable == Recoverable.SHARD_OFFLINE;
     }
+
+	private int parseCodeFromMessage(String message) {
+		if (message.contains(":")) {
+			String codeString = message.split(":")[0];
+			try {
+				return Integer.parseInt(codeString);
+			} catch (NumberFormatException nfe) {
+				return 0;
+			}
+		} else {
+			return 0;
+		}
+	}
 }

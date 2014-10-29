@@ -1,10 +1,10 @@
 package com.bronto.api.request;
 
 import com.bronto.api.BrontoApi;
+import com.bronto.api.BrontoClientException;
 
 import java.util.Collections;
 import java.util.concurrent.Future;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -27,19 +27,16 @@ public class BrontoReadPager<T> implements Iterator<T> {
     private Iterator<T> getCurrentObjects() {
 		try {
 			return ((List<T>) client.invoke(read)).iterator();
-		} catch (Exception e) {
+		} catch (BrontoClientException brontoException) {
 			/*
-			 * The "end of result set" error should be handled cleanly (by
-			 * returning an empty iterator), but everything else should still be
-			 * handled by the existing error handling logic. So far this has
-			 * only affected conversion calls, but there's no telling what other
-			 * calls (if any). If there are other calls impacted, this will fix
-			 * them as well.
+			 * Error code 116 is an end of result error. Since all the data's
+			 * been read, return an empty list. All other exceptions should be
+			 * handled by the existing exception-handling logic.
 			 */
-			if (e.getMessage().contains("End of result set")) {
-				return new ArrayList<T>().iterator();
+			if (brontoException.getCode() == 116) {
+				return Collections.emptyListIterator();
 			} else {
-				throw e;
+				throw brontoException;
 			}
 		}
     }
