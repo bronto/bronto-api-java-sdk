@@ -1,12 +1,13 @@
 
 package com.bronto.api.model;
 
+import java.net.MalformedURLException;
 import java.net.URL;
-
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import javax.xml.ws.WebEndpoint;
 import javax.xml.ws.WebServiceClient;
+import javax.xml.ws.WebServiceException;
 import javax.xml.ws.WebServiceFeature;
 
 
@@ -20,7 +21,30 @@ import javax.xml.ws.WebServiceFeature;
 public class BrontoSoapApiImplService
     extends Service
 {
+
+    private final static URL BRONTOSOAPAPIIMPLSERVICE_WSDL_LOCATION;
+    private final static WebServiceException BRONTOSOAPAPIIMPLSERVICE_EXCEPTION;
     private final static QName BRONTOSOAPAPIIMPLSERVICE_QNAME = new QName("http://api.bronto.com/v4", "BrontoSoapApiImplService");
+
+    static {
+        URL url = null;
+        WebServiceException e = null;
+        try {
+            url = new URL("http://api.bronto.com/v4?wsdl");
+        } catch (MalformedURLException ex) {
+            e = new WebServiceException(ex);
+        }
+        BRONTOSOAPAPIIMPLSERVICE_WSDL_LOCATION = url;
+        BRONTOSOAPAPIIMPLSERVICE_EXCEPTION = e;
+    }
+
+    public BrontoSoapApiImplService() {
+        super(__getWsdlLocation(), BRONTOSOAPAPIIMPLSERVICE_QNAME);
+    }
+
+    public BrontoSoapApiImplService(WebServiceFeature... features) {
+        super(__getWsdlLocation(), BRONTOSOAPAPIIMPLSERVICE_QNAME, features);
+    }
 
     public BrontoSoapApiImplService(URL wsdlLocation) {
         super(wsdlLocation, BRONTOSOAPAPIIMPLSERVICE_QNAME);
@@ -59,4 +83,12 @@ public class BrontoSoapApiImplService
     public BrontoSoapPortType getBrontoSoapApiImplPort(WebServiceFeature... features) {
         return super.getPort(new QName("http://api.bronto.com/v4", "BrontoSoapApiImplPort"), BrontoSoapPortType.class, features);
     }
+
+    private static URL __getWsdlLocation() {
+        if (BRONTOSOAPAPIIMPLSERVICE_EXCEPTION!= null) {
+            throw BRONTOSOAPAPIIMPLSERVICE_EXCEPTION;
+        }
+        return BRONTOSOAPAPIIMPLSERVICE_WSDL_LOCATION;
+    }
+
 }
