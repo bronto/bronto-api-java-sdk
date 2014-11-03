@@ -1,9 +1,7 @@
 package com.bronto.api;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
+
 import javax.xml.ws.BindingProvider;
 
 import com.bronto.api.model.BrontoSoapApiImplService;
@@ -35,7 +33,7 @@ public class BrontoClient implements BrontoApi {
     public BrontoClient(String apiToken, BrontoClientOptions options) {
         this.apiToken = apiToken;
         this.options = options;
-        this.apiService = new BrontoSoapApiImplService();
+		this.apiService = new BrontoSoapApiImplService(options.getWsdlUrl());
         this.triesToBackOff = new int[options.getRetryLimit()];
         header = new SessionHeader();
         for (int i = 0; i < options.getRetryLimit(); i++) {
