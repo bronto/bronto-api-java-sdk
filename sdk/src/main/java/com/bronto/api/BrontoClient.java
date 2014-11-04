@@ -1,9 +1,7 @@
 package com.bronto.api;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
+
 import javax.xml.ws.BindingProvider;
 
 import com.bronto.api.model.ApiException_Exception;
@@ -33,21 +31,58 @@ public class BrontoClient implements BrontoApi {
     private SessionHeader header;
     private BrontoApiObserver observer;
 
-    public BrontoClient(String apiToken, BrontoClientOptions options) {
-        this.apiToken = apiToken;
-        this.options = options;
-        this.apiService = new BrontoSoapApiImplService();
-        this.triesToBackOff = new int[options.getRetryLimit()];
+	/**
+	 * Initializes a Bronto API client using the given API token, client
+	 * options, and service implementation. The API implementation service
+	 * passed here will be used, regardless of any client options provided.
+	 * 
+	 * @param apiToken
+	 *            Your Bronto API token.
+	 * @param options
+	 *            Any client options.
+	 * @param apiService
+	 *            The API implementation service to use. This is the service
+	 *            that will be used regardless of any client options passed in.
+	 */
+	public BrontoClient(String apiToken, BrontoClientOptions options,
+	        BrontoSoapApiImplService apiService) {
+		this.apiToken = apiToken;
+		this.options = options;
+		this.apiService = apiService;
+
+		this.triesToBackOff = new int[options.getRetryLimit()];
         header = new SessionHeader();
         for (int i = 0; i < options.getRetryLimit(); i++) {
             this.triesToBackOff[i] = options.getRetryStep() * i;
         }
     }
 
+	/**
+	 * Initializes the Bronto API client using the given API token and options.
+	 * This is the constructor that should be called to use a custom WSDL URL.
+	 * 
+	 * @param apiToken
+	 *            Your Bronto API token.
+	 * @param options
+	 *            Any custom client options.
+	 */
+	public BrontoClient(String apiToken, BrontoClientOptions options) {
+
+		/*
+		 * This is ugly, but it ensures that the API service passed to the
+		 * constructor uses a non-null WSDL location. It also allows potential
+		 * future unit tests create a client with a custom-mocked API service as
+		 * well.
+		 */
+		this(apiToken, options, (options.getWsdlURL() == null)
+		        ? new BrontoSoapApiImplService()
+		        : new BrontoSoapApiImplService(options.getWsdlURL()));
+	}
+
     public BrontoClient(String apiToken) {
         this(apiToken, new BrontoClientOptions());
     }
-
+    
     protected void backOff(int retry) {
         try {
             Thread.sleep(triesToBackOff[retry]);
