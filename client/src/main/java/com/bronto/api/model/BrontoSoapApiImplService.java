@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "BrontoSoapApiImplService", targetNamespace = "http://api.bronto.com/v4", wsdlLocation = "http://api.bronto.com/v4?wsdl")
+@WebServiceClient(name = "BrontoSoapApiImplService", targetNamespace = "http://api.bronto.com/v4", wsdlLocation = "https://api.bronto.com/v4?wsdl")
 public class BrontoSoapApiImplService
     extends Service
 {
@@ -30,7 +30,7 @@ public class BrontoSoapApiImplService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://api.bronto.com/v4?wsdl");
+            url = new URL("https://api.bronto.com/v4?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
