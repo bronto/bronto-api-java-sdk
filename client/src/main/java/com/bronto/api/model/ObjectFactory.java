@@ -35,11 +35,11 @@ public class ObjectFactory {
     private final static QName _AddSMSKeywords_QNAME = new QName("http://api.bronto.com/v4", "addSMSKeywords");
     private final static QName _ReadFields_QNAME = new QName("http://api.bronto.com/v4", "readFields");
     private final static QName _ReadRecentOutboundActivitiesResponse_QNAME = new QName("http://api.bronto.com/v4", "readRecentOutboundActivitiesResponse");
-    private final static QName _ReadSegments_QNAME = new QName("http://api.bronto.com/v4", "readSegments");
     private final static QName _ReadDeliveryRecipientsResponse_QNAME = new QName("http://api.bronto.com/v4", "readDeliveryRecipientsResponse");
+    private final static QName _ReadSegments_QNAME = new QName("http://api.bronto.com/v4", "readSegments");
     private final static QName _UpdateMessageFolders_QNAME = new QName("http://api.bronto.com/v4", "updateMessageFolders");
-    private final static QName _ReadActivities_QNAME = new QName("http://api.bronto.com/v4", "readActivities");
     private final static QName _AddToSMSKeywordResponse_QNAME = new QName("http://api.bronto.com/v4", "addToSMSKeywordResponse");
+    private final static QName _ReadActivities_QNAME = new QName("http://api.bronto.com/v4", "readActivities");
     private final static QName _ReadRecentOutboundActivities_QNAME = new QName("http://api.bronto.com/v4", "readRecentOutboundActivities");
     private final static QName _UpdateMessageFoldersResponse_QNAME = new QName("http://api.bronto.com/v4", "updateMessageFoldersResponse");
     private final static QName _AddOrUpdateOrders_QNAME = new QName("http://api.bronto.com/v4", "addOrUpdateOrders");
@@ -56,6 +56,7 @@ public class ObjectFactory {
     private final static QName _UpdateLists_QNAME = new QName("http://api.bronto.com/v4", "updateLists");
     private final static QName _ReadSMSDeliveries_QNAME = new QName("http://api.bronto.com/v4", "readSMSDeliveries");
     private final static QName _DeleteListsResponse_QNAME = new QName("http://api.bronto.com/v4", "deleteListsResponse");
+    private final static QName _UpdateWorkflowsResponse_QNAME = new QName("http://api.bronto.com/v4", "updateWorkflowsResponse");
     private final static QName _UpdateSMSKeywords_QNAME = new QName("http://api.bronto.com/v4", "updateSMSKeywords");
     private final static QName _ReadHeaderFootersResponse_QNAME = new QName("http://api.bronto.com/v4", "readHeaderFootersResponse");
     private final static QName _ReadDeliveryRecipients_QNAME = new QName("http://api.bronto.com/v4", "readDeliveryRecipients");
@@ -79,6 +80,7 @@ public class ObjectFactory {
     private final static QName _ReadContentTags_QNAME = new QName("http://api.bronto.com/v4", "readContentTags");
     private final static QName _DeleteOrders_QNAME = new QName("http://api.bronto.com/v4", "deleteOrders");
     private final static QName _AddHeaderFootersResponse_QNAME = new QName("http://api.bronto.com/v4", "addHeaderFootersResponse");
+    private final static QName _DeleteWorkflowsResponse_QNAME = new QName("http://api.bronto.com/v4", "deleteWorkflowsResponse");
     private final static QName _AddOrUpdateContacts_QNAME = new QName("http://api.bronto.com/v4", "addOrUpdateContacts");
     private final static QName _DeleteMessages_QNAME = new QName("http://api.bronto.com/v4", "deleteMessages");
     private final static QName _AddMessageRules_QNAME = new QName("http://api.bronto.com/v4", "addMessageRules");
@@ -120,6 +122,7 @@ public class ObjectFactory {
     private final static QName _ReadApiTokens_QNAME = new QName("http://api.bronto.com/v4", "readApiTokens");
     private final static QName _UpdateMessages_QNAME = new QName("http://api.bronto.com/v4", "updateMessages");
     private final static QName _DeleteMessagesResponse_QNAME = new QName("http://api.bronto.com/v4", "deleteMessagesResponse");
+    private final static QName _ReadBounces_QNAME = new QName("http://api.bronto.com/v4", "readBounces");
     private final static QName _ReadListsResponse_QNAME = new QName("http://api.bronto.com/v4", "readListsResponse");
     private final static QName _UpdateSMSMessages_QNAME = new QName("http://api.bronto.com/v4", "updateSMSMessages");
     private final static QName _ReadDeliveryGroupsResponse_QNAME = new QName("http://api.bronto.com/v4", "readDeliveryGroupsResponse");
@@ -140,6 +143,7 @@ public class ObjectFactory {
     private final static QName _ReadHeaderFooters_QNAME = new QName("http://api.bronto.com/v4", "readHeaderFooters");
     private final static QName _AddConversion_QNAME = new QName("http://api.bronto.com/v4", "addConversion");
     private final static QName _AddDeliveryGroup_QNAME = new QName("http://api.bronto.com/v4", "addDeliveryGroup");
+    private final static QName _AddWorkflows_QNAME = new QName("http://api.bronto.com/v4", "addWorkflows");
     private final static QName _AddSMSMessages_QNAME = new QName("http://api.bronto.com/v4", "addSMSMessages");
     private final static QName _UpdateSMSDeliveriesResponse_QNAME = new QName("http://api.bronto.com/v4", "updateSMSDeliveriesResponse");
     private final static QName _AddAccountsResponse_QNAME = new QName("http://api.bronto.com/v4", "addAccountsResponse");
@@ -156,18 +160,22 @@ public class ObjectFactory {
     private final static QName _AddOrUpdateOrdersResponse_QNAME = new QName("http://api.bronto.com/v4", "addOrUpdateOrdersResponse");
     private final static QName _DeleteFromDeliveryGroupResponse_QNAME = new QName("http://api.bronto.com/v4", "deleteFromDeliveryGroupResponse");
     private final static QName _AddOrUpdateDeliveryGroup_QNAME = new QName("http://api.bronto.com/v4", "addOrUpdateDeliveryGroup");
+    private final static QName _AddWorkflowsResponse_QNAME = new QName("http://api.bronto.com/v4", "addWorkflowsResponse");
     private final static QName _AddFields_QNAME = new QName("http://api.bronto.com/v4", "addFields");
     private final static QName _UpdateContactsResponse_QNAME = new QName("http://api.bronto.com/v4", "updateContactsResponse");
     private final static QName _ReadRecentInboundActivitiesResponse_QNAME = new QName("http://api.bronto.com/v4", "readRecentInboundActivitiesResponse");
+    private final static QName _DeleteWorkflows_QNAME = new QName("http://api.bronto.com/v4", "deleteWorkflows");
     private final static QName _ReadWorkflows_QNAME = new QName("http://api.bronto.com/v4", "readWorkflows");
     private final static QName _ReadSegmentsResponse_QNAME = new QName("http://api.bronto.com/v4", "readSegmentsResponse");
     private final static QName _ReadRecentInboundActivities_QNAME = new QName("http://api.bronto.com/v4", "readRecentInboundActivities");
     private final static QName _DeleteSMSKeywordsResponse_QNAME = new QName("http://api.bronto.com/v4", "deleteSMSKeywordsResponse");
     private final static QName _AddLoginsResponse_QNAME = new QName("http://api.bronto.com/v4", "addLoginsResponse");
     private final static QName _DeleteContentTags_QNAME = new QName("http://api.bronto.com/v4", "deleteContentTags");
+    private final static QName _ReadUnsubscribesResponse_QNAME = new QName("http://api.bronto.com/v4", "readUnsubscribesResponse");
     private final static QName _UpdateMessageRulesResponse_QNAME = new QName("http://api.bronto.com/v4", "updateMessageRulesResponse");
     private final static QName _DeleteSMSDeliveries_QNAME = new QName("http://api.bronto.com/v4", "deleteSMSDeliveries");
     private final static QName _ReadDeliveryGroups_QNAME = new QName("http://api.bronto.com/v4", "readDeliveryGroups");
+    private final static QName _ReadBouncesResponse_QNAME = new QName("http://api.bronto.com/v4", "readBouncesResponse");
     private final static QName _UpdateMessageRules_QNAME = new QName("http://api.bronto.com/v4", "updateMessageRules");
     private final static QName _ApiException_QNAME = new QName("http://api.bronto.com/v4", "ApiException");
     private final static QName _UpdateAccountsResponse_QNAME = new QName("http://api.bronto.com/v4", "updateAccountsResponse");
@@ -177,6 +185,7 @@ public class ObjectFactory {
     private final static QName _DeleteContentTagsResponse_QNAME = new QName("http://api.bronto.com/v4", "deleteContentTagsResponse");
     private final static QName _ReadLogins_QNAME = new QName("http://api.bronto.com/v4", "readLogins");
     private final static QName _DeleteLogins_QNAME = new QName("http://api.bronto.com/v4", "deleteLogins");
+    private final static QName _ReadUnsubscribes_QNAME = new QName("http://api.bronto.com/v4", "readUnsubscribes");
     private final static QName _AddToList_QNAME = new QName("http://api.bronto.com/v4", "addToList");
     private final static QName _DeleteDeliveryGroup_QNAME = new QName("http://api.bronto.com/v4", "deleteDeliveryGroup");
     private final static QName _DeleteOrdersResponse_QNAME = new QName("http://api.bronto.com/v4", "deleteOrdersResponse");
@@ -187,6 +196,7 @@ public class ObjectFactory {
     private final static QName _UpdateMessagesResponse_QNAME = new QName("http://api.bronto.com/v4", "updateMessagesResponse");
     private final static QName _DeleteFromDeliveryGroup_QNAME = new QName("http://api.bronto.com/v4", "deleteFromDeliveryGroup");
     private final static QName _ReadDeliveriesResponse_QNAME = new QName("http://api.bronto.com/v4", "readDeliveriesResponse");
+    private final static QName _UpdateWorkflows_QNAME = new QName("http://api.bronto.com/v4", "updateWorkflows");
     private final static QName _AddSMSKeywordsResponse_QNAME = new QName("http://api.bronto.com/v4", "addSMSKeywordsResponse");
     private final static QName _AddApiTokens_QNAME = new QName("http://api.bronto.com/v4", "addApiTokens");
     private final static QName _ReadMessageFolders_QNAME = new QName("http://api.bronto.com/v4", "readMessageFolders");
@@ -216,6 +226,14 @@ public class ObjectFactory {
      */
     public ReadListsResponse createReadListsResponse() {
         return new ReadListsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadBounces }
+     * 
+     */
+    public ReadBounces createReadBounces() {
+        return new ReadBounces();
     }
 
     /**
@@ -443,6 +461,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AddWorkflows }
+     * 
+     */
+    public AddWorkflows createAddWorkflows() {
+        return new AddWorkflows();
+    }
+
+    /**
      * Create an instance of {@link AddUpdateOrder }
      * 
      */
@@ -488,6 +514,14 @@ public class ObjectFactory {
      */
     public AddContactEventResponse createAddContactEventResponse() {
         return new AddContactEventResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddWorkflowsResponse }
+     * 
+     */
+    public AddWorkflowsResponse createAddWorkflowsResponse() {
+        return new AddWorkflowsResponse();
     }
 
     /**
@@ -571,6 +605,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DeleteWorkflows }
+     * 
+     */
+    public DeleteWorkflows createDeleteWorkflows() {
+        return new DeleteWorkflows();
+    }
+
+    /**
      * Create an instance of {@link DeleteContentTags }
      * 
      */
@@ -608,6 +650,14 @@ public class ObjectFactory {
      */
     public DeleteSMSDeliveries createDeleteSMSDeliveries() {
         return new DeleteSMSDeliveries();
+    }
+
+    /**
+     * Create an instance of {@link ReadUnsubscribesResponse }
+     * 
+     */
+    public ReadUnsubscribesResponse createReadUnsubscribesResponse() {
+        return new ReadUnsubscribesResponse();
     }
 
     /**
@@ -651,6 +701,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ReadBouncesResponse }
+     * 
+     */
+    public ReadBouncesResponse createReadBouncesResponse() {
+        return new ReadBouncesResponse();
+    }
+
+    /**
      * Create an instance of {@link ApiException }
      * 
      */
@@ -672,6 +730,14 @@ public class ObjectFactory {
      */
     public ReadFieldsResponse createReadFieldsResponse() {
         return new ReadFieldsResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReadUnsubscribes }
+     * 
+     */
+    public ReadUnsubscribes createReadUnsubscribes() {
+        return new ReadUnsubscribes();
     }
 
     /**
@@ -776,6 +842,14 @@ public class ObjectFactory {
      */
     public UpdateAccounts createUpdateAccounts() {
         return new UpdateAccounts();
+    }
+
+    /**
+     * Create an instance of {@link UpdateWorkflows }
+     * 
+     */
+    public UpdateWorkflows createUpdateWorkflows() {
+        return new UpdateWorkflows();
     }
 
     /**
@@ -995,19 +1069,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddToSMSKeywordResponse }
-     * 
-     */
-    public AddToSMSKeywordResponse createAddToSMSKeywordResponse() {
-        return new AddToSMSKeywordResponse();
-    }
-
-    /**
      * Create an instance of {@link ReadActivities }
      * 
      */
     public ReadActivities createReadActivities() {
         return new ReadActivities();
+    }
+
+    /**
+     * Create an instance of {@link AddToSMSKeywordResponse }
+     * 
+     */
+    public AddToSMSKeywordResponse createAddToSMSKeywordResponse() {
+        return new AddToSMSKeywordResponse();
     }
 
     /**
@@ -1104,6 +1178,14 @@ public class ObjectFactory {
      */
     public ReadAccountsResponse createReadAccountsResponse() {
         return new ReadAccountsResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateWorkflowsResponse }
+     * 
+     */
+    public UpdateWorkflowsResponse createUpdateWorkflowsResponse() {
+        return new UpdateWorkflowsResponse();
     }
 
     /**
@@ -1384,6 +1466,14 @@ public class ObjectFactory {
      */
     public AddOrUpdateContacts createAddOrUpdateContacts() {
         return new AddOrUpdateContacts();
+    }
+
+    /**
+     * Create an instance of {@link DeleteWorkflowsResponse }
+     * 
+     */
+    public DeleteWorkflowsResponse createDeleteWorkflowsResponse() {
+        return new DeleteWorkflowsResponse();
     }
 
     /**
@@ -1771,6 +1861,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link BounceFilter }
+     * 
+     */
+    public BounceFilter createBounceFilter() {
+        return new BounceFilter();
+    }
+
+    /**
      * Create an instance of {@link MessageFolderFilter }
      * 
      */
@@ -1883,6 +1981,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UnsubscribeObject }
+     * 
+     */
+    public UnsubscribeObject createUnsubscribeObject() {
+        return new UnsubscribeObject();
+    }
+
+    /**
      * Create an instance of {@link BrandingSettings }
      * 
      */
@@ -1947,19 +2053,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RecentOutboundActivitySearchRequest }
-     * 
-     */
-    public RecentOutboundActivitySearchRequest createRecentOutboundActivitySearchRequest() {
-        return new RecentOutboundActivitySearchRequest();
-    }
-
-    /**
      * Create an instance of {@link ContactInformation }
      * 
      */
     public ContactInformation createContactInformation() {
         return new ContactInformation();
+    }
+
+    /**
+     * Create an instance of {@link RecentOutboundActivitySearchRequest }
+     * 
+     */
+    public RecentOutboundActivitySearchRequest createRecentOutboundActivitySearchRequest() {
+        return new RecentOutboundActivitySearchRequest();
     }
 
     /**
@@ -2024,6 +2130,14 @@ public class ObjectFactory {
      */
     public RepliesSettings createRepliesSettings() {
         return new RepliesSettings();
+    }
+
+    /**
+     * Create an instance of {@link BounceObject }
+     * 
+     */
+    public BounceObject createBounceObject() {
+        return new BounceObject();
     }
 
     /**
@@ -2115,6 +2229,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DateTime }
+     * 
+     */
+    public DateTime createDateTime() {
+        return new DateTime();
+    }
+
+    /**
      * Create an instance of {@link HeaderFooterFilter }
      * 
      */
@@ -2123,11 +2245,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DateTime }
+     * Create an instance of {@link UnsubscribeFilter }
      * 
      */
-    public DateTime createDateTime() {
-        return new DateTime();
+    public UnsubscribeFilter createUnsubscribeFilter() {
+        return new UnsubscribeFilter();
     }
 
     /**
@@ -2294,21 +2416,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ReadSegments }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readSegments")
-    public JAXBElement<ReadSegments> createReadSegments(ReadSegments value) {
-        return new JAXBElement<ReadSegments>(_ReadSegments_QNAME, ReadSegments.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ReadDeliveryRecipientsResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readDeliveryRecipientsResponse")
     public JAXBElement<ReadDeliveryRecipientsResponse> createReadDeliveryRecipientsResponse(ReadDeliveryRecipientsResponse value) {
         return new JAXBElement<ReadDeliveryRecipientsResponse>(_ReadDeliveryRecipientsResponse_QNAME, ReadDeliveryRecipientsResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReadSegments }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readSegments")
+    public JAXBElement<ReadSegments> createReadSegments(ReadSegments value) {
+        return new JAXBElement<ReadSegments>(_ReadSegments_QNAME, ReadSegments.class, null, value);
     }
 
     /**
@@ -2321,21 +2443,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ReadActivities }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readActivities")
-    public JAXBElement<ReadActivities> createReadActivities(ReadActivities value) {
-        return new JAXBElement<ReadActivities>(_ReadActivities_QNAME, ReadActivities.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AddToSMSKeywordResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "addToSMSKeywordResponse")
     public JAXBElement<AddToSMSKeywordResponse> createAddToSMSKeywordResponse(AddToSMSKeywordResponse value) {
         return new JAXBElement<AddToSMSKeywordResponse>(_AddToSMSKeywordResponse_QNAME, AddToSMSKeywordResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReadActivities }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readActivities")
+    public JAXBElement<ReadActivities> createReadActivities(ReadActivities value) {
+        return new JAXBElement<ReadActivities>(_ReadActivities_QNAME, ReadActivities.class, null, value);
     }
 
     /**
@@ -2480,6 +2602,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "deleteListsResponse")
     public JAXBElement<DeleteListsResponse> createDeleteListsResponse(DeleteListsResponse value) {
         return new JAXBElement<DeleteListsResponse>(_DeleteListsResponse_QNAME, DeleteListsResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateWorkflowsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "updateWorkflowsResponse")
+    public JAXBElement<UpdateWorkflowsResponse> createUpdateWorkflowsResponse(UpdateWorkflowsResponse value) {
+        return new JAXBElement<UpdateWorkflowsResponse>(_UpdateWorkflowsResponse_QNAME, UpdateWorkflowsResponse.class, null, value);
     }
 
     /**
@@ -2687,6 +2818,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "addHeaderFootersResponse")
     public JAXBElement<AddHeaderFootersResponse> createAddHeaderFootersResponse(AddHeaderFootersResponse value) {
         return new JAXBElement<AddHeaderFootersResponse>(_AddHeaderFootersResponse_QNAME, AddHeaderFootersResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteWorkflowsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "deleteWorkflowsResponse")
+    public JAXBElement<DeleteWorkflowsResponse> createDeleteWorkflowsResponse(DeleteWorkflowsResponse value) {
+        return new JAXBElement<DeleteWorkflowsResponse>(_DeleteWorkflowsResponse_QNAME, DeleteWorkflowsResponse.class, null, value);
     }
 
     /**
@@ -3059,6 +3199,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReadBounces }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readBounces")
+    public JAXBElement<ReadBounces> createReadBounces(ReadBounces value) {
+        return new JAXBElement<ReadBounces>(_ReadBounces_QNAME, ReadBounces.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ReadListsResponse }{@code >}}
      * 
      */
@@ -3239,6 +3388,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddWorkflows }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "addWorkflows")
+    public JAXBElement<AddWorkflows> createAddWorkflows(AddWorkflows value) {
+        return new JAXBElement<AddWorkflows>(_AddWorkflows_QNAME, AddWorkflows.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AddSMSMessages }{@code >}}
      * 
      */
@@ -3383,6 +3541,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link AddWorkflowsResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "addWorkflowsResponse")
+    public JAXBElement<AddWorkflowsResponse> createAddWorkflowsResponse(AddWorkflowsResponse value) {
+        return new JAXBElement<AddWorkflowsResponse>(_AddWorkflowsResponse_QNAME, AddWorkflowsResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AddFields }{@code >}}
      * 
      */
@@ -3407,6 +3574,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readRecentInboundActivitiesResponse")
     public JAXBElement<ReadRecentInboundActivitiesResponse> createReadRecentInboundActivitiesResponse(ReadRecentInboundActivitiesResponse value) {
         return new JAXBElement<ReadRecentInboundActivitiesResponse>(_ReadRecentInboundActivitiesResponse_QNAME, ReadRecentInboundActivitiesResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteWorkflows }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "deleteWorkflows")
+    public JAXBElement<DeleteWorkflows> createDeleteWorkflows(DeleteWorkflows value) {
+        return new JAXBElement<DeleteWorkflows>(_DeleteWorkflows_QNAME, DeleteWorkflows.class, null, value);
     }
 
     /**
@@ -3464,6 +3640,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReadUnsubscribesResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readUnsubscribesResponse")
+    public JAXBElement<ReadUnsubscribesResponse> createReadUnsubscribesResponse(ReadUnsubscribesResponse value) {
+        return new JAXBElement<ReadUnsubscribesResponse>(_ReadUnsubscribesResponse_QNAME, ReadUnsubscribesResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link UpdateMessageRulesResponse }{@code >}}
      * 
      */
@@ -3488,6 +3673,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readDeliveryGroups")
     public JAXBElement<ReadDeliveryGroups> createReadDeliveryGroups(ReadDeliveryGroups value) {
         return new JAXBElement<ReadDeliveryGroups>(_ReadDeliveryGroups_QNAME, ReadDeliveryGroups.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReadBouncesResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readBouncesResponse")
+    public JAXBElement<ReadBouncesResponse> createReadBouncesResponse(ReadBouncesResponse value) {
+        return new JAXBElement<ReadBouncesResponse>(_ReadBouncesResponse_QNAME, ReadBouncesResponse.class, null, value);
     }
 
     /**
@@ -3569,6 +3763,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "deleteLogins")
     public JAXBElement<DeleteLogins> createDeleteLogins(DeleteLogins value) {
         return new JAXBElement<DeleteLogins>(_DeleteLogins_QNAME, DeleteLogins.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReadUnsubscribes }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readUnsubscribes")
+    public JAXBElement<ReadUnsubscribes> createReadUnsubscribes(ReadUnsubscribes value) {
+        return new JAXBElement<ReadUnsubscribes>(_ReadUnsubscribes_QNAME, ReadUnsubscribes.class, null, value);
     }
 
     /**
@@ -3659,6 +3862,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readDeliveriesResponse")
     public JAXBElement<ReadDeliveriesResponse> createReadDeliveriesResponse(ReadDeliveriesResponse value) {
         return new JAXBElement<ReadDeliveriesResponse>(_ReadDeliveriesResponse_QNAME, ReadDeliveriesResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateWorkflows }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "updateWorkflows")
+    public JAXBElement<UpdateWorkflows> createUpdateWorkflows(UpdateWorkflows value) {
+        return new JAXBElement<UpdateWorkflows>(_UpdateWorkflows_QNAME, UpdateWorkflows.class, null, value);
     }
 
     /**

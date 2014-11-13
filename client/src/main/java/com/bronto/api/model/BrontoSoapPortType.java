@@ -333,6 +333,25 @@ public interface BrontoSoapPortType {
      * @param parameters
      * @param sessionHeader
      * @return
+     *     returns com.bronto.api.model.DeleteWorkflowsResponse
+     * @throws ApiException_Exception
+     */
+    @WebMethod
+    @WebResult(name = "deleteWorkflowsResponse", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+    public DeleteWorkflowsResponse deleteWorkflows(
+        @WebParam(name = "deleteWorkflows", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
+        DeleteWorkflows parameters,
+        @WebParam(name = "sessionHeader", targetNamespace = "http://api.bronto.com/v4", header = true, partName = "sessionHeader")
+        SessionHeader sessionHeader)
+        throws ApiException_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @param sessionHeader
+     * @return
      *     returns com.bronto.api.model.DeleteHeaderFootersResponse
      * @throws ApiException_Exception
      */
@@ -390,15 +409,15 @@ public interface BrontoSoapPortType {
      * @param parameters
      * @param sessionHeader
      * @return
-     *     returns com.bronto.api.model.UpdateContentTagsResponse
+     *     returns com.bronto.api.model.ReadActivitiesResponse
      * @throws ApiException_Exception
      */
     @WebMethod
-    @WebResult(name = "updateContentTagsResponse", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
+    @WebResult(name = "readActivitiesResponse", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
     @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
-    public UpdateContentTagsResponse updateContentTags(
-        @WebParam(name = "updateContentTags", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
-        UpdateContentTags parameters,
+    public ReadActivitiesResponse readActivities(
+        @WebParam(name = "readActivities", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
+        ReadActivities parameters,
         @WebParam(name = "sessionHeader", targetNamespace = "http://api.bronto.com/v4", header = true, partName = "sessionHeader")
         SessionHeader sessionHeader)
         throws ApiException_Exception
@@ -409,15 +428,15 @@ public interface BrontoSoapPortType {
      * @param parameters
      * @param sessionHeader
      * @return
-     *     returns com.bronto.api.model.ReadActivitiesResponse
+     *     returns com.bronto.api.model.UpdateContentTagsResponse
      * @throws ApiException_Exception
      */
     @WebMethod
-    @WebResult(name = "readActivitiesResponse", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
+    @WebResult(name = "updateContentTagsResponse", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
     @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
-    public ReadActivitiesResponse readActivities(
-        @WebParam(name = "readActivities", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
-        ReadActivities parameters,
+    public UpdateContentTagsResponse updateContentTags(
+        @WebParam(name = "updateContentTags", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
+        UpdateContentTags parameters,
         @WebParam(name = "sessionHeader", targetNamespace = "http://api.bronto.com/v4", header = true, partName = "sessionHeader")
         SessionHeader sessionHeader)
         throws ApiException_Exception
@@ -475,6 +494,25 @@ public interface BrontoSoapPortType {
     public AddDeliveryGroupResponse addDeliveryGroup(
         @WebParam(name = "addDeliveryGroup", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
         AddDeliveryGroup parameters,
+        @WebParam(name = "sessionHeader", targetNamespace = "http://api.bronto.com/v4", header = true, partName = "sessionHeader")
+        SessionHeader sessionHeader)
+        throws ApiException_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @param sessionHeader
+     * @return
+     *     returns com.bronto.api.model.ReadUnsubscribesResponse
+     * @throws ApiException_Exception
+     */
+    @WebMethod
+    @WebResult(name = "readUnsubscribesResponse", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+    public ReadUnsubscribesResponse readUnsubscribes(
+        @WebParam(name = "readUnsubscribes", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
+        ReadUnsubscribes parameters,
         @WebParam(name = "sessionHeader", targetNamespace = "http://api.bronto.com/v4", header = true, partName = "sessionHeader")
         SessionHeader sessionHeader)
         throws ApiException_Exception
@@ -1376,6 +1414,25 @@ public interface BrontoSoapPortType {
      * @param parameters
      * @param sessionHeader
      * @return
+     *     returns com.bronto.api.model.AddWorkflowsResponse
+     * @throws ApiException_Exception
+     */
+    @WebMethod
+    @WebResult(name = "addWorkflowsResponse", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+    public AddWorkflowsResponse addWorkflows(
+        @WebParam(name = "addWorkflows", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
+        AddWorkflows parameters,
+        @WebParam(name = "sessionHeader", targetNamespace = "http://api.bronto.com/v4", header = true, partName = "sessionHeader")
+        SessionHeader sessionHeader)
+        throws ApiException_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @param sessionHeader
+     * @return
      *     returns com.bronto.api.model.ReadMessageRulesResponse
      * @throws ApiException_Exception
      */
@@ -1433,6 +1490,25 @@ public interface BrontoSoapPortType {
      * @param parameters
      * @param sessionHeader
      * @return
+     *     returns com.bronto.api.model.UpdateWorkflowsResponse
+     * @throws ApiException_Exception
+     */
+    @WebMethod
+    @WebResult(name = "updateWorkflowsResponse", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+    public UpdateWorkflowsResponse updateWorkflows(
+        @WebParam(name = "updateWorkflows", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
+        UpdateWorkflows parameters,
+        @WebParam(name = "sessionHeader", targetNamespace = "http://api.bronto.com/v4", header = true, partName = "sessionHeader")
+        SessionHeader sessionHeader)
+        throws ApiException_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @param sessionHeader
+     * @return
      *     returns com.bronto.api.model.UpdateAccountsResponse
      * @throws ApiException_Exception
      */
@@ -1442,6 +1518,25 @@ public interface BrontoSoapPortType {
     public UpdateAccountsResponse updateAccounts(
         @WebParam(name = "updateAccounts", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
         UpdateAccounts parameters,
+        @WebParam(name = "sessionHeader", targetNamespace = "http://api.bronto.com/v4", header = true, partName = "sessionHeader")
+        SessionHeader sessionHeader)
+        throws ApiException_Exception
+    ;
+
+    /**
+     * 
+     * @param parameters
+     * @param sessionHeader
+     * @return
+     *     returns com.bronto.api.model.ReadBouncesResponse
+     * @throws ApiException_Exception
+     */
+    @WebMethod
+    @WebResult(name = "readBouncesResponse", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+    public ReadBouncesResponse readBounces(
+        @WebParam(name = "readBounces", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
+        ReadBounces parameters,
         @WebParam(name = "sessionHeader", targetNamespace = "http://api.bronto.com/v4", header = true, partName = "sessionHeader")
         SessionHeader sessionHeader)
         throws ApiException_Exception
