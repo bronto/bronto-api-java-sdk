@@ -53,7 +53,7 @@ public class BrontoClientException extends RuntimeException {
             this.code = ((ApiException_Exception) getCause()).getFaultInfo().getErrorCode();
 		} else if (getCause() instanceof SOAPFaultException) {
 			this.code =
-			        parseCodeFromMessage(((SOAPFaultException) e).getMessage());
+			        parseCodeFromMessage(((SOAPFaultException) getCause()).getMessage());
         }
         for (Recoverable recover : Recoverable.values()) {
             if (recover.isRecoverable(getCause().getMessage())) {
