@@ -60,6 +60,11 @@ public class ContactReadRequest extends RichReadRequest<ContactFilter, ContactOb
         return this;
     }
 
+    public ContactReadRequest withIncludeEngagementData(boolean includeEngagementData) {
+        readContacts.setIncludeEngagementData(includeEngagementData);
+        return this;
+    }
+
     public ContactReadRequest withIncludeFields(String...fields) {
         for (String fieldId : fields) {
             readContacts.getFields().add(fieldId);
