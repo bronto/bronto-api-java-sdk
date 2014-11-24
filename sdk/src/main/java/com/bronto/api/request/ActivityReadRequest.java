@@ -1,22 +1,20 @@
 package com.bronto.api.request;
 
-import com.bronto.api.model.BrontoSoapPortType;
-import com.bronto.api.model.SessionHeader;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.xml.datatype.XMLGregorianCalendar;
 
-import com.bronto.api.model.ActivityPageSize;
-import com.bronto.api.model.FilterType;
-import com.bronto.api.model.FilterOperator;
 import com.bronto.api.model.ActivityFilter;
 import com.bronto.api.model.ActivityObject;
+import com.bronto.api.model.ActivityPageSize;
+import com.bronto.api.model.BrontoSoapPortType;
 import com.bronto.api.model.ReadActivities;
 import com.bronto.api.model.ReadDirection;
-import com.bronto.api.model.StringValue;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.bronto.api.model.SessionHeader;
+import com.bronto.api.util.ConversionUtils;
 
 public class ActivityReadRequest extends RichReadRequest<ActivityFilter, ActivityObject> {
-
     private final ReadActivities activities = new ReadActivities();
     private int pageLimit;
 
@@ -59,6 +57,15 @@ public class ActivityReadRequest extends RichReadRequest<ActivityFilter, Activit
 
     public ActivityReadRequest withReadDirection(ReadDirection direction) {
         getFilter().setReadDirection(direction);
+        return this;
+    }
+
+    public ActivityReadRequest withStart(Date start) {
+        return withStart(ConversionUtils.toXMLCalendar(start));
+    }
+
+    public ActivityReadRequest withStart(XMLGregorianCalendar start) {
+        getFilter().setStart(start);
         return this;
     }
 
