@@ -157,7 +157,7 @@ MessageObject message = messageOps.get(new MessageReadRequest().withId("123"));
 ### Create a Delivery
 
 ``` java
-DeliveryOperations deliveryOps = new DeliveryOperations(client);
+ObjectOperations<DeliveryObject> deliveryOps = client.transport(DeliveryObject.class);
 
 DeliveryRecipientObject recipient = new DeliveryRecipientObject();
 recipient.setDeliveryType(DeliveryRecipientSelection.SELECTED.getApiValue());
