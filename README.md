@@ -42,7 +42,7 @@ import com.bronto.api.*;
 import com.bronto.api.model.*;
 import static com.bronto.api.model.ObjectBuilder.newObject;
 
-String apiToken = "<You API token>";
+String apiToken = "<Your API token>";
 BrontoApi client = new BrontoClient(apiToken);
 
 String sessionId = client.login();
