@@ -29,7 +29,7 @@ The project is built [SBT](http://www.scala-sbt.org/) because it is a Superior B
 <dependency>
   <groupId>com.bronto</groupId>
   <artifactId>bronto-api-sdk</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.4-SNAPSHOT</version>
 </dependency>
 ```
 
