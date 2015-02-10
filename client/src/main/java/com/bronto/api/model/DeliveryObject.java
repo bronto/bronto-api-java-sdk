@@ -89,6 +89,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="numViewsDigg" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="numViewsMySpace" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="numSocialViews" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="cartId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="orderId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -165,7 +167,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "numViewsLinkedIn",
     "numViewsDigg",
     "numViewsMySpace",
-    "numSocialViews"
+    "numSocialViews",
+    "cartId",
+    "orderId"
 })
 public class DeliveryObject {
 
@@ -240,6 +244,8 @@ public class DeliveryObject {
     protected Long numViewsDigg;
     protected Long numViewsMySpace;
     protected Long numSocialViews;
+    protected String cartId;
+    protected String orderId;
 
     /**
      * Gets the value of the id property.
@@ -1862,6 +1868,54 @@ public class DeliveryObject {
      */
     public void setNumSocialViews(Long value) {
         this.numSocialViews = value;
+    }
+
+    /**
+     * Gets the value of the cartId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCartId() {
+        return cartId;
+    }
+
+    /**
+     * Sets the value of the cartId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCartId(String value) {
+        this.cartId = value;
+    }
+
+    /**
+     * Gets the value of the orderId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getOrderId() {
+        return orderId;
+    }
+
+    /**
+     * Sets the value of the orderId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setOrderId(String value) {
+        this.orderId = value;
     }
 
 }
