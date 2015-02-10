@@ -32,6 +32,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="modified" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="deleted" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="listIds" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="segmentIds" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="fields" type="{http://api.bronto.com/v4}contactField" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="SMSKeywordIDs" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="numSends" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
@@ -62,6 +63,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "modified",
     "deleted",
     "listIds",
+    "segmentIds",
     "fields",
     "smsKeywordIDs",
     "numSends",
@@ -88,6 +90,8 @@ public class ContactObject {
     protected Boolean deleted;
     @XmlElement(nillable = true)
     protected List<String> listIds;
+    @XmlElement(nillable = true)
+    protected List<String> segmentIds;
     @XmlElement(nillable = true)
     protected List<ContactField> fields;
     @XmlElement(name = "SMSKeywordIDs", nillable = true)
@@ -367,6 +371,35 @@ public class ContactObject {
             listIds = new ArrayList<String>();
         }
         return this.listIds;
+    }
+
+    /**
+     * Gets the value of the segmentIds property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the segmentIds property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getSegmentIds().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * 
+     * 
+     */
+    public List<String> getSegmentIds() {
+        if (segmentIds == null) {
+            segmentIds = new ArrayList<String>();
+        }
+        return this.segmentIds;
     }
 
     /**
