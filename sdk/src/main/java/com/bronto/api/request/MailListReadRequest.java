@@ -12,11 +12,9 @@ import com.bronto.api.model.StringValue;
 
 import java.util.List;
 
-public class MailListReadRequest extends RichReadRequest<MailListFilter, MailListObject> {
-    private final ReadLists lists = new ReadLists();
-
+public class MailListReadRequest extends RichReadRequest<MailListFilter, ReadLists, MailListObject> {
     public MailListReadRequest(MailListFilter filter, int pageNumber) {
-        super(filter, pageNumber);
+        super(filter, new ReadLists(), pageNumber);
     }
 
     public MailListReadRequest(MailListFilter filter) {
@@ -58,9 +56,14 @@ public class MailListReadRequest extends RichReadRequest<MailListFilter, MailLis
     }
 
     @Override
+    public MailListReadRequest copy() {
+        return new MailListReadRequest(getFilter(), getCurrentPage());
+    }
+
+    @Override
     public List<MailListObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        lists.setFilter(getFilter());
-        lists.setPageNumber(getCurrentPage());
-        return service.readLists(lists, header).getReturn();
+        request.setFilter(getFilter());
+        request.setPageNumber(getCurrentPage());
+        return service.readLists(request, header).getReturn();
     }
 }

@@ -13,9 +13,9 @@ import com.bronto.api.model.StringValue;
 
 import java.util.List;
 
-public class FieldReadRequest extends RichReadRequest<FieldsFilter, FieldObject> {
+public class FieldReadRequest extends RichReadRequest<FieldsFilter, ReadFields, FieldObject> {
     public FieldReadRequest(FieldsFilter filter, int pageNumber) {
-        super(filter, pageNumber);
+        super(filter, new ReadFields(), pageNumber);
     }
 
     public FieldReadRequest(FieldsFilter filter) {
@@ -52,10 +52,14 @@ public class FieldReadRequest extends RichReadRequest<FieldsFilter, FieldObject>
     }
 
     @Override
+    public FieldReadRequest copy() {
+        return new FieldReadRequest(getFilter(), getCurrentPage());
+    }
+
+    @Override
     public List<FieldObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        ReadFields fields = new ReadFields();
-        fields.setFilter(getFilter());
-        fields.setPageNumber(getCurrentPage());
-        return service.readFields(fields, header).getReturn();
+        request.setFilter(getFilter());
+        request.setPageNumber(getCurrentPage());
+        return service.readFields(request, header).getReturn();
     }
 }

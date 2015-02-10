@@ -9,12 +9,10 @@ import com.bronto.api.model.SmsMessageObject;
 
 import java.util.List;
 
-public class SmsMessageReadRequest extends AbstractMessageReadRequest<SmsMessageObject> {
-    private final ReadSMSMessages readMessages = new ReadSMSMessages();
-
+public class SmsMessageReadRequest extends AbstractMessageReadRequest<ReadSMSMessages, SmsMessageObject> {
     public SmsMessageReadRequest(MessageFilter filter, int pageNumber) {
-        super(filter, pageNumber);
-        readMessages.setIncludeContent(false);
+        super(filter, new ReadSMSMessages(), pageNumber);
+        withIncludeContent(false);
     }
 
     public SmsMessageReadRequest(MessageFilter filter) {
@@ -26,15 +24,21 @@ public class SmsMessageReadRequest extends AbstractMessageReadRequest<SmsMessage
     }
 
     @Override
-    public AbstractMessageReadRequest<SmsMessageObject> withIncludeContent(boolean includeContent) {
-        readMessages.setIncludeContent(includeContent);
+    public SmsMessageReadRequest withIncludeContent(boolean includeContent) {
+        request.setIncludeContent(includeContent);
         return this;
     }
 
     @Override
+    public SmsMessageReadRequest copy() {
+        return new SmsMessageReadRequest(getFilter(), getCurrentPage())
+            .withIncludeContent(request.isIncludeContent());
+    }
+
+    @Override
     public List<SmsMessageObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        readMessages.setFilter(getFilter());
-        readMessages.setPageNumber(getCurrentPage());
-        return service.readSMSMessages(readMessages, header).getReturn();
+        request.setFilter(getFilter());
+        request.setPageNumber(getCurrentPage());
+        return service.readSMSMessages(request, header).getReturn();
     }
 }

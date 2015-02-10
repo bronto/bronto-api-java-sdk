@@ -13,11 +13,9 @@ import com.bronto.api.model.StringValue;
 import java.util.Date;
 import java.util.List;
 
-public class SmsDeliveryReadRequest extends RichReadRequest<SmsDeliveryFilter, SmsDeliveryObject> {
-    private final ReadSMSDeliveries deliveries = new ReadSMSDeliveries();
-
+public class SmsDeliveryReadRequest extends RichReadRequest<SmsDeliveryFilter, ReadSMSDeliveries, SmsDeliveryObject> {
     public SmsDeliveryReadRequest(SmsDeliveryFilter filter, int pageNumber) {
-        super(filter, pageNumber);
+        super(filter, new ReadSMSDeliveries(), pageNumber);
         withIncludeContent(false).withIncludeRecipients(false);
     }
 
@@ -60,12 +58,12 @@ public class SmsDeliveryReadRequest extends RichReadRequest<SmsDeliveryFilter, S
     }
 
     public SmsDeliveryReadRequest withIncludeContent(boolean includeContent) {
-        deliveries.setIncludeContent(includeContent);
+        request.setIncludeContent(includeContent);
         return this;
     }
 
     public SmsDeliveryReadRequest withIncludeRecipients(boolean includeRecipients) {
-        deliveries.setIncludeRecipients(includeRecipients);
+        request.setIncludeRecipients(includeRecipients);
         return this;
     }
 
@@ -75,9 +73,16 @@ public class SmsDeliveryReadRequest extends RichReadRequest<SmsDeliveryFilter, S
     }
 
     @Override
+    public SmsDeliveryReadRequest copy() {
+        return new SmsDeliveryReadRequest(getFilter(), getCurrentPage())
+            .withIncludeContent(request.isIncludeContent())
+            .withIncludeRecipients(request.isIncludeRecipients());
+    }
+
+    @Override
     public List<SmsDeliveryObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        deliveries.setFilter(getFilter());
-        deliveries.setPageNumber(getCurrentPage());
-        return service.readSMSDeliveries(deliveries, header).getReturn();
+        request.setFilter(getFilter());
+        request.setPageNumber(getCurrentPage());
+        return service.readSMSDeliveries(request, header).getReturn();
     }
 }
