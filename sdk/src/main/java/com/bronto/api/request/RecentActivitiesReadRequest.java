@@ -14,10 +14,10 @@ import com.bronto.api.model.RecentActivitySearchRequest;
 import com.bronto.api.model.SessionHeader;
 import com.bronto.api.util.ConversionUtils;
 
-public abstract class RecentActivitiesReadRequest<T extends RecentActivitySearchRequest> extends RichReadRequest<T, RecentActivityObject> {
+public abstract class RecentActivitiesReadRequest<T extends RecentActivitySearchRequest, RQ> extends RichReadRequest<T, RQ, RecentActivityObject> {
 
-    public RecentActivitiesReadRequest(T filter, int pageNumber) {
-        super(filter, pageNumber);
+    public RecentActivitiesReadRequest(T filter, RQ request, int pageNumber) {
+        super(filter, request, pageNumber);
     }
 
     public RecentActivitiesReadRequest withPageNumber(int pageNumber) {

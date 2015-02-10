@@ -9,16 +9,22 @@ import com.bronto.api.model.StringValue;
 import java.util.Date;
 import java.util.List;
 
-public abstract class RichReadRequest<RF, RS> extends BrontoReadRequest<RS> {
+public abstract class RichReadRequest<RF, RQ, RS> extends BrontoReadRequest<RS> {
     protected final RF filter;
+    protected final RQ request;
 
-    public RichReadRequest(RF filter, int pageNumber) {
+    public RichReadRequest(RF filter, RQ request, int pageNumber) {
         this.filter = filter;
+        this.request = request;
         this.setCurrentPage(pageNumber);
     }
 
     public RF getFilter() {
         return filter;
+    }
+
+    public RQ getRequest() {
+        return request;
     }
 
     protected DateValue getDateValue(FilterOperator op, Date date) {
@@ -73,5 +79,10 @@ public abstract class RichReadRequest<RF, RS> extends BrontoReadRequest<RS> {
 
     protected void addDate(List<DateValue> dates, FilterOperator op, Date jDate) {
         dates.add(getDateValue(op, jDate));
+    }
+
+    // Don't want to force people to support cloning
+    public RichReadRequest<RF, RQ, RS> copy() {
+        throw new UnsupportedOperationException(String.format("%s does not support cloning.", getClass().getSimpleName()));
     }
 }

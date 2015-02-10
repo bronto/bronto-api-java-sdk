@@ -8,11 +8,9 @@ import com.bronto.api.model.RecentActivityObject;
 import com.bronto.api.model.RecentOutboundActivitySearchRequest;
 import com.bronto.api.model.SessionHeader;
 
-public class RecentOutboundActivitiesReadRequest extends RecentActivitiesReadRequest<RecentOutboundActivitySearchRequest> {
-    private ReadRecentOutboundActivities activities = new ReadRecentOutboundActivities();
-
+public class RecentOutboundActivitiesReadRequest extends RecentActivitiesReadRequest<RecentOutboundActivitySearchRequest, ReadRecentOutboundActivities> {
     public RecentOutboundActivitiesReadRequest(RecentOutboundActivitySearchRequest filter, int pageNumber) {
-        super(filter, pageNumber);
+        super(filter, new ReadRecentOutboundActivities(), pageNumber);
     }
 
     public RecentOutboundActivitiesReadRequest(int pageNumber) {
@@ -30,8 +28,13 @@ public class RecentOutboundActivitiesReadRequest extends RecentActivitiesReadReq
     }
 
     @Override
+    public RecentOutboundActivitiesReadRequest copy() {
+        return new RecentOutboundActivitiesReadRequest(getFilter(), getCurrentPage());
+    }
+
+    @Override
     protected List<RecentActivityObject> invokeSpecificRead(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        activities.setFilter(getFilter());
-        return service.readRecentOutboundActivities(activities, header).getReturn();
+        request.setFilter(getFilter());
+        return service.readRecentOutboundActivities(request, header).getReturn();
     }
 }
