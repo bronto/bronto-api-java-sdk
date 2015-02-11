@@ -1,19 +1,17 @@
 package com.bronto.api.request;
 
-import com.bronto.api.model.BrontoSoapPortType;
-import com.bronto.api.model.SessionHeader;
+import java.util.Date;
+import java.util.List;
 
+import com.bronto.api.model.BrontoSoapPortType;
 import com.bronto.api.model.ContactFilter;
 import com.bronto.api.model.ContactObject;
 import com.bronto.api.model.ContactStatus;
-import com.bronto.api.model.FilterType;
 import com.bronto.api.model.FilterOperator;
+import com.bronto.api.model.FilterType;
 import com.bronto.api.model.ReadContacts;
+import com.bronto.api.model.SessionHeader;
 import com.bronto.api.model.StringValue;
-
-import java.util.Date;
-import java.util.List;
-import java.util.ArrayList;
 
 public class ContactReadRequest extends RichReadRequest<ContactFilter, ContactObject> {
     private final ReadContacts readContacts = new ReadContacts();
@@ -37,6 +35,11 @@ public class ContactReadRequest extends RichReadRequest<ContactFilter, ContactOb
 
     public ContactReadRequest withIncludeLists(boolean includeLists) {
         readContacts.setIncludeLists(includeLists);
+        return this;
+    }
+    
+    public ContactReadRequest withIncludeSegments(boolean includeSegments) {
+        readContacts.setIncludeSegments(includeSegments);
         return this;
     }
 
