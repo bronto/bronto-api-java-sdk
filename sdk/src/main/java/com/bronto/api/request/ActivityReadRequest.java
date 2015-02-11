@@ -14,12 +14,11 @@ import com.bronto.api.model.ReadDirection;
 import com.bronto.api.model.SessionHeader;
 import com.bronto.api.util.ConversionUtils;
 
-public class ActivityReadRequest extends RichReadRequest<ActivityFilter, ActivityObject> {
-    private final ReadActivities activities = new ReadActivities();
+public class ActivityReadRequest extends RichReadRequest<ActivityFilter, ReadActivities, ActivityObject> {
     private int pageLimit;
 
     public ActivityReadRequest(ActivityFilter filter, int pageNumber, int pageLimit) {
-        super(filter, pageNumber);
+        super(filter, new ReadActivities(), pageNumber);
         this.pageLimit = pageLimit;
     }
 
@@ -70,6 +69,11 @@ public class ActivityReadRequest extends RichReadRequest<ActivityFilter, Activit
     }
 
     @Override
+    public ActivityReadRequest copy() {
+        return new ActivityReadRequest(getFilter(), getCurrentPage());
+    }
+
+    @Override
     public List<ActivityObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
         if (getCurrentPage() > pageLimit) {
             return new ArrayList<ActivityObject>();
@@ -84,7 +88,7 @@ public class ActivityReadRequest extends RichReadRequest<ActivityFilter, Activit
             default:
                 withReadDirection(ReadDirection.NEXT);
         }
-        activities.setFilter(getFilter());
-        return service.readActivities(activities, header).getReturn();
+        request.setFilter(getFilter());
+        return service.readActivities(request, header).getReturn();
     }
 }

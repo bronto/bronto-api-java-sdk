@@ -12,12 +12,10 @@ import com.bronto.api.model.SessionHeader;
 import com.bronto.api.model.StringValue;
 
 public class HeaderFooterReadRequest 
-	extends RichReadRequest<HeaderFooterFilter, HeaderFooterObject> {
+	extends RichReadRequest<HeaderFooterFilter, ReadHeaderFooters, HeaderFooterObject> {
 
-	private final ReadHeaderFooters headerFooters = new ReadHeaderFooters();
-	
 	public HeaderFooterReadRequest(HeaderFooterFilter filter, int pageNumber) {
-		super(filter, pageNumber);
+		super(filter, new ReadHeaderFooters(), pageNumber);
 	}
 	
 	public HeaderFooterReadRequest(HeaderFooterFilter filter) {
@@ -64,15 +62,21 @@ public class HeaderFooterReadRequest
 	}
 	
 	public HeaderFooterReadRequest withIncludeContent(boolean includeContent) {
-		headerFooters.setIncludeContent(includeContent);
+		request.setIncludeContent(includeContent);
 		return this;
 	}
+
+    @Override
+    public HeaderFooterReadRequest copy() {
+        return new HeaderFooterReadRequest(getFilter(), getCurrentPage())
+            .withIncludeContent(request.isIncludeContent());
+    }
 
 	@Override
 	public List<HeaderFooterObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
 		
-		headerFooters.setFilter(getFilter());
-		headerFooters.setPageNumber(getCurrentPage());
-		return service.readHeaderFooters(headerFooters, header).getReturn();
+		request.setFilter(getFilter());
+		request.setPageNumber(getCurrentPage());
+		return service.readHeaderFooters(request, header).getReturn();
 	}
 }

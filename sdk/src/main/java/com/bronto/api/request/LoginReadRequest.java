@@ -12,11 +12,9 @@ import com.bronto.api.model.StringValue;
 
 import java.util.List;
 
-public class LoginReadRequest extends RichReadRequest<LoginFilter, LoginObject> {
-    private final ReadLogins logins = new ReadLogins();
-
+public class LoginReadRequest extends RichReadRequest<LoginFilter, ReadLogins, LoginObject> {
     public LoginReadRequest(LoginFilter filter, int pageNumber) {
-        super(filter, pageNumber);
+        super(filter, new ReadLogins(), pageNumber);
     }
 
     public LoginReadRequest(LoginFilter filter) {
@@ -53,9 +51,14 @@ public class LoginReadRequest extends RichReadRequest<LoginFilter, LoginObject> 
     }
 
     @Override
+    public LoginReadRequest copy() {
+        return new LoginReadRequest(getFilter(), getCurrentPage());
+    }
+
+    @Override
     public List<LoginObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        logins.setFilter(getFilter());
-        logins.setPageNumber(getCurrentPage());
-        return service.readLogins(logins, header).getReturn();
+        request.setFilter(getFilter());
+        request.setPageNumber(getCurrentPage());
+        return service.readLogins(request, header).getReturn();
     }
 }

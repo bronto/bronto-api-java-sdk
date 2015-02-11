@@ -13,11 +13,9 @@ import com.bronto.api.model.StringValue;
 
 import java.util.List;
 
-public class SmsKeywordReadRequest extends RichReadRequest<SmsKeywordFilter, SmsKeywordObject> {
-    private final ReadSMSKeywords smsKeywords = new ReadSMSKeywords();
-
+public class SmsKeywordReadRequest extends RichReadRequest<SmsKeywordFilter, ReadSMSKeywords, SmsKeywordObject> {
     public SmsKeywordReadRequest(SmsKeywordFilter filter, int pageNumber) {
-        super(filter, pageNumber);
+        super(filter, new ReadSMSKeywords(), pageNumber);
     }
 
     public SmsKeywordReadRequest(SmsKeywordFilter filter) {
@@ -64,7 +62,7 @@ public class SmsKeywordReadRequest extends RichReadRequest<SmsKeywordFilter, Sms
     }
 
     public SmsKeywordReadRequest withIncludeDeleted(boolean includeDeleted) {
-        smsKeywords.setIncludeDeleted(includeDeleted);
+        request.setIncludeDeleted(includeDeleted);
         return this;
     }
 
@@ -74,9 +72,15 @@ public class SmsKeywordReadRequest extends RichReadRequest<SmsKeywordFilter, Sms
     }
 
     @Override
+    public SmsKeywordReadRequest copy() {
+        return new SmsKeywordReadRequest(getFilter(), getCurrentPage())
+            .withIncludeDeleted(request.isIncludeDeleted());
+    }
+
+    @Override
     public List<SmsKeywordObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        smsKeywords.setFilter(getFilter());
-        smsKeywords.setPageNumber(getCurrentPage());
-        return service.readSMSKeywords(smsKeywords, header).getReturn();
+        request.setFilter(getFilter());
+        request.setPageNumber(getCurrentPage());
+        return service.readSMSKeywords(request, header).getReturn();
     }
 }

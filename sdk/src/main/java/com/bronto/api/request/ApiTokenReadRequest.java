@@ -12,11 +12,9 @@ import com.bronto.api.model.StringValue;
 
 import java.util.List;
 
-public class ApiTokenReadRequest extends RichReadRequest<ApiTokenFilter, ApiTokenObject> {
-    private final ReadApiTokens apiTokens = new ReadApiTokens();
-
+public class ApiTokenReadRequest extends RichReadRequest<ApiTokenFilter, ReadApiTokens, ApiTokenObject> {
     public ApiTokenReadRequest(ApiTokenFilter filter, int pageNumber) {
-        super(filter, pageNumber);
+        super(filter, new ReadApiTokens(), pageNumber);
     }
 
     public ApiTokenReadRequest(ApiTokenFilter filter) {
@@ -63,9 +61,14 @@ public class ApiTokenReadRequest extends RichReadRequest<ApiTokenFilter, ApiToke
     }
 
     @Override
+    public ApiTokenReadRequest copy() {
+        return new ApiTokenReadRequest(getFilter(), getCurrentPage());
+    }
+
+    @Override
     public List<ApiTokenObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        apiTokens.setFilter(getFilter());
-        apiTokens.setPageNumber(getCurrentPage());
-        return service.readApiTokens(apiTokens, header).getReturn();
+        request.setFilter(getFilter());
+        request.setPageNumber(getCurrentPage());
+        return service.readApiTokens(request, header).getReturn();
     }
 }
