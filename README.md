@@ -29,7 +29,7 @@ The project is built [SBT](http://www.scala-sbt.org/) because it is a Superior B
 <dependency>
   <groupId>com.bronto</groupId>
   <artifactId>bronto-api-sdk</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.4</version>
 </dependency>
 ```
 
@@ -42,7 +42,7 @@ import com.bronto.api.*;
 import com.bronto.api.model.*;
 import static com.bronto.api.model.ObjectBuilder.newObject;
 
-String apiToken = "<You API token>";
+String apiToken = "<Your API token>";
 BrontoApi client = new BrontoClient(apiToken);
 
 String sessionId = client.login();
@@ -157,7 +157,7 @@ MessageObject message = messageOps.get(new MessageReadRequest().withId("123"));
 ### Create a Delivery
 
 ``` java
-DeliveryOperations deliveryOps = new DeliveryOperations(client);
+ObjectOperations<DeliveryObject> deliveryOps = client.transport(DeliveryObject.class);
 
 DeliveryRecipientObject recipient = new DeliveryRecipientObject();
 recipient.setDeliveryType(DeliveryRecipientSelection.SELECTED.getApiValue());
@@ -272,4 +272,17 @@ Future<String> json = fieldOps.get(read, new AsyncHandler<FieldObject, String>()
 });
 
 System.out.println(json.get());
+```
+
+### Read Conversions
+
+``` java
+ObjectOperationsAsync<ConversionObject> conversionOps =
+        client.transportAsync(ConversionObject.class);
+ConversionReadRequest conversions = new ConversionReadRequest();
+for (ConversionObject conversion : conversionOps.readAll(conversions)) {
+    System.out.println(String.format("Conversion id: %s (email: %s) "
+            + "- item = %s", conversion.getId(), conversion.getEmail(),
+            conversion.getItem()));
+}
 ```

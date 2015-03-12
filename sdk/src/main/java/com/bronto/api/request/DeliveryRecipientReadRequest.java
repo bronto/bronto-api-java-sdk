@@ -12,11 +12,10 @@ import com.bronto.api.model.StringValue;
 
 import java.util.List;
 
-public class DeliveryRecipientReadRequest extends RichReadRequest<DeliveryRecipientFilter, DeliveryRecipientStatObject> {
-    private final ReadDeliveryRecipients deliveryRecipients = new ReadDeliveryRecipients();
+public class DeliveryRecipientReadRequest extends RichReadRequest<DeliveryRecipientFilter, ReadDeliveryRecipients, DeliveryRecipientStatObject> {
 
     public DeliveryRecipientReadRequest(DeliveryRecipientFilter filter, int pageNumber) {
-        super(filter, pageNumber);
+        super(filter, new ReadDeliveryRecipients(), pageNumber);
     }
 
     public DeliveryRecipientReadRequest(DeliveryRecipientFilter filter) {
@@ -58,9 +57,14 @@ public class DeliveryRecipientReadRequest extends RichReadRequest<DeliveryRecipi
     }
 
     @Override
+    public DeliveryRecipientReadRequest copy() {
+        return new DeliveryRecipientReadRequest(getFilter(), getCurrentPage());
+    }
+
+    @Override
     public List<DeliveryRecipientStatObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        deliveryRecipients.setFilter(getFilter());
-        deliveryRecipients.setPageNumber(getCurrentPage());
-        return service.readDeliveryRecipients(deliveryRecipients, header).getReturn();
+        request.setFilter(getFilter());
+        request.setPageNumber(getCurrentPage());
+        return service.readDeliveryRecipients(request, header).getReturn();
     }
 }

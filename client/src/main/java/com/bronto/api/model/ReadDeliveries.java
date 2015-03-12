@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="includeRecipients" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="includeContent" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="pageNumber" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="includeOrderIds" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,7 +34,8 @@ import javax.xml.bind.annotation.XmlType;
     "filter",
     "includeRecipients",
     "includeContent",
-    "pageNumber"
+    "pageNumber",
+    "includeOrderIds"
 })
 public class ReadDeliveries {
 
@@ -41,6 +43,7 @@ public class ReadDeliveries {
     protected boolean includeRecipients;
     protected boolean includeContent;
     protected int pageNumber;
+    protected Boolean includeOrderIds;
 
     /**
      * Gets the value of the filter property.
@@ -112,6 +115,30 @@ public class ReadDeliveries {
      */
     public void setPageNumber(int value) {
         this.pageNumber = value;
+    }
+
+    /**
+     * Gets the value of the includeOrderIds property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isIncludeOrderIds() {
+        return includeOrderIds;
+    }
+
+    /**
+     * Sets the value of the includeOrderIds property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIncludeOrderIds(Boolean value) {
+        this.includeOrderIds = value;
     }
 
 }

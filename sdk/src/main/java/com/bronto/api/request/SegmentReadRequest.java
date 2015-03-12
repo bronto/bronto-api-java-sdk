@@ -12,11 +12,9 @@ import com.bronto.api.model.StringValue;
 
 import java.util.List;
 
-public class SegmentReadRequest extends RichReadRequest<SegmentFilter, SegmentObject> {
-    private final ReadSegments segments = new ReadSegments();
-
+public class SegmentReadRequest extends RichReadRequest<SegmentFilter, ReadSegments, SegmentObject> {
     public SegmentReadRequest(SegmentFilter filter, int pageNumber) {
-        super(filter, pageNumber);
+        super(filter, new ReadSegments(), pageNumber);
     }
 
     public SegmentReadRequest(SegmentFilter filter) {
@@ -58,9 +56,14 @@ public class SegmentReadRequest extends RichReadRequest<SegmentFilter, SegmentOb
     }
 
     @Override
+    public SegmentReadRequest copy() {
+        return new SegmentReadRequest(getFilter(), getCurrentPage());
+    }
+
+    @Override
     public List<SegmentObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        segments.setFilter(getFilter());
-        segments.setPageNumber(getCurrentPage());
-        return service.readSegments(segments, header).getReturn();
+        request.setFilter(getFilter());
+        request.setPageNumber(getCurrentPage());
+        return service.readSegments(request, header).getReturn();
     }
 }

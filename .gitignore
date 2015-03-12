@@ -1,2 +1,5 @@
 target
 .DS_*
+.project
+.settings
+.classpath

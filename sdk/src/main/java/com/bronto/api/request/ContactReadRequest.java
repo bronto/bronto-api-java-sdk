@@ -1,25 +1,22 @@
 package com.bronto.api.request;
 
-import com.bronto.api.model.BrontoSoapPortType;
-import com.bronto.api.model.SessionHeader;
+import java.util.Date;
+import java.util.List;
 
+import com.bronto.api.model.BrontoSoapPortType;
 import com.bronto.api.model.ContactFilter;
 import com.bronto.api.model.ContactObject;
 import com.bronto.api.model.ContactStatus;
-import com.bronto.api.model.FilterType;
 import com.bronto.api.model.FilterOperator;
+import com.bronto.api.model.FilterType;
 import com.bronto.api.model.ReadContacts;
+import com.bronto.api.model.SessionHeader;
 import com.bronto.api.model.StringValue;
 
-import java.util.Date;
-import java.util.List;
-import java.util.ArrayList;
-
-public class ContactReadRequest extends RichReadRequest<ContactFilter, ContactObject> {
-    private final ReadContacts readContacts = new ReadContacts();
+public class ContactReadRequest extends RichReadRequest<ContactFilter, ReadContacts, ContactObject> {
 
     public ContactReadRequest(ContactFilter filter, int pageNumber) {
-        super(filter, pageNumber);
+        super(filter, new ReadContacts(), pageNumber);
     }
 
     public ContactReadRequest(ContactFilter filter) {
@@ -36,41 +33,51 @@ public class ContactReadRequest extends RichReadRequest<ContactFilter, ContactOb
     }
 
     public ContactReadRequest withIncludeLists(boolean includeLists) {
-        readContacts.setIncludeLists(includeLists);
+        request.setIncludeLists(includeLists);
+        return this;
+    }
+    
+    public ContactReadRequest withIncludeSegments(boolean includeSegments) {
+        request.setIncludeSegments(includeSegments);
         return this;
     }
 
     public ContactReadRequest withIncludeSMSKeywords(boolean includeSMSKeywords) {
-        readContacts.setIncludeSMSKeywords(includeSMSKeywords);
+        request.setIncludeSMSKeywords(includeSMSKeywords);
         return this;
     }
 
     public ContactReadRequest withIncludeRFMData(boolean includeRFMData) {
-        readContacts.setIncludeRFMData(includeRFMData);
+        request.setIncludeRFMData(includeRFMData);
         return this;
     }
 
     public ContactReadRequest withIncludeGeoIPData(boolean includeGeoIPData) {
-        readContacts.setIncludeGeoIPData(includeGeoIPData);
+        request.setIncludeGeoIPData(includeGeoIPData);
         return this;
     }
 
     public ContactReadRequest withIncludeTechnologyData(boolean includeTechnologyData) {
-        readContacts.setIncludeTechnologyData(includeTechnologyData);
+        request.setIncludeTechnologyData(includeTechnologyData);
+        return this;
+    }
+
+    public ContactReadRequest withIncludeEngagementData(boolean includeEngagementData) {
+        request.setIncludeEngagementData(includeEngagementData);
         return this;
     }
 
     public ContactReadRequest withIncludeFields(String...fields) {
         for (String fieldId : fields) {
-            readContacts.getFields().add(fieldId);
+            request.getFields().add(fieldId);
         }
         return this;
     }
 
     public ContactReadRequest setIncludeFields(List<String> fields) {
-        readContacts.getFields().clear();
+        request.getFields().clear();
         for (String fieldId : fields) {
-            readContacts.getFields().add(fieldId);
+            request.getFields().add(fieldId);
         }
         return this;
     }
@@ -168,9 +175,21 @@ public class ContactReadRequest extends RichReadRequest<ContactFilter, ContactOb
     }
 
     @Override
+    public ContactReadRequest copy() {
+        return new ContactReadRequest(getFilter(), getCurrentPage())
+            .setIncludeFields(request.getFields())
+            .withIncludeLists(request.isIncludeLists())
+            .withIncludeSMSKeywords(request.isIncludeSMSKeywords())
+            .withIncludeTechnologyData(request.isIncludeTechnologyData())
+            .withIncludeGeoIPData(request.isIncludeGeoIPData())
+            .withIncludeEngagementData(request.isIncludeEngagementData())
+            .withIncludeRFMData(request.isIncludeRFMData());
+    }
+
+    @Override
     public List<ContactObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        readContacts.setFilter(filter);
-        readContacts.setPageNumber(getCurrentPage());
-        return service.readContacts(readContacts, header).getReturn();
+        request.setFilter(filter);
+        request.setPageNumber(getCurrentPage());
+        return service.readContacts(request, header).getReturn();
     }
 }

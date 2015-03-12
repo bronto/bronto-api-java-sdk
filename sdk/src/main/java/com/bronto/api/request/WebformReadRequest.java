@@ -12,11 +12,9 @@ import com.bronto.api.model.StringValue;
 
 import java.util.List;
 
-public class WebformReadRequest extends RichReadRequest<WebformFilter, WebformObject> {
-    private final ReadWebforms webforms = new ReadWebforms();
-
+public class WebformReadRequest extends RichReadRequest<WebformFilter, ReadWebforms, WebformObject> {
     public WebformReadRequest(WebformFilter filter, int pageNumber) {
-        super(filter, pageNumber);
+        super(filter, new ReadWebforms(), pageNumber);
     }
 
     public WebformReadRequest(WebformFilter filter) {
@@ -63,9 +61,14 @@ public class WebformReadRequest extends RichReadRequest<WebformFilter, WebformOb
     }
 
     @Override
+    public WebformReadRequest copy() {
+        return new WebformReadRequest(getFilter(), getCurrentPage());
+    }
+
+    @Override
     public List<WebformObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        webforms.setFilter(getFilter());
-        webforms.setPageNumber(getCurrentPage());
-        return service.readWebforms(webforms, header).getReturn();
+        request.setFilter(getFilter());
+        request.setPageNumber(getCurrentPage());
+        return service.readWebforms(request, header).getReturn();
     }
 }

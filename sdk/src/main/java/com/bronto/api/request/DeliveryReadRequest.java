@@ -15,11 +15,9 @@ import com.bronto.api.model.StringValue;
 import java.util.Date;
 import java.util.List;
 
-public class DeliveryReadRequest extends RichReadRequest<DeliveryFilter, DeliveryObject> {
-    private final ReadDeliveries read = new ReadDeliveries();
-
+public class DeliveryReadRequest extends RichReadRequest<DeliveryFilter, ReadDeliveries, DeliveryObject> {
     public DeliveryReadRequest(DeliveryFilter filter, int pageNumber) {
-        super(filter, pageNumber);
+        super(filter, new ReadDeliveries(), pageNumber);
         withIncludeContent(false).withIncludeContent(false);
     }
 
@@ -42,12 +40,12 @@ public class DeliveryReadRequest extends RichReadRequest<DeliveryFilter, Deliver
     }
 
     public DeliveryReadRequest withIncludeRecipients(boolean includeRecipients) {
-        read.setIncludeRecipients(includeRecipients);
+        request.setIncludeRecipients(includeRecipients);
         return this;
     }
 
     public DeliveryReadRequest withIncludeContent(boolean includeContent) {
-        read.setIncludeContent(includeContent);
+        request.setIncludeContent(includeContent);
         return this;
     }
 
@@ -96,9 +94,16 @@ public class DeliveryReadRequest extends RichReadRequest<DeliveryFilter, Deliver
     }
 
     @Override
+    public DeliveryReadRequest copy() {
+        return new DeliveryReadRequest(getFilter(), getCurrentPage())
+            .withIncludeRecipients(request.isIncludeRecipients())
+            .withIncludeContent(request.isIncludeContent());
+    }
+
+    @Override
     public List<DeliveryObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        read.setFilter(getFilter());
-        read.setPageNumber(getCurrentPage());
-        return service.readDeliveries(read, header).getReturn();
+        request.setFilter(getFilter());
+        request.setPageNumber(getCurrentPage());
+        return service.readDeliveries(request, header).getReturn();
     }
 }

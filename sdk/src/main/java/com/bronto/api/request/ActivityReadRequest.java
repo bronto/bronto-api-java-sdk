@@ -1,27 +1,24 @@
 package com.bronto.api.request;
 
-import com.bronto.api.model.BrontoSoapPortType;
-import com.bronto.api.model.SessionHeader;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.xml.datatype.XMLGregorianCalendar;
 
-import com.bronto.api.model.ActivityPageSize;
-import com.bronto.api.model.FilterType;
-import com.bronto.api.model.FilterOperator;
 import com.bronto.api.model.ActivityFilter;
 import com.bronto.api.model.ActivityObject;
+import com.bronto.api.model.ActivityPageSize;
+import com.bronto.api.model.BrontoSoapPortType;
 import com.bronto.api.model.ReadActivities;
 import com.bronto.api.model.ReadDirection;
-import com.bronto.api.model.StringValue;
+import com.bronto.api.model.SessionHeader;
+import com.bronto.api.util.ConversionUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class ActivityReadRequest extends RichReadRequest<ActivityFilter, ActivityObject> {
-
-    private final ReadActivities activities = new ReadActivities();
+public class ActivityReadRequest extends RichReadRequest<ActivityFilter, ReadActivities, ActivityObject> {
     private int pageLimit;
 
     public ActivityReadRequest(ActivityFilter filter, int pageNumber, int pageLimit) {
-        super(filter, pageNumber);
+        super(filter, new ReadActivities(), pageNumber);
         this.pageLimit = pageLimit;
     }
 
@@ -62,6 +59,20 @@ public class ActivityReadRequest extends RichReadRequest<ActivityFilter, Activit
         return this;
     }
 
+    public ActivityReadRequest withStart(Date start) {
+        return withStart(ConversionUtils.toXMLCalendar(start));
+    }
+
+    public ActivityReadRequest withStart(XMLGregorianCalendar start) {
+        getFilter().setStart(start);
+        return this;
+    }
+
+    @Override
+    public ActivityReadRequest copy() {
+        return new ActivityReadRequest(getFilter(), getCurrentPage());
+    }
+
     @Override
     public List<ActivityObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
         if (getCurrentPage() > pageLimit) {
@@ -77,7 +88,7 @@ public class ActivityReadRequest extends RichReadRequest<ActivityFilter, Activit
             default:
                 withReadDirection(ReadDirection.NEXT);
         }
-        activities.setFilter(getFilter());
-        return service.readActivities(activities, header).getReturn();
+        request.setFilter(getFilter());
+        return service.readActivities(request, header).getReturn();
     }
 }

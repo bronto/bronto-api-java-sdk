@@ -12,11 +12,10 @@ import com.bronto.api.model.StringValue;
 
 import java.util.List;
 
-public class MessageFolderReadRequest extends RichReadRequest<MessageFolderFilter, MessageFolderObject> {
-    private final ReadMessageFolders messageFolders = new ReadMessageFolders();
+public class MessageFolderReadRequest extends RichReadRequest<MessageFolderFilter, ReadMessageFolders, MessageFolderObject> {
 
     public MessageFolderReadRequest(MessageFolderFilter filter, int pageNumber) {
-        super(filter, pageNumber);
+        super(filter, new ReadMessageFolders(), pageNumber);
     }
 
     public MessageFolderReadRequest(MessageFolderFilter filter) {
@@ -62,10 +61,14 @@ public class MessageFolderReadRequest extends RichReadRequest<MessageFolderFilte
         return this;
     }
 
+    public MessageFolderReadRequest copy() {
+        return new MessageFolderReadRequest(getFilter(), getCurrentPage());
+    }
+
     @Override
     public List<MessageFolderObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        messageFolders.setFilter(getFilter());
-        messageFolders.setPageNumber(getCurrentPage());
-        return service.readMessageFolders(messageFolders, header).getReturn();
+        request.setFilter(getFilter());
+        request.setPageNumber(getCurrentPage());
+        return service.readMessageFolders(request, header).getReturn();
     }
 }

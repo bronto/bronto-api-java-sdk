@@ -1,3 +1,1 @@
-resolvers += "Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
-
-addSbtPlugin("com.github.shivawu" %% "sbt-maven-plugin" % "0.1.3-SNAPSHOT")
+addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.11.2")
