@@ -1,17 +1,38 @@
 package com.bronto.api.app;
 
-import com.bronto.api.*;
-import com.bronto.api.model.*;
-import com.bronto.api.request.*;
-import com.bronto.api.operation.*;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+
+import javax.xml.soap.SOAPConstants;
+import javax.xml.soap.SOAPFactory;
+import javax.xml.soap.SOAPFault;
+import javax.xml.ws.soap.SOAPFaultException;
+
+import com.bronto.api.BrontoApiAsync;
+import com.bronto.api.BrontoClientAsync;
+import com.bronto.api.BrontoClientException;
+import com.bronto.api.ObjectOperationsAsync;
+import com.bronto.api.model.ContactObject;
+import com.bronto.api.model.ContactStatus;
+import com.bronto.api.model.DeliveryObject;
+import com.bronto.api.model.DeliveryRecipientObject;
+import com.bronto.api.model.DeliveryStatus;
+import com.bronto.api.model.DeliveryType;
+import com.bronto.api.model.FieldObject;
+import com.bronto.api.model.FilterOperator;
+import com.bronto.api.model.HeaderFooterObject;
+import com.bronto.api.model.MailListObject;
+import com.bronto.api.operation.ContactOperationsAsync;
+import com.bronto.api.operation.MailListOperationsAsync;
+import com.bronto.api.request.AsyncReadPager;
+import com.bronto.api.request.BrontoReadRequest;
+import com.bronto.api.request.ContactReadRequest;
+import com.bronto.api.request.DeliveryReadRequest;
+import com.bronto.api.request.FieldReadRequest;
+import com.bronto.api.request.HeaderFooterReadRequest;
+import com.bronto.api.request.MailListReadRequest;
 
 public class App {
 
@@ -96,6 +117,12 @@ public class App {
             }
         }
 
+        SOAPFault fault = SOAPFactory.newInstance(SOAPConstants.SOAP_1_2_PROTOCOL).createFault();
+        fault.setFaultString("Client received SOAP Fault from server: 246: This is my message");
+        SOAPFaultException exception = new SOAPFaultException(fault);
+        BrontoClientException bce = new BrontoClientException(exception);
+        System.out.println("BrontoClientException code is " + bce.getCode());
+        
         HeaderFooterReadRequest headerFooters =
         		new HeaderFooterReadRequest().withIncludeContent(true);
         for (HeaderFooterObject headerFooter :
@@ -111,6 +138,5 @@ public class App {
         if (reader.readLine() != null) {
             client.shutdown();
         }
-
     }
 }

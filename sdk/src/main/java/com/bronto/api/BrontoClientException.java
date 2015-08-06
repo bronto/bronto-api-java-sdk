@@ -52,8 +52,7 @@ public class BrontoClientException extends RuntimeException {
         if (getCause() instanceof ApiException_Exception) {
             this.code = ((ApiException_Exception) getCause()).getFaultInfo().getErrorCode();
 		} else if (getCause() instanceof SOAPFaultException) {
-			this.code =
-			        parseCodeFromMessage(((SOAPFaultException) getCause()).getMessage());
+			this.code = parseCodeFromMessage(((SOAPFaultException) getCause()).getMessage());
         }
         for (Recoverable recover : Recoverable.values()) {
             if (recover.isRecoverable(getCause().getMessage())) {
@@ -95,7 +94,7 @@ public class BrontoClientException extends RuntimeException {
 
 	private int parseCodeFromMessage(String message) {
 		if (message.contains(":")) {
-			String codeString = message.split(":")[0];
+			String codeString = message.split(":")[1].trim();
 			try {
 				return Integer.parseInt(codeString);
 			} catch (NumberFormatException nfe) {
