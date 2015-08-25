@@ -1,10 +1,9 @@
 package com.bronto.api;
 
-import com.bronto.api.request.BrontoReadRequest;
-import com.bronto.api.model.WriteResult;
-
 import java.util.List;
-import java.util.concurrent.Future;
+
+import com.bronto.api.model.WriteResult;
+import com.bronto.api.request.BrontoReadRequest;
 
 public interface ObjectOperations<O> extends CommonOperations<O> {
     public O get(BrontoReadRequest<O> request);
@@ -14,7 +13,10 @@ public interface ObjectOperations<O> extends CommonOperations<O> {
     public WriteResult update(List<O> objects);
     public WriteResult delete(List<O> objects);
 
-    public WriteResult add(O...objects);
-    public WriteResult update(O...objects);
-    public WriteResult delete(O...objects);
+    @SuppressWarnings("unchecked")
+	public WriteResult add(O... objects);
+    @SuppressWarnings("unchecked")
+    public WriteResult update(O... objects);
+    @SuppressWarnings("unchecked")
+    public WriteResult delete(O... objects);
 }

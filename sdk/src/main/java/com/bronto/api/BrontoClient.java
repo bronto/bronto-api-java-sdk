@@ -29,7 +29,6 @@ public class BrontoClient implements BrontoApi {
     private final BrontoSoapApiImplService apiService;
     private final BrontoClientOptions options;
     private SessionHeader header;
-    private BrontoApiObserver observer;
 
 	/**
 	 * Initializes a Bronto API client using the given API token, client
@@ -106,7 +105,6 @@ public class BrontoClient implements BrontoApi {
     }
 
     protected void setTimeouts(BrontoSoapPortType port, int adjust, BrontoClientException.Recoverable timeout) {
-        Map<String, Object> requestContext = ((BindingProvider) port).getRequestContext();
         if (timeout == null || timeout == BrontoClientException.Recoverable.READ_TIMEOUT) {
             setRequestTimeout(port, adjust);
         } else if (timeout == null || timeout == BrontoClientException.Recoverable.CONNECTION_TIMEOUT) {

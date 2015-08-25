@@ -47,6 +47,7 @@ public class ActivityFilter {
     protected Integer size;
     @XmlElement(nillable = true)
     protected List<String> types;
+    @XmlSchemaType(name = "string")
     protected ReadDirection readDirection;
 
     /**

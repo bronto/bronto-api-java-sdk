@@ -1,14 +1,12 @@
 package com.bronto.api.request;
 
-import com.bronto.api.model.BrontoSoapPortType;
-import com.bronto.api.model.SessionHeader;
+import java.util.List;
 
+import com.bronto.api.model.BrontoSoapPortType;
 import com.bronto.api.model.ConversionFilter;
 import com.bronto.api.model.ConversionObject;
 import com.bronto.api.model.ReadConversions;
-import com.bronto.api.model.StringValue;
-
-import java.util.List;
+import com.bronto.api.model.SessionHeader;
 
 public class ConversionReadRequest extends RichReadRequest<ConversionFilter, ReadConversions, ConversionObject> {
     public ConversionReadRequest(ConversionFilter filter, int pageNumber) {

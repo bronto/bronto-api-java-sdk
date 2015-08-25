@@ -7,7 +7,10 @@ import javax.xml.ws.soap.SOAPFaultException;
 import com.bronto.api.model.ApiException_Exception;
 
 public class BrontoClientException extends RuntimeException {
-    private Recoverable recoverable;
+    
+	private static final long serialVersionUID = 3433043618935230668L;
+	
+	private Recoverable recoverable;
     private int code = 0;
 
     public static enum Recoverable {

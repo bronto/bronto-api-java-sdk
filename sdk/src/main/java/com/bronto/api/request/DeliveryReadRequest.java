@@ -1,19 +1,17 @@
 package com.bronto.api.request;
 
-import com.bronto.api.model.BrontoSoapPortType;
-import com.bronto.api.model.SessionHeader;
-
-import com.bronto.api.model.DeliveryFilter;
-import com.bronto.api.model.DeliveryStatus;
-import com.bronto.api.model.DeliveryType;
-import com.bronto.api.model.DeliveryObject;
-import com.bronto.api.model.FilterType;
-import com.bronto.api.model.FilterOperator;
-import com.bronto.api.model.ReadDeliveries;
-import com.bronto.api.model.StringValue;
-
 import java.util.Date;
 import java.util.List;
+
+import com.bronto.api.model.BrontoSoapPortType;
+import com.bronto.api.model.DeliveryFilter;
+import com.bronto.api.model.DeliveryObject;
+import com.bronto.api.model.DeliveryStatus;
+import com.bronto.api.model.DeliveryType;
+import com.bronto.api.model.FilterOperator;
+import com.bronto.api.model.FilterType;
+import com.bronto.api.model.ReadDeliveries;
+import com.bronto.api.model.SessionHeader;
 
 public class DeliveryReadRequest extends RichReadRequest<DeliveryFilter, ReadDeliveries, DeliveryObject> {
     public DeliveryReadRequest(DeliveryFilter filter, int pageNumber) {

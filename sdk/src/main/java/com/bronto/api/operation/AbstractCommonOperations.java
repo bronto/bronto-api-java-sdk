@@ -1,20 +1,14 @@
 package com.bronto.api.operation;
 
-import com.bronto.api.BrontoApi;
-import com.bronto.api.BrontoClientException;
-import com.bronto.api.CommonOperations;
-import com.bronto.api.reflect.ApiReflection;
+import java.util.Iterator;
 
+import com.bronto.api.BrontoApi;
+import com.bronto.api.CommonOperations;
 import com.bronto.api.model.ObjectBuilder;
 import com.bronto.api.model.WriteResult;
-
-import com.bronto.api.request.BrontoReadRequest;
+import com.bronto.api.reflect.ApiReflection;
 import com.bronto.api.request.BrontoReadPager;
-
-import com.bronto.api.operation.BrontoWriteBatch;
-import com.bronto.api.operation.BrontoWritePager;
-
-import java.util.Iterator;
+import com.bronto.api.request.BrontoReadRequest;
 
 public abstract class AbstractCommonOperations<C extends BrontoApi, O> implements CommonOperations<O> {
     protected final C client;
@@ -34,13 +28,12 @@ public abstract class AbstractCommonOperations<C extends BrontoApi, O> implement
         return ObjectBuilder.newObject(clazz);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public Iterable<O> readAll(final BrontoReadRequest<O> request) {
         return new Iterable<O>() {
             @Override
             public Iterator<O> iterator() {
-                return new BrontoReadPager(client, request);
+                return new BrontoReadPager<O>(client, request);
             }
         };
     }
@@ -49,7 +42,7 @@ public abstract class AbstractCommonOperations<C extends BrontoApi, O> implement
         return new Iterable<WriteResult>() {
             @Override
             public Iterator<WriteResult> iterator() {
-                return new BrontoWritePager(client, reflect, batches);
+                return new BrontoWritePager<O>(client, reflect, batches);
             }
         };
     }

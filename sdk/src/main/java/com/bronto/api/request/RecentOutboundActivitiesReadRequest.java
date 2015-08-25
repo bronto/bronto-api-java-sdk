@@ -22,7 +22,7 @@ public class RecentOutboundActivitiesReadRequest extends RecentActivitiesReadReq
     }
 
     @Override
-    public RecentActivitiesReadRequest withTypes(String...types) {
+    public RecentActivitiesReadRequest<RecentOutboundActivitySearchRequest, ReadRecentOutboundActivities> withTypes(String...types) {
         setStrings(getFilter().getTypes(), types);
         return this;
     }

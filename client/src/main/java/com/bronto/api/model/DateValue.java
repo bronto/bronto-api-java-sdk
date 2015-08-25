@@ -35,6 +35,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class DateValue {
 
+    @XmlSchemaType(name = "string")
     protected FilterOperator operator;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar value;

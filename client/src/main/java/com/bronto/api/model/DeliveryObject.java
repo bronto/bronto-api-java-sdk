@@ -39,6 +39,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="content" type="{http://api.bronto.com/v4}messageContentObject" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="recipients" type="{http://api.bronto.com/v4}deliveryRecipientObject" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="fields" type="{http://api.bronto.com/v4}messageFieldObject" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="products" type="{http://api.bronto.com/v4}deliveryProductObject" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="remail" type="{http://api.bronto.com/v4}remailObject" minOccurs="0"/>
  *         &lt;element name="numSends" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="numDeliveries" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
@@ -118,6 +119,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "content",
     "recipients",
     "fields",
+    "products",
     "remail",
     "numSends",
     "numDeliveries",
@@ -194,6 +196,8 @@ public class DeliveryObject {
     protected List<DeliveryRecipientObject> recipients;
     @XmlElement(nillable = true)
     protected List<MessageFieldObject> fields;
+    @XmlElement(nillable = true)
+    protected List<DeliveryProductObject> products;
     protected RemailObject remail;
     protected Long numSends;
     protected Long numDeliveries;
@@ -668,6 +672,35 @@ public class DeliveryObject {
             fields = new ArrayList<MessageFieldObject>();
         }
         return this.fields;
+    }
+
+    /**
+     * Gets the value of the products property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the products property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getProducts().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link DeliveryProductObject }
+     * 
+     * 
+     */
+    public List<DeliveryProductObject> getProducts() {
+        if (products == null) {
+            products = new ArrayList<DeliveryProductObject>();
+        }
+        return this.products;
     }
 
     /**

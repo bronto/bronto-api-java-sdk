@@ -1,19 +1,13 @@
 package com.bronto.api.model;
 
 public enum TokenPermission {
-    READ(1),
-    WRITE(2),
-    READ_WRITE(3),
-    SEND(4),
-    READ_SEND(5),
-    SEND_WRITE(6),
-    READ_SEND_WRITE(7);
-
-    private int permission;
-
-    TokenPermission(int value) {
-        this.permission = value;
-    }
+    READ,
+    WRITE,
+    READ_WRITE,
+    SEND,
+    READ_SEND,
+    SEND_WRITE,
+    READ_SEND_WRITE;
 
     public boolean canRead() {
         switch (this) {

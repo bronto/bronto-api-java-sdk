@@ -1,17 +1,14 @@
 package com.bronto.api.request;
 
-import com.bronto.api.model.BrontoSoapPortType;
-import com.bronto.api.model.SessionHeader;
-
-import com.bronto.api.model.FilterType;
-import com.bronto.api.model.FilterOperator;
-import com.bronto.api.model.SmsDeliveryFilter;
-import com.bronto.api.model.SmsDeliveryObject;
-import com.bronto.api.model.ReadSMSDeliveries;
-import com.bronto.api.model.StringValue;
-
 import java.util.Date;
 import java.util.List;
+
+import com.bronto.api.model.BrontoSoapPortType;
+import com.bronto.api.model.FilterType;
+import com.bronto.api.model.ReadSMSDeliveries;
+import com.bronto.api.model.SessionHeader;
+import com.bronto.api.model.SmsDeliveryFilter;
+import com.bronto.api.model.SmsDeliveryObject;
 
 public class SmsDeliveryReadRequest extends RichReadRequest<SmsDeliveryFilter, ReadSMSDeliveries, SmsDeliveryObject> {
     public SmsDeliveryReadRequest(SmsDeliveryFilter filter, int pageNumber) {

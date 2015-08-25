@@ -14,8 +14,11 @@ public interface ObjectOperationsAsync<O> extends CommonOperations<O> {
     public Future<WriteResult> update(List<O> objects);
     public Future<WriteResult> delete(List<O> objects);
 
+    @SuppressWarnings("unchecked")
     public Future<WriteResult> add(O...objects);
+    @SuppressWarnings("unchecked")
     public Future<WriteResult> update(O...objects);
+    @SuppressWarnings("unchecked")
     public Future<WriteResult> delete(O...objects);
 
     public <V> Future<V> get(BrontoReadRequest<O> request, AsyncHandler<O, V> handler);

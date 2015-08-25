@@ -1,18 +1,16 @@
 package com.bronto.api.request;
 
-import com.bronto.api.model.BrontoSoapPortType;
-import com.bronto.api.model.SessionHeader;
-
-import com.bronto.api.model.FilterType;
 import com.bronto.api.model.FilterOperator;
+import com.bronto.api.model.FilterType;
 import com.bronto.api.model.MessageFilter;
-import com.bronto.api.model.StringValue;
 
-import java.util.List;
-
-public abstract class AbstractMessageReadRequest<RQ, RS> extends RichReadRequest<MessageFilter, RQ, RS> {
+public abstract class AbstractMessageReadRequest<RQ, RS> extends SizedReadRequest<MessageFilter, RQ, RS> {
+    public AbstractMessageReadRequest(MessageFilter filter, RQ request, int pageNumber, int pageSize) {
+        super(filter, request, pageNumber, pageSize);
+    }
+    
     public AbstractMessageReadRequest(MessageFilter filter, RQ request, int pageNumber) {
-        super(filter, request, pageNumber);
+    	this(filter, request, pageNumber, getDefaultPageSize());
     }
 
     public abstract AbstractMessageReadRequest<RQ, RS> withIncludeContent(boolean includeContent);
@@ -20,6 +18,11 @@ public abstract class AbstractMessageReadRequest<RQ, RS> extends RichReadRequest
     public AbstractMessageReadRequest<RQ, RS> withPageNumber(int pageNumber) {
         setCurrentPage(pageNumber);
         return this;
+    }
+    
+    public AbstractMessageReadRequest<RQ, RS> withPageSize(int pageSize) {
+    	this.setPageSize(pageSize);
+    	return this;
     }
 
     public AbstractMessageReadRequest<RQ, RS> withFilterType(FilterType type) {
