@@ -1,21 +1,22 @@
 package com.bronto.api.request;
 
-import com.bronto.api.model.BrontoSoapPortType;
-import com.bronto.api.model.FieldType;
-import com.bronto.api.model.SessionHeader;
-
-import com.bronto.api.model.FieldsFilter;
-import com.bronto.api.model.FieldObject;
-import com.bronto.api.model.FilterType;
-import com.bronto.api.model.FilterOperator;
-import com.bronto.api.model.ReadFields;
-import com.bronto.api.model.StringValue;
-
 import java.util.List;
 
-public class FieldReadRequest extends RichReadRequest<FieldsFilter, ReadFields, FieldObject> {
+import com.bronto.api.model.BrontoSoapPortType;
+import com.bronto.api.model.FieldObject;
+import com.bronto.api.model.FieldsFilter;
+import com.bronto.api.model.FilterOperator;
+import com.bronto.api.model.FilterType;
+import com.bronto.api.model.ReadFields;
+import com.bronto.api.model.SessionHeader;
+
+public class FieldReadRequest extends SizedReadRequest<FieldsFilter, ReadFields, FieldObject> {
+    public FieldReadRequest(FieldsFilter filter, int pageNumber, int pageSize) {
+        super(filter, new ReadFields(), pageNumber, pageSize);
+    }
+    
     public FieldReadRequest(FieldsFilter filter, int pageNumber) {
-        super(filter, new ReadFields(), pageNumber);
+    	this(filter, pageNumber, getDefaultPageSize());
     }
 
     public FieldReadRequest(FieldsFilter filter) {
@@ -29,6 +30,11 @@ public class FieldReadRequest extends RichReadRequest<FieldsFilter, ReadFields, 
     public FieldReadRequest withPageNumber(int pageNumber) {
         this.setCurrentPage(pageNumber);
         return this;
+    }
+    
+    public FieldReadRequest withPageSize(int pageSize) {
+    	this.setPageSize(pageSize);
+    	return this;
     }
 
     public FieldReadRequest withId(String...ids) {
@@ -53,13 +59,16 @@ public class FieldReadRequest extends RichReadRequest<FieldsFilter, ReadFields, 
 
     @Override
     public FieldReadRequest copy() {
-        return new FieldReadRequest(getFilter(), getCurrentPage());
+        return new FieldReadRequest(getFilter(), getCurrentPage(), getPageSize());
     }
 
     @Override
     public List<FieldObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
         request.setFilter(getFilter());
         request.setPageNumber(getCurrentPage());
+        if (!isDefaultPageSize()) {
+        	request.setPageSize(getPageSize());
+        }
         return service.readFields(request, header).getReturn();
     }
 }

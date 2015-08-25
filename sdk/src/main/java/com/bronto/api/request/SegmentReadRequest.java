@@ -12,9 +12,13 @@ import com.bronto.api.model.StringValue;
 
 import java.util.List;
 
-public class SegmentReadRequest extends RichReadRequest<SegmentFilter, ReadSegments, SegmentObject> {
+public class SegmentReadRequest extends SizedReadRequest<SegmentFilter, ReadSegments, SegmentObject> {
+    public SegmentReadRequest(SegmentFilter filter, int pageNumber, int pageSize) {
+        super(filter, new ReadSegments(), pageNumber, pageSize);
+    }
+    
     public SegmentReadRequest(SegmentFilter filter, int pageNumber) {
-        super(filter, new ReadSegments(), pageNumber);
+    	this(filter, pageNumber, getDefaultPageSize());
     }
 
     public SegmentReadRequest(SegmentFilter filter) {
@@ -28,6 +32,11 @@ public class SegmentReadRequest extends RichReadRequest<SegmentFilter, ReadSegme
     public SegmentReadRequest withPageNumber(int pageNumber) {
         this.setCurrentPage(pageNumber);
         return this;
+    }
+    
+    public SegmentReadRequest withPageSize(int pageSize) {
+    	this.setPageSize(pageSize);
+    	return this;
     }
 
     public SegmentReadRequest withName(StringValue...names) {
@@ -57,13 +66,16 @@ public class SegmentReadRequest extends RichReadRequest<SegmentFilter, ReadSegme
 
     @Override
     public SegmentReadRequest copy() {
-        return new SegmentReadRequest(getFilter(), getCurrentPage());
+        return new SegmentReadRequest(getFilter(), getCurrentPage(), getPageSize());
     }
 
     @Override
     public List<SegmentObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
         request.setFilter(getFilter());
         request.setPageNumber(getCurrentPage());
+        if (!isDefaultPageSize()) {
+        	request.setPageSize(getPageSize());
+        }
         return service.readSegments(request, header).getReturn();
     }
 }

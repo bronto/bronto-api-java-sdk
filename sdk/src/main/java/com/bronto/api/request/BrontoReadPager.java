@@ -1,18 +1,16 @@
 package com.bronto.api.request;
 
-import com.bronto.api.BrontoApi;
-import com.bronto.api.BrontoClientException;
-
 import java.util.Collections;
-import java.util.concurrent.Future;
 import java.util.Iterator;
 import java.util.List;
 
-@SuppressWarnings("unchecked")
+import com.bronto.api.BrontoApi;
+import com.bronto.api.BrontoClientException;
+
 public class BrontoReadPager<T> implements Iterator<T> {
     private Iterator<T> objects;
     private BrontoApi client;
-    private BrontoReadRequest read;
+    private BrontoReadRequest<T> read;
 
     public BrontoReadPager(BrontoApi client, BrontoReadRequest<T> read) {
         this.client = client;

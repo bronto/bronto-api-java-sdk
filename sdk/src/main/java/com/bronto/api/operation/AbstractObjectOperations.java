@@ -1,25 +1,12 @@
 package com.bronto.api.operation;
 
-import com.bronto.api.BrontoApi;
-import com.bronto.api.BrontoClientException;
-import com.bronto.api.ObjectOperations;
-import com.bronto.api.request.BrontoClientRequest;
-import com.bronto.api.request.BrontoReadRequest;
-import com.bronto.api.request.BrontoReadPager;
-
-import com.bronto.api.model.BrontoSoapPortType;
-import com.bronto.api.model.SessionHeader;
-import com.bronto.api.model.WriteResult;
-
-import java.lang.reflect.Method;
-
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
 
-import java.util.concurrent.Future;
+import com.bronto.api.BrontoApi;
+import com.bronto.api.ObjectOperations;
+import com.bronto.api.model.WriteResult;
+import com.bronto.api.request.BrontoReadRequest;
 
 public abstract class AbstractObjectOperations<O> extends AbstractCommonOperations<BrontoApi, O> implements ObjectOperations<O> {
 
@@ -62,18 +49,21 @@ public abstract class AbstractObjectOperations<O> extends AbstractCommonOperatio
         return callWrite("delete", objects);
     }
 
+    @SafeVarargs
     @Override
-    public WriteResult add(O...objects) {
+    public final WriteResult add(O... objects) {
         return add(Arrays.asList(objects));
     }
 
+    @SafeVarargs
     @Override
-    public WriteResult update(O...objects) {
+    public final WriteResult update(O... objects) {
         return update(Arrays.asList(objects));
     }
 
+    @SafeVarargs
     @Override
-    public WriteResult delete(O...objects) {
+    public final WriteResult delete(O... objects) {
         return delete(Arrays.asList(objects));
     }
 }
