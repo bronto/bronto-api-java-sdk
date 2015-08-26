@@ -1,8 +1,10 @@
 package com.bronto.api.operation;
 
 import java.util.Iterator;
+import java.util.List;
 
 import com.bronto.api.BrontoApi;
+import com.bronto.api.BrontoClientException.Recoverable;
 import com.bronto.api.BrontoWriteException;
 import com.bronto.api.BrontoWriteExceptionTransform;
 import com.bronto.api.model.ResultItem;
@@ -29,13 +31,35 @@ public class BrontoWritePager<O> implements Iterator<WriteResult> {
             @Override
             public WriteResult transform(BrontoWriteException bwe) {
                 WriteResult result = new WriteResult();
-                for (O object : batches.getCurrentBatch()) {
-                    ResultItem item = new ResultItem();
-                    item.setId("-1");
-                    item.setIsNew(false);
-                    item.setIsError(true);
-                    item.setErrorCode(bwe.getCode());
-                    item.setErrorString(bwe.getMessage());
+                List<O> batch = batches.getCurrentBatch();
+                long startingIndex = batches.getStartingPageIndex();
+                int errorIndex = 0;
+                if (bwe.getRecoverable() == Recoverable.INVALID_REQUEST && batch.size() > 1) {
+                    BrontoWriteBatch<O> child = new BrontoWriteBatch<O>(batches.getMethod(), 1, batch);
+                    BrontoWritePager<O> pager = new BrontoWritePager<O>(client, reflect, child, this);
+                    while (pager.hasNext()) {
+                        ResultItem item = pager.next().getResults().get(0);
+                        if (item.isIsError()) {
+                            item.setId(Long.toString(startingIndex));
+                            result.getErrors().add(errorIndex);
+                        }
+                        result.getResults().add(item);
+                        startingIndex++;
+                        errorIndex++;
+                    }
+                } else {
+                    for (O object : batches.getCurrentBatch()) {
+                        ResultItem item = new ResultItem();
+                        item.setId(Long.toString(startingIndex));
+                        item.setIsNew(false);
+                        item.setIsError(true);
+                        item.setErrorCode(bwe.getCode());
+                        item.setErrorString(bwe.getMessage());
+                        result.getResults().add(item);
+                        result.getErrors().add(errorIndex);
+                        startingIndex++;
+                        errorIndex++;
+                    }
                 }
                 return result;
             }
