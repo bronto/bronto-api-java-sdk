@@ -12,7 +12,7 @@
     <name>bronto-api-app</name>
     <dependencies>
         <dependency>
-            <groupId>com.bronto.sdks</groupId>
+            <groupId>com.bronto.api</groupId>
             <artifactId>bronto-api-sdk</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
