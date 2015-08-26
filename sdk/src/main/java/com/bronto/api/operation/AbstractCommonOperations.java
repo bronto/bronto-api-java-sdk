@@ -41,12 +41,7 @@ public abstract class AbstractCommonOperations<C extends BrontoApi, O> implement
 
     @Override
     public Iterable<WriteResult> writeAll(final BrontoWriteBatch<O> batches) {
-        return new Iterable<WriteResult>() {
-            @Override
-            public Iterator<WriteResult> iterator() {
-                return new BrontoWritePager<O>(client, reflect, batches);
-            }
-        };
+        return writeAll(batches, new DefaultWriteExceptionTransform<O>(client, reflect, batches));
     }
 
     @Override
