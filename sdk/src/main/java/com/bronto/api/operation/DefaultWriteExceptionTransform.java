@@ -25,7 +25,8 @@ public class DefaultWriteExceptionTransform<O> implements BrontoWriteExceptionTr
         this(pager.getClient(), pager.getReflect(), pager.getBatches());
     }
 
-    @Override
+	@SuppressWarnings("unused")
+	@Override
     public WriteResult transform(BrontoWriteException bwe) {
         WriteResult result = new WriteResult();
         List<O> batch = batches.getCurrentBatch();
