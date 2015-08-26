@@ -3,6 +3,7 @@ package com.bronto.api.operation;
 import java.util.Iterator;
 
 import com.bronto.api.BrontoApi;
+import com.bronto.api.BrontoWriteExceptionTransform;
 import com.bronto.api.CommonOperations;
 import com.bronto.api.model.ObjectBuilder;
 import com.bronto.api.model.WriteResult;
@@ -38,11 +39,17 @@ public abstract class AbstractCommonOperations<C extends BrontoApi, O> implement
         };
     }
 
+    @Override
     public Iterable<WriteResult> writeAll(final BrontoWriteBatch<O> batches) {
+        return writeAll(batches, new DefaultWriteExceptionTransform<O>(client, reflect, batches));
+    }
+
+    @Override
+    public Iterable<WriteResult> writeAll(final BrontoWriteBatch<O> batches, final BrontoWriteExceptionTransform<WriteResult> handle) {
         return new Iterable<WriteResult>() {
             @Override
             public Iterator<WriteResult> iterator() {
-                return new BrontoWritePager<O>(client, reflect, batches);
+                return new BrontoWritePager<O>(client, reflect, batches, handle);
             }
         };
     }
