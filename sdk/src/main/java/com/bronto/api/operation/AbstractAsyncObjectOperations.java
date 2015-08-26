@@ -1,27 +1,17 @@
 package com.bronto.api.operation;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.Future;
+
 import com.bronto.api.AsyncHandler;
 import com.bronto.api.BrontoApiAsync;
-import com.bronto.api.BrontoClientException;
 import com.bronto.api.ObjectOperationsAsync;
-import com.bronto.api.request.BrontoClientRequest;
-import com.bronto.api.request.BrontoReadRequest;
-import com.bronto.api.request.BrontoReadPager;
-import com.bronto.api.reflect.ApiReflection;
-
 import com.bronto.api.model.BrontoSoapPortType;
 import com.bronto.api.model.SessionHeader;
 import com.bronto.api.model.WriteResult;
-
-import java.lang.reflect.Method;
-
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-
-import java.util.concurrent.Future;
+import com.bronto.api.request.BrontoClientRequest;
+import com.bronto.api.request.BrontoReadRequest;
 
 public abstract class AbstractAsyncObjectOperations<O> extends AbstractCommonOperations<BrontoApiAsync, O> implements ObjectOperationsAsync<O> {
     public AbstractAsyncObjectOperations(Class<O> clazz, BrontoApiAsync client) {
@@ -90,18 +80,21 @@ public abstract class AbstractAsyncObjectOperations<O> extends AbstractCommonOpe
         return callWriteAsync("delete", objects);
     }
 
+    @SafeVarargs
     @Override
-    public Future<WriteResult> add(O...objects) {
+    public final Future<WriteResult> add(O... objects) {
         return add(Arrays.asList(objects));
     }
 
+    @SafeVarargs
     @Override
-    public Future<WriteResult> update(O...objects) {
+    public final Future<WriteResult> update(O... objects) {
         return update(Arrays.asList(objects));
     }
 
+    @SafeVarargs
     @Override
-    public Future<WriteResult> delete(O...objects) {
+    public final Future<WriteResult> delete(O... objects) {
         return delete(Arrays.asList(objects));
     }
 

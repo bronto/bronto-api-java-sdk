@@ -1,22 +1,21 @@
 package com.bronto.api.reflect;
 
+import static com.bronto.api.util.StringUtils.lowerCaseFirst;
+import static com.bronto.api.util.StringUtils.pluralize;
+import static com.bronto.api.util.StringUtils.upperCaseFirst;
+
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.bronto.api.BrontoWriteException;
 import com.bronto.api.WriteContext;
-import com.bronto.api.request.BrontoReadRequest;
-import com.bronto.api.request.BrontoClientRequest;
-
 import com.bronto.api.model.BrontoSoapPortType;
 import com.bronto.api.model.SessionHeader;
 import com.bronto.api.model.WriteResult;
-
-import static com.bronto.api.util.StringUtils.*;
-
-import java.lang.reflect.Method;
-import java.util.Map;
-import java.util.HashMap;
-
-import java.util.Arrays;
-import java.util.List;
+import com.bronto.api.request.BrontoClientRequest;
 
 // TODO: move the special casing out of here
 // Special casing can come in the form of a translator

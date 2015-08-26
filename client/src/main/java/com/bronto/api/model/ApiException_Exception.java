@@ -15,7 +15,9 @@ public class ApiException_Exception
     extends Exception
 {
 
-    /**
+	private static final long serialVersionUID = 2921604280815602362L;
+	
+	/**
      * Java type that goes as soapenv:Fault detail element.
      * 
      */

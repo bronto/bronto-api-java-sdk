@@ -9,6 +9,7 @@ public class BrontoWriteBatch<O> implements Iterator<List<O>> {
     private final int batchSize;
     private final String methodName;
     private final Iterator<O> objects;
+    private List<O> currentBatch = Collections.emptyList();
     private int currentPage = 0;
 
     public BrontoWriteBatch(String methodName, int batchSize, Iterable<O> objects) {
@@ -29,6 +30,14 @@ public class BrontoWriteBatch<O> implements Iterator<List<O>> {
         return currentPage;
     }
 
+    public long getStartingPageIndex() {
+        return getCurrentPage() * getBatchSize();
+    }
+
+    public List<O> getCurrentBatch() {
+        return currentBatch;
+    }
+
     @Override
     public boolean hasNext() {
         return objects.hasNext();
@@ -43,7 +52,8 @@ public class BrontoWriteBatch<O> implements Iterator<List<O>> {
             pulledObjects.add(objects.next());
             pulledBatch++;
         }
-        return Collections.unmodifiableList(pulledObjects);
+        currentBatch = Collections.unmodifiableList(pulledObjects);
+        return currentBatch;
     }
 
     @Override

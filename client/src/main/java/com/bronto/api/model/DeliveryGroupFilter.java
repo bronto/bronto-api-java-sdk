@@ -6,6 +6,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -46,6 +47,7 @@ public class DeliveryGroupFilter {
 
     @XmlElement(nillable = true)
     protected List<String> deliveryGroupId;
+    @XmlSchemaType(name = "string")
     protected MemberType listByType;
     @XmlElement(nillable = true)
     protected List<String> automatorId;
