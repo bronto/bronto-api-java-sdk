@@ -13,16 +13,16 @@ import com.bronto.api.util.ConversionUtils;
 public class UnsubscribeReadRequest extends RichReadRequest<UnsubscribeFilter, ReadUnsubscribes, UnsubscribeObject> {
 
 	public UnsubscribeReadRequest(UnsubscribeFilter filter, int pageNumber) {
-        super(filter, new ReadUnsubscribes(), pageNumber);
-    }
-
+		super(filter, new ReadUnsubscribes(), pageNumber);
+	}
+	
 	public UnsubscribeReadRequest(UnsubscribeFilter filter) {
-        this(filter, 1);
-    }
-
+		this(filter, 1);
+	}
+	
 	public UnsubscribeReadRequest() {
-        this(new UnsubscribeFilter());
-    }
+		this(new UnsubscribeFilter());
+	}
 
 	public UnsubscribeReadRequest withPageNumber(int pageNumber) {
 		this.setCurrentPage(pageNumber);
