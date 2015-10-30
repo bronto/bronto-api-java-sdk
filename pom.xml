@@ -10,7 +10,7 @@
     <artifactId>bronto-api-java-sdk</artifactId>
     <packaging>pom</packaging>
     <description>bronto-api-java-sdk</description>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <name>bronto-api-java-sdk</name>
     <modules>
         <module>app</module>
@@ -31,6 +31,24 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
+            <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<additionalparam>-Xdoclint:none</additionalparam>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.3</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
         </plugins>
         <pluginManagement>
 			<plugins>

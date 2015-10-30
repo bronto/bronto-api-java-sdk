@@ -50,8 +50,7 @@ public class BrontoClientException extends RuntimeException {
     }
 
     public BrontoClientException(Throwable e) {
-        super(e instanceof InvocationTargetException ?
-            ((InvocationTargetException) e).getTargetException() : e);
+        super(getUnwrappedException(e));
         if (getCause() instanceof ApiException_Exception) {
             this.code = ((ApiException_Exception) getCause()).getFaultInfo().getErrorCode();
 		} else if (getCause() instanceof SOAPFaultException) {
@@ -65,6 +64,20 @@ public class BrontoClientException extends RuntimeException {
         }
     }
 
+	private static Throwable getUnwrappedException(Throwable e) {
+		Throwable throwable = e;
+		if (e instanceof InvocationTargetException) {
+			throwable = ((InvocationTargetException) e).getTargetException();
+		} else if (e instanceof BrontoClientException) {
+			// If this is a BrontoClientException wrapping another, find the underlying cause
+			BrontoClientException clientException = (BrontoClientException) e;
+			throwable = clientException.getCause() instanceof BrontoClientException 
+				? getUnwrappedException(clientException.getCause()) 
+				: clientException.getCause();
+		}
+		return throwable;
+	}
+    
     public int getCode() {
         return code;
     }

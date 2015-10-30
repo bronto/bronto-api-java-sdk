@@ -14,6 +14,7 @@ import com.bronto.api.BrontoApiAsync;
 import com.bronto.api.BrontoClientAsync;
 import com.bronto.api.BrontoClientException;
 import com.bronto.api.ObjectOperationsAsync;
+import com.bronto.api.RetryLimitExceededException;
 import com.bronto.api.model.ContactObject;
 import com.bronto.api.model.ContactStatus;
 import com.bronto.api.model.DeliveryObject;
@@ -122,6 +123,8 @@ public class App {
         SOAPFaultException exception = new SOAPFaultException(fault);
         BrontoClientException bce = new BrontoClientException(exception);
         System.out.println("BrontoClientException code is " + bce.getCode());
+        RetryLimitExceededException ree = new RetryLimitExceededException(bce);
+        System.out.println("RetryLimitExceededException code is " + ree.getCode());
         
         HeaderFooterReadRequest headerFooters =
         		new HeaderFooterReadRequest().withIncludeContent(true);
