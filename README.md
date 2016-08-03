@@ -149,9 +149,25 @@ ContentTagObject tag = contentTagOps.get(new ContentTagReadRequest().withId("123
 ### Retrieve a Message
 
 ``` java
-ObjectOperations<MessageObject> messageOps = client.transport(MessageObject.class);
+MessageOperations messageOps = new MessageOperations(client);
 
 MessageObject message = messageOps.get(new MessageReadRequest().withId("123"));
+
+/*
+ * Content from Bronto's new message editor is a JSON object rather than an HTML 
+ * string. Use the new MessageContentDetector class to determine what type of 
+ * content you're dealing with (MessageOperations will automatically store the 
+ * content as the correct type of object - this is just a helper method for 
+ * altering message content via the API).
+ * 
+ * Also be aware that the message content is stored in both the JSON's "body" 
+ * element _and_ the "ui" element. The "ui" element is what's used to re-create the 
+ * message in the message editor. Failing to change the content in the "ui" element
+ * will cause your changes to be lost when the message is re-opened and saved in 
+ * Bronto.
+ */
+ boolean isJson = MessageContentDetector.hasJsonContent(message);
+
 ```
 
 ### Create a Delivery
