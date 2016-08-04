@@ -150,7 +150,6 @@ ContentTagObject tag = contentTagOps.get(new ContentTagReadRequest().withId("123
 
 ``` java
 MessageOperations messageOps = new MessageOperations(client);
-
 MessageObject message = messageOps.get(new MessageReadRequest().withId("123"));
 
 /*
