@@ -11,9 +11,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class JsonMessageContentObject extends MessageContentObject {
 
   public JsonMessageContentObject() {
-    
+
   }
-  
+
   public JsonMessageContentObject(MessageContentObject messageContent) throws IOException {
       /*
        * Got ahead and initialize this object with the original message content.
@@ -22,40 +22,38 @@ public class JsonMessageContentObject extends MessageContentObject {
       Map<String, Object> jsonContent = mapper.readValue(messageContent.getContent(),
           new TypeReference<Map<String, Object>>() {});
       setRawJson(jsonContent);
-      setContent(messageContent.getContent());
-      setSubject(messageContent.getSubject() == null ? "" : 
-          messageContent.getSubject());
-      setType(messageContent.getType() == null ? MessageContentType.HTML.getApiValue() : 
-          messageContent.getType()); 
+      super.setContent(messageContent.getContent());
+      setSubject(messageContent.getSubject());
+      setType(messageContent.getType());
   }
-  
+
   private Map<String, Object> rawJson;
-  
+
   public Map<String, Object> getRawJson() {
       return rawJson;
   }
-  
+
   public void setRawJson(Map<String, Object> rawJson) {
       this.rawJson = rawJson;
   }
-  
+
   @Override
   public String getContent() {
       return rawJson.get("body").toString();
   }
-  
-  @Override 
+
+  @Override
   public void setContent(String content) {
-    
+
       try {
-        
+
         rawJson.put("body", content);
         ObjectMapper mapper = new ObjectMapper();
         super.setContent(mapper.writeValueAsString(rawJson));
-        
+
       } catch (JsonProcessingException jpe) {
           throw new BrontoClientException(jpe);
       }
   }
-  
+
 }
