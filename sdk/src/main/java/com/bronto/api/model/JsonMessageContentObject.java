@@ -22,8 +22,11 @@ public class JsonMessageContentObject extends MessageContentObject {
       Map<String, Object> jsonContent = mapper.readValue(messageContent.getContent(),
           new TypeReference<Map<String, Object>>() {});
       setRawJson(jsonContent);
-      setSubject(messageContent.getSubject());
-      setType(messageContent.getType()); 
+      setContent(messageContent.getContent());
+      setSubject(messageContent.getSubject() == null ? "" : 
+          messageContent.getSubject());
+      setType(messageContent.getType() == null ? MessageContentType.HTML.getApiValue() : 
+          messageContent.getType()); 
   }
   
   private Map<String, Object> rawJson;

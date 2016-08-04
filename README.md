@@ -29,7 +29,7 @@ The project is built [SBT](http://www.scala-sbt.org/) because it is a Superior B
 <dependency>
   <groupId>com.bronto.api</groupId>
   <artifactId>bronto-api-sdk</artifactId>
-  <version>1.0.6</version>
+  <version>1.0.7</version>
 </dependency>
 ```
 
@@ -150,7 +150,6 @@ ContentTagObject tag = contentTagOps.get(new ContentTagReadRequest().withId("123
 
 ``` java
 MessageOperations messageOps = new MessageOperations(client);
-
 MessageObject message = messageOps.get(new MessageReadRequest().withId("123"));
 
 /*
