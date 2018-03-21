@@ -12,11 +12,9 @@ import com.bronto.api.model.StringValue;
 
 import java.util.List;
 
-public class AccountReadRequest extends RichReadRequest<AccountFilter, AccountObject> {
-    private final ReadAccounts accounts = new ReadAccounts();
-
+public class AccountReadRequest extends RichReadRequest<AccountFilter, ReadAccounts, AccountObject> {
     public AccountReadRequest(AccountFilter filter, int pageNumber) {
-        super(filter, pageNumber);
+        super(filter, new ReadAccounts(), pageNumber);
     }
 
     public AccountReadRequest(AccountFilter filter) {
@@ -58,14 +56,20 @@ public class AccountReadRequest extends RichReadRequest<AccountFilter, AccountOb
     }
 
     public AccountReadRequest withIncludeInfo(boolean includeInfo) {
-        accounts.setIncludeInfo(includeInfo);
+        request.setIncludeInfo(includeInfo);
         return this;
     }
 
     @Override
+    public AccountReadRequest copy() {
+        return new AccountReadRequest(getFilter(), getCurrentPage())
+            .withIncludeInfo(request.isIncludeInfo());
+    }
+
+    @Override
     public List<AccountObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        accounts.setFilter(getFilter());
-        accounts.setPageNumber(getCurrentPage());
-        return service.readAccounts(accounts, header).getReturn();
+        request.setFilter(getFilter());
+        request.setPageNumber(getCurrentPage());
+        return service.readAccounts(request, header).getReturn();
     }
 }

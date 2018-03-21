@@ -1,25 +1,21 @@
 package com.bronto.api.request;
 
-import com.bronto.api.model.BrontoSoapPortType;
-import com.bronto.api.model.SessionHeader;
-
-import com.bronto.api.model.DeliveryFilter;
-import com.bronto.api.model.DeliveryStatus;
-import com.bronto.api.model.DeliveryType;
-import com.bronto.api.model.DeliveryObject;
-import com.bronto.api.model.FilterType;
-import com.bronto.api.model.FilterOperator;
-import com.bronto.api.model.ReadDeliveries;
-import com.bronto.api.model.StringValue;
-
 import java.util.Date;
 import java.util.List;
 
-public class DeliveryReadRequest extends RichReadRequest<DeliveryFilter, DeliveryObject> {
-    private final ReadDeliveries read = new ReadDeliveries();
+import com.bronto.api.model.BrontoSoapPortType;
+import com.bronto.api.model.DeliveryFilter;
+import com.bronto.api.model.DeliveryObject;
+import com.bronto.api.model.DeliveryStatus;
+import com.bronto.api.model.DeliveryType;
+import com.bronto.api.model.FilterOperator;
+import com.bronto.api.model.FilterType;
+import com.bronto.api.model.ReadDeliveries;
+import com.bronto.api.model.SessionHeader;
 
+public class DeliveryReadRequest extends RichReadRequest<DeliveryFilter, ReadDeliveries, DeliveryObject> {
     public DeliveryReadRequest(DeliveryFilter filter, int pageNumber) {
-        super(filter, pageNumber);
+        super(filter, new ReadDeliveries(), pageNumber);
         withIncludeContent(false).withIncludeContent(false);
     }
 
@@ -42,12 +38,12 @@ public class DeliveryReadRequest extends RichReadRequest<DeliveryFilter, Deliver
     }
 
     public DeliveryReadRequest withIncludeRecipients(boolean includeRecipients) {
-        read.setIncludeRecipients(includeRecipients);
+        request.setIncludeRecipients(includeRecipients);
         return this;
     }
 
     public DeliveryReadRequest withIncludeContent(boolean includeContent) {
-        read.setIncludeContent(includeContent);
+        request.setIncludeContent(includeContent);
         return this;
     }
 
@@ -96,9 +92,16 @@ public class DeliveryReadRequest extends RichReadRequest<DeliveryFilter, Deliver
     }
 
     @Override
+    public DeliveryReadRequest copy() {
+        return new DeliveryReadRequest(getFilter(), getCurrentPage())
+            .withIncludeRecipients(request.isIncludeRecipients())
+            .withIncludeContent(request.isIncludeContent());
+    }
+
+    @Override
     public List<DeliveryObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        read.setFilter(getFilter());
-        read.setPageNumber(getCurrentPage());
-        return service.readDeliveries(read, header).getReturn();
+        request.setFilter(getFilter());
+        request.setPageNumber(getCurrentPage());
+        return service.readDeliveries(request, header).getReturn();
     }
 }

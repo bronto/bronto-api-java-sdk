@@ -1,10 +1,16 @@
 package com.bronto.api;
 
 import java.lang.reflect.InvocationTargetException;
+
+import javax.xml.ws.soap.SOAPFaultException;
+
 import com.bronto.api.model.ApiException_Exception;
 
 public class BrontoClientException extends RuntimeException {
-    private Recoverable recoverable;
+    
+	private static final long serialVersionUID = 3433043618935230668L;
+	
+	private Recoverable recoverable;
     private int code = 0;
 
     public static enum Recoverable {
@@ -44,10 +50,11 @@ public class BrontoClientException extends RuntimeException {
     }
 
     public BrontoClientException(Throwable e) {
-        super(e instanceof InvocationTargetException ?
-            ((InvocationTargetException) e).getTargetException() : e);
+        super(getUnwrappedException(e));
         if (getCause() instanceof ApiException_Exception) {
             this.code = ((ApiException_Exception) getCause()).getFaultInfo().getErrorCode();
+		} else if (getCause() instanceof SOAPFaultException) {
+			this.code = parseCodeFromMessage(((SOAPFaultException) getCause()).getMessage());
         }
         for (Recoverable recover : Recoverable.values()) {
             if (recover.isRecoverable(getCause().getMessage())) {
@@ -57,6 +64,20 @@ public class BrontoClientException extends RuntimeException {
         }
     }
 
+	private static Throwable getUnwrappedException(Throwable e) {
+		Throwable throwable = e;
+		if (e instanceof InvocationTargetException) {
+			throwable = ((InvocationTargetException) e).getTargetException();
+		} else if (e instanceof BrontoClientException) {
+			// If this is a BrontoClientException wrapping another, find the underlying cause
+			BrontoClientException clientException = (BrontoClientException) e;
+			throwable = clientException.getCause() instanceof BrontoClientException 
+				? getUnwrappedException(clientException.getCause()) 
+				: clientException.getCause();
+		}
+		return throwable;
+	}
+    
     public int getCode() {
         return code;
     }
@@ -77,10 +98,26 @@ public class BrontoClientException extends RuntimeException {
     }
 
     public boolean isInvalidSession() {
-        return recoverable == Recoverable.INVALID_SESSION_TOKEN;
+        return (
+            recoverable == Recoverable.INVALID_SESSION_TOKEN ||
+            recoverable == Recoverable.INVALID_REQUEST
+        );
     }
 
     public boolean isUnderMaintenance() {
         return recoverable == Recoverable.SHARD_OFFLINE;
     }
+
+	private int parseCodeFromMessage(String message) {
+		if (message.contains(":")) {
+			String codeString = message.split(":")[1].trim();
+			try {
+				return Integer.parseInt(codeString);
+			} catch (NumberFormatException nfe) {
+				return 0;
+			}
+		} else {
+			return 0;
+		}
+	}
 }

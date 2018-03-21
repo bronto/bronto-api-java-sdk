@@ -12,11 +12,13 @@ import com.bronto.api.model.StringValue;
 
 import java.util.List;
 
-public class MailListReadRequest extends RichReadRequest<MailListFilter, MailListObject> {
-    private final ReadLists lists = new ReadLists();
-
+public class MailListReadRequest extends SizedReadRequest<MailListFilter, ReadLists, MailListObject> {
+    public MailListReadRequest(MailListFilter filter, int pageNumber, int pageSize) {
+        super(filter, new ReadLists(), pageNumber, pageSize);
+    }
+    
     public MailListReadRequest(MailListFilter filter, int pageNumber) {
-        super(filter, pageNumber);
+    	this(filter, pageNumber, getDefaultPageSize());
     }
 
     public MailListReadRequest(MailListFilter filter) {
@@ -30,6 +32,11 @@ public class MailListReadRequest extends RichReadRequest<MailListFilter, MailLis
     public MailListReadRequest withPageNumber(int pageNumber) {
         this.setCurrentPage(pageNumber);
         return this;
+    }
+    
+    public MailListReadRequest withPageSize(int pageSize) {
+    	this.setPageSize(pageSize);
+    	return this;
     }
 
     public MailListReadRequest withName(StringValue...names) {
@@ -58,9 +65,17 @@ public class MailListReadRequest extends RichReadRequest<MailListFilter, MailLis
     }
 
     @Override
+    public MailListReadRequest copy() {
+        return new MailListReadRequest(getFilter(), getCurrentPage(), getPageSize());
+    }
+
+    @Override
     public List<MailListObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        lists.setFilter(getFilter());
-        lists.setPageNumber(getCurrentPage());
-        return service.readLists(lists, header).getReturn();
+        request.setFilter(getFilter());
+        request.setPageNumber(getCurrentPage());
+        if (!isDefaultPageSize()) {
+        	request.setPageSize(getPageSize());
+        }
+        return service.readLists(request, header).getReturn();
     }
 }

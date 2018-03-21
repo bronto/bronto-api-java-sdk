@@ -1,17 +1,15 @@
 package com.bronto.api.operation;
 
-import com.bronto.api.BrontoApi;
-import com.bronto.api.reflect.ApiReflection;
-
-import com.bronto.api.model.AddToList;
-import com.bronto.api.model.ContactObject;
-import com.bronto.api.model.RemoveFromList;
-import com.bronto.api.model.MailListObject;
-import com.bronto.api.model.WriteResult;
-
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.Future;
+
+import com.bronto.api.BrontoApi;
+import com.bronto.api.model.AddToList;
+import com.bronto.api.model.ContactObject;
+import com.bronto.api.model.MailListObject;
+import com.bronto.api.model.RemoveFromList;
+import com.bronto.api.model.WriteResult;
+import com.bronto.api.reflect.ApiReflection;
 
 public class MailListOperations extends AbstractObjectOperations<MailListObject> {
 

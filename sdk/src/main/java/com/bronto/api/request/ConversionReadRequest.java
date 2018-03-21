@@ -1,20 +1,16 @@
 package com.bronto.api.request;
 
-import com.bronto.api.model.BrontoSoapPortType;
-import com.bronto.api.model.SessionHeader;
+import java.util.List;
 
+import com.bronto.api.model.BrontoSoapPortType;
 import com.bronto.api.model.ConversionFilter;
 import com.bronto.api.model.ConversionObject;
 import com.bronto.api.model.ReadConversions;
-import com.bronto.api.model.StringValue;
+import com.bronto.api.model.SessionHeader;
 
-import java.util.List;
-
-public class ConversionReadRequest extends RichReadRequest<ConversionFilter, ConversionObject> {
-    private final ReadConversions conversions = new ReadConversions();
-
+public class ConversionReadRequest extends RichReadRequest<ConversionFilter, ReadConversions, ConversionObject> {
     public ConversionReadRequest(ConversionFilter filter, int pageNumber) {
-        super(filter, pageNumber);
+        super(filter, new ReadConversions(), pageNumber);
     }
 
     public ConversionReadRequest(ConversionFilter filter) {
@@ -51,9 +47,14 @@ public class ConversionReadRequest extends RichReadRequest<ConversionFilter, Con
     }
 
     @Override
+    public ConversionReadRequest copy() {
+        return new ConversionReadRequest(getFilter(), getCurrentPage());
+    }
+
+    @Override
     public List<ConversionObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        conversions.setFilter(getFilter());
-        conversions.setPageNumber(getCurrentPage());
-        return service.readConversions(conversions, header).getReturn();
+        request.setFilter(getFilter());
+        request.setPageNumber(getCurrentPage());
+        return service.readConversions(request, header).getReturn();
     }
 }

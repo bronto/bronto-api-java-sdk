@@ -1,17 +1,16 @@
 package com.bronto.api.request;
 
-import com.bronto.api.BrontoApi;
-
 import java.util.Collections;
-import java.util.concurrent.Future;
 import java.util.Iterator;
 import java.util.List;
 
-@SuppressWarnings("unchecked")
+import com.bronto.api.BrontoApi;
+import com.bronto.api.BrontoClientException;
+
 public class BrontoReadPager<T> implements Iterator<T> {
     private Iterator<T> objects;
     private BrontoApi client;
-    private BrontoReadRequest read;
+    private BrontoReadRequest<T> read;
 
     public BrontoReadPager(BrontoApi client, BrontoReadRequest<T> read) {
         this.client = client;
@@ -24,7 +23,20 @@ public class BrontoReadPager<T> implements Iterator<T> {
     }
 
     private Iterator<T> getCurrentObjects() {
-        return ((List<T>) client.invoke(read)).iterator();
+		try {
+			return ((List<T>) client.invoke(read)).iterator();
+		} catch (BrontoClientException brontoException) {
+			/*
+			 * Error code 116 is an end of result error. Since all the data's
+			 * been read, return an empty list. All other exceptions should be
+			 * handled by the existing exception-handling logic.
+			 */
+			if (brontoException.getCode() == 116) {
+				return Collections.emptyListIterator();
+			} else {
+				throw brontoException;
+			}
+		}
     }
 
     @Override

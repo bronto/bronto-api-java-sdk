@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="filter" type="{http://api.bronto.com/v4}fieldsFilter" minOccurs="0"/>
  *         &lt;element name="pageNumber" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="pageSize" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,12 +30,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "readFields", propOrder = {
     "filter",
-    "pageNumber"
+    "pageNumber",
+    "pageSize"
 })
 public class ReadFields {
 
     protected FieldsFilter filter;
     protected int pageNumber;
+    protected Integer pageSize;
 
     /**
      * Gets the value of the filter property.
@@ -74,6 +77,30 @@ public class ReadFields {
      */
     public void setPageNumber(int value) {
         this.pageNumber = value;
+    }
+
+    /**
+     * Gets the value of the pageSize property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    /**
+     * Sets the value of the pageSize property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setPageSize(Integer value) {
+        this.pageSize = value;
     }
 
 }

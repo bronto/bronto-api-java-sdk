@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="filter" type="{http://api.bronto.com/v4}messageFilter" minOccurs="0"/>
  *         &lt;element name="includeContent" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="pageNumber" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="pageSize" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,13 +32,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "readMessages", propOrder = {
     "filter",
     "includeContent",
-    "pageNumber"
+    "pageNumber",
+    "pageSize"
 })
 public class ReadMessages {
 
     protected MessageFilter filter;
     protected boolean includeContent;
     protected int pageNumber;
+    protected Integer pageSize;
 
     /**
      * Gets the value of the filter property.
@@ -93,6 +96,30 @@ public class ReadMessages {
      */
     public void setPageNumber(int value) {
         this.pageNumber = value;
+    }
+
+    /**
+     * Gets the value of the pageSize property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    /**
+     * Sets the value of the pageSize property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setPageSize(Integer value) {
+        this.pageSize = value;
     }
 
 }

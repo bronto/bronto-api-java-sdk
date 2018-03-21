@@ -27,9 +27,9 @@ The project is built [SBT](http://www.scala-sbt.org/) because it is a Superior B
 
 ```
 <dependency>
-  <groupId>com.bronto</groupId>
+  <groupId>com.bronto.api</groupId>
   <artifactId>bronto-api-sdk</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.9</version>
 </dependency>
 ```
 
@@ -42,7 +42,7 @@ import com.bronto.api.*;
 import com.bronto.api.model.*;
 import static com.bronto.api.model.ObjectBuilder.newObject;
 
-String apiToken = "<You API token>";
+String apiToken = "<Your API token>";
 BrontoApi client = new BrontoClient(apiToken);
 
 String sessionId = client.login();
@@ -149,15 +149,30 @@ ContentTagObject tag = contentTagOps.get(new ContentTagReadRequest().withId("123
 ### Retrieve a Message
 
 ``` java
-ObjectOperations<MessageObject> messageOps = client.transport(MessageObject.class);
-
+MessageOperations messageOps = new MessageOperations(client);
 MessageObject message = messageOps.get(new MessageReadRequest().withId("123"));
+
+/*
+ * Content from Bronto's new message editor is a JSON object rather than an HTML 
+ * string. Use the new MessageContentDetector class to determine what type of 
+ * content you're dealing with (MessageOperations will automatically store the 
+ * content as the correct type of object - this is just a helper method for 
+ * altering message content via the API).
+ * 
+ * Also be aware that the message content is stored in both the JSON's "body" 
+ * element _and_ the "ui" element. The "ui" element is what's used to re-create the 
+ * message in the message editor. Failing to change the content in the "ui" element
+ * will cause your changes to be lost when the message is re-opened and saved in 
+ * Bronto.
+ */
+ boolean isJson = MessageContentDetector.hasJsonContent(message);
+
 ```
 
 ### Create a Delivery
 
 ``` java
-DeliveryOperations deliveryOps = new DeliveryOperations(client);
+ObjectOperations<DeliveryObject> deliveryOps = client.transport(DeliveryObject.class);
 
 DeliveryRecipientObject recipient = new DeliveryRecipientObject();
 recipient.setDeliveryType(DeliveryRecipientSelection.SELECTED.getApiValue());
@@ -272,4 +287,17 @@ Future<String> json = fieldOps.get(read, new AsyncHandler<FieldObject, String>()
 });
 
 System.out.println(json.get());
+```
+
+### Read Conversions
+
+``` java
+ObjectOperationsAsync<ConversionObject> conversionOps =
+        client.transportAsync(ConversionObject.class);
+ConversionReadRequest conversions = new ConversionReadRequest();
+for (ConversionObject conversion : conversionOps.readAll(conversions)) {
+    System.out.println(String.format("Conversion id: %s (email: %s) "
+            + "- item = %s", conversion.getId(), conversion.getEmail(),
+            conversion.getItem()));
+}
 ```

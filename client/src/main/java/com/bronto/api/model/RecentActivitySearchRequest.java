@@ -43,8 +43,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "readDirection"
 })
 @XmlSeeAlso({
-    RecentInboundActivitySearchRequest.class,
-    RecentOutboundActivitySearchRequest.class
+    RecentOutboundActivitySearchRequest.class,
+    RecentInboundActivitySearchRequest.class
 })
 public abstract class RecentActivitySearchRequest {
 
@@ -55,6 +55,7 @@ public abstract class RecentActivitySearchRequest {
     protected String contactId;
     protected String deliveryId;
     protected int size;
+    @XmlSchemaType(name = "string")
     protected ReadDirection readDirection;
 
     /**

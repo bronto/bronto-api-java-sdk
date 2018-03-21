@@ -12,11 +12,9 @@ import com.bronto.api.model.StringValue;
 
 import java.util.List;
 
-public class WorkflowReadRequest extends RichReadRequest<WorkflowFilter, WorkflowObject> {
-    private final ReadWorkflows workflows = new ReadWorkflows();
-
+public class WorkflowReadRequest extends RichReadRequest<WorkflowFilter, ReadWorkflows, WorkflowObject> {
     public WorkflowReadRequest(WorkflowFilter filter, int pageNumber) {
-        super(filter, pageNumber);
+        super(filter, new ReadWorkflows(), pageNumber);
     }
 
     public WorkflowReadRequest(WorkflowFilter filter) {
@@ -58,9 +56,14 @@ public class WorkflowReadRequest extends RichReadRequest<WorkflowFilter, Workflo
     }
 
     @Override
+    public WorkflowReadRequest copy() {
+        return new WorkflowReadRequest(getFilter(), getCurrentPage());
+    }
+
+    @Override
     public List<WorkflowObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        workflows.setFilter(getFilter());
-        workflows.setPageNumber(getCurrentPage());
-        return service.readWorkflows(workflows, header).getReturn();
+        request.setFilter(getFilter());
+        request.setPageNumber(getCurrentPage());
+        return service.readWorkflows(request, header).getReturn();
     }
 }

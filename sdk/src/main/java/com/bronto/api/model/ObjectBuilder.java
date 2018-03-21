@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-@SuppressWarnings("unchecked")
 public class ObjectBuilder<T> {
     protected Class<T> objectClass;
     protected T object;
@@ -69,7 +68,8 @@ public class ObjectBuilder<T> {
         }
     }
 
-    public <V> ObjectBuilder<T> add(String fieldName, List<V> value) {
+    @SuppressWarnings("unchecked")
+	public <V> ObjectBuilder<T> add(String fieldName, List<V> value) {
         Field field = getField(fieldName);
         try {
             if (List.class.isAssignableFrom(field.getType())) {
@@ -90,7 +90,8 @@ public class ObjectBuilder<T> {
         }
     }
 
-    public <V> ObjectBuilder<T> add(String fieldName, V...value) {
+    @SafeVarargs
+    public final <V> ObjectBuilder<T> add(String fieldName, V... value) {
         return add(fieldName, Arrays.asList(value));
     }
 
@@ -99,6 +100,6 @@ public class ObjectBuilder<T> {
     }
 
     public static <T> ObjectBuilder<T> newObject(Class<T> objectClass) {
-        return new ObjectBuilder(objectClass);
+        return new ObjectBuilder<T>(objectClass);
     }
 }

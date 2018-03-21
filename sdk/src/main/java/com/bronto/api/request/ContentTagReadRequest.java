@@ -12,11 +12,9 @@ import com.bronto.api.model.StringValue;
 
 import java.util.List;
 
-public class ContentTagReadRequest extends RichReadRequest<ContentTagFilter, ContentTagObject> {
-    private final ReadContentTags contentTags = new ReadContentTags();
-
+public class ContentTagReadRequest extends RichReadRequest<ContentTagFilter, ReadContentTags, ContentTagObject> {
     public ContentTagReadRequest(ContentTagFilter filter, int pageNumber) {
-        super(filter, pageNumber);
+        super(filter, new ReadContentTags(), pageNumber);
     }
 
     public ContentTagReadRequest(ContentTagFilter filter) {
@@ -58,14 +56,19 @@ public class ContentTagReadRequest extends RichReadRequest<ContentTagFilter, Con
     }
 
     public ContentTagReadRequest withIncludeContent(boolean includeContent) {
-        contentTags.setIncludeContent(includeContent);
+        request.setIncludeContent(includeContent);
         return this;
     }
 
     @Override
+    public ContentTagReadRequest copy() {
+        return new ContentTagReadRequest(getFilter(), getCurrentPage());
+    }
+
+    @Override
     public List<ContentTagObject> invoke(BrontoSoapPortType service, SessionHeader header) throws Exception {
-        contentTags.setFilter(getFilter());
-        contentTags.setPageNumber(getCurrentPage());
-        return service.readContentTags(contentTags, header).getReturn();
+        request.setFilter(getFilter());
+        request.setPageNumber(getCurrentPage());
+        return service.readContentTags(request, header).getReturn();
     }
 }

@@ -1,5 +1,7 @@
 package com.bronto.api;
 
+import java.net.URL;
+
 public class BrontoClientOptions {
     public static int WAIT_FOREVER = -1;
     public static int DEFAULT_RETRY_LIMIT = 5;
@@ -13,6 +15,7 @@ public class BrontoClientOptions {
     private int readTimeout = DEFAULT_REQUEST_TIMEOUT;
     private BrontoApiObserver observer;
     private BrontoApiRetryer<?> retryer;
+	private URL wsdlURL;
 
     public int getConnectionTimeout() {
         return connectionTimeout;
@@ -68,7 +71,15 @@ public class BrontoClientOptions {
         return this;
     }
 
-    @Override
+	public URL getWsdlURL() {
+		return this.wsdlURL;
+	}
+
+	public void setWsdlURL(URL wsdlURL) {
+		this.wsdlURL = wsdlURL;
+	}
+
+	@Override
     public String toString() {
         return "BrontoClientOptions: [retryLimit=" + retryLimit + ", retryStep=" + retryStep + ", readTimeout=" + readTimeout + ", connectionTimeout=" + connectionTimeout + "]";
     }
