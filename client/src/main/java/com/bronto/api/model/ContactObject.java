@@ -42,6 +42,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="numConversions" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="conversionAmount" type="{http://www.w3.org/2001/XMLSchema}float" minOccurs="0"/>
  *         &lt;element name="readOnlyContactData" type="{http://api.bronto.com/v4}readOnlyContactData" minOccurs="0"/>
+ *         &lt;element name="consentDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="consentIp" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="lastUnsubscribeDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -72,7 +75,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "numClicks",
     "numConversions",
     "conversionAmount",
-    "readOnlyContactData"
+    "readOnlyContactData",
+    "consentDate",
+    "consentIp",
+    "lastUnsubscribeDate"
 })
 public class ContactObject {
 
@@ -103,6 +109,9 @@ public class ContactObject {
     protected Long numConversions;
     protected Float conversionAmount;
     protected ReadOnlyContactData readOnlyContactData;
+    protected String consentDate;
+    protected String consentIp;
+    protected String lastUnsubscribeDate;
 
     /**
      * Gets the value of the id property.
@@ -626,6 +635,78 @@ public class ContactObject {
      */
     public void setReadOnlyContactData(ReadOnlyContactData value) {
         this.readOnlyContactData = value;
+    }
+
+    /**
+     * Gets the value of the consentDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getConsentDate() {
+        return consentDate;
+    }
+
+    /**
+     * Sets the value of the consentDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setConsentDate(String value) {
+        this.consentDate = value;
+    }
+
+    /**
+     * Gets the value of the consentIp property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getConsentIp() {
+        return consentIp;
+    }
+
+    /**
+     * Sets the value of the consentIp property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setConsentIp(String value) {
+        this.consentIp = value;
+    }
+
+    /**
+     * Gets the value of the lastUnsubscribeDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getLastUnsubscribeDate() {
+        return lastUnsubscribeDate;
+    }
+
+    /**
+     * Sets the value of the lastUnsubscribeDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setLastUnsubscribeDate(String value) {
+        this.lastUnsubscribeDate = value;
     }
 
 }
