@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="filter" type="{http://api.bronto.com/v4}deliveryGroupFilter" minOccurs="0"/>
  *         &lt;element name="pageNumber" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="includeStats" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,12 +30,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "readDeliveryGroups", propOrder = {
     "filter",
-    "pageNumber"
+    "pageNumber",
+    "includeStats"
 })
 public class ReadDeliveryGroups {
 
     protected DeliveryGroupFilter filter;
     protected int pageNumber;
+    protected Boolean includeStats;
 
     /**
      * Gets the value of the filter property.
@@ -74,6 +77,30 @@ public class ReadDeliveryGroups {
      */
     public void setPageNumber(int value) {
         this.pageNumber = value;
+    }
+
+    /**
+     * Gets the value of the includeStats property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isIncludeStats() {
+        return includeStats;
+    }
+
+    /**
+     * Sets the value of the includeStats property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIncludeStats(Boolean value) {
+        this.includeStats = value;
     }
 
 }

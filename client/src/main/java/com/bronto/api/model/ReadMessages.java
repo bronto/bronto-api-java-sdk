@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="includeContent" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="pageNumber" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="pageSize" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="includeStats" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,7 +34,8 @@ import javax.xml.bind.annotation.XmlType;
     "filter",
     "includeContent",
     "pageNumber",
-    "pageSize"
+    "pageSize",
+    "includeStats"
 })
 public class ReadMessages {
 
@@ -41,6 +43,7 @@ public class ReadMessages {
     protected boolean includeContent;
     protected int pageNumber;
     protected Integer pageSize;
+    protected Boolean includeStats;
 
     /**
      * Gets the value of the filter property.
@@ -120,6 +123,30 @@ public class ReadMessages {
      */
     public void setPageSize(Integer value) {
         this.pageSize = value;
+    }
+
+    /**
+     * Gets the value of the includeStats property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isIncludeStats() {
+        return includeStats;
+    }
+
+    /**
+     * Sets the value of the includeStats property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIncludeStats(Boolean value) {
+        this.includeStats = value;
     }
 
 }

@@ -18,8 +18,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="operator" type="{http://api.bronto.com/v4}filterOperator" minOccurs="0"/>
  *         &lt;element name="value" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="operator" type="{http://api.bronto.com/v4}filterOperator" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,39 +30,15 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dateValue", propOrder = {
-    "operator",
-    "value"
+    "value",
+    "operator"
 })
 public class DateValue {
 
-    @XmlSchemaType(name = "string")
-    protected FilterOperator operator;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar value;
-
-    /**
-     * Gets the value of the operator property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FilterOperator }
-     *     
-     */
-    public FilterOperator getOperator() {
-        return operator;
-    }
-
-    /**
-     * Sets the value of the operator property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FilterOperator }
-     *     
-     */
-    public void setOperator(FilterOperator value) {
-        this.operator = value;
-    }
+    @XmlSchemaType(name = "string")
+    protected FilterOperator operator;
 
     /**
      * Gets the value of the value property.
@@ -86,6 +62,30 @@ public class DateValue {
      */
     public void setValue(XMLGregorianCalendar value) {
         this.value = value;
+    }
+
+    /**
+     * Gets the value of the operator property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FilterOperator }
+     *     
+     */
+    public FilterOperator getOperator() {
+        return operator;
+    }
+
+    /**
+     * Sets the value of the operator property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FilterOperator }
+     *     
+     */
+    public void setOperator(FilterOperator value) {
+        this.operator = value;
     }
 
 }
