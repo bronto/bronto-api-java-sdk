@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.bronto.api</groupId>
         <artifactId>bronto-api-java-sdk</artifactId>
-        <version>1.0.10-SNAPSHOT</version>
+        <version>1.0.11-SNAPSHOT</version>
     </parent>
     <artifactId>bronto-api-sdk</artifactId>
     <packaging>jar</packaging>
