@@ -92,6 +92,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="numSocialViews" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="cartId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="orderId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="campaignId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -171,7 +172,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "numViewsMySpace",
     "numSocialViews",
     "cartId",
-    "orderId"
+    "orderId",
+    "campaignId"
 })
 public class DeliveryObject {
 
@@ -250,6 +252,7 @@ public class DeliveryObject {
     protected Long numSocialViews;
     protected String cartId;
     protected String orderId;
+    protected Long campaignId;
 
     /**
      * Gets the value of the id property.
@@ -1949,6 +1952,30 @@ public class DeliveryObject {
      */
     public void setOrderId(String value) {
         this.orderId = value;
+    }
+
+    /**
+     * Gets the value of the campaignId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getCampaignId() {
+        return campaignId;
+    }
+
+    /**
+     * Sets the value of the campaignId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setCampaignId(Long value) {
+        this.campaignId = value;
     }
 
 }
