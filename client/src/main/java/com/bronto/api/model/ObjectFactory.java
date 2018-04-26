@@ -61,7 +61,6 @@ public class ObjectFactory {
     private final static QName _ReadContactsResponse_QNAME = new QName("http://api.bronto.com/v4", "readContactsResponse");
     private final static QName _AddUpdateOrder_QNAME = new QName("http://api.bronto.com/v4", "addUpdateOrder");
     private final static QName _AddDeliveryGroupResponse_QNAME = new QName("http://api.bronto.com/v4", "addDeliveryGroupResponse");
-    private final static QName _ReadContactsWithLatestUnsubcribeDate_QNAME = new QName("http://api.bronto.com/v4", "readContactsWithLatestUnsubcribeDate");
     private final static QName _AddContactsResponse_QNAME = new QName("http://api.bronto.com/v4", "addContactsResponse");
     private final static QName _Login_QNAME = new QName("http://api.bronto.com/v4", "login");
     private final static QName _UpdateAccounts_QNAME = new QName("http://api.bronto.com/v4", "updateAccounts");
@@ -81,10 +80,10 @@ public class ObjectFactory {
     private final static QName _UpdateSMSKeywords_QNAME = new QName("http://api.bronto.com/v4", "updateSMSKeywords");
     private final static QName _ReadRecentOutboundActivitiesResponse_QNAME = new QName("http://api.bronto.com/v4", "readRecentOutboundActivitiesResponse");
     private final static QName _ReadMessageFoldersResponse_QNAME = new QName("http://api.bronto.com/v4", "readMessageFoldersResponse");
+    private final static QName _ReadContactsWithLatestUnsubscribeDate_QNAME = new QName("http://api.bronto.com/v4", "readContactsWithLatestUnsubscribeDate");
     private final static QName _AddToDeliveryGroup_QNAME = new QName("http://api.bronto.com/v4", "addToDeliveryGroup");
     private final static QName _AddOrUpdateDeliveryGroup_QNAME = new QName("http://api.bronto.com/v4", "addOrUpdateDeliveryGroup");
     private final static QName _RemoveFromListResponse_QNAME = new QName("http://api.bronto.com/v4", "removeFromListResponse");
-    private final static QName _ReadContactsWithLatestUnsubcribeDateResponse_QNAME = new QName("http://api.bronto.com/v4", "readContactsWithLatestUnsubcribeDateResponse");
     private final static QName _DeleteContactsResponse_QNAME = new QName("http://api.bronto.com/v4", "deleteContactsResponse");
     private final static QName _ReadSegments_QNAME = new QName("http://api.bronto.com/v4", "readSegments");
     private final static QName _AddLogins_QNAME = new QName("http://api.bronto.com/v4", "addLogins");
@@ -184,6 +183,7 @@ public class ObjectFactory {
     private final static QName _AddSMSMessagesResponse_QNAME = new QName("http://api.bronto.com/v4", "addSMSMessagesResponse");
     private final static QName _DeleteDeliveryGroupResponse_QNAME = new QName("http://api.bronto.com/v4", "deleteDeliveryGroupResponse");
     private final static QName _UpdateDeliveries_QNAME = new QName("http://api.bronto.com/v4", "updateDeliveries");
+    private final static QName _ReadContactsWithLatestUnsubscribeDateResponse_QNAME = new QName("http://api.bronto.com/v4", "readContactsWithLatestUnsubscribeDateResponse");
     private final static QName _UpdateLists_QNAME = new QName("http://api.bronto.com/v4", "updateLists");
     private final static QName _DeleteAccounts_QNAME = new QName("http://api.bronto.com/v4", "deleteAccounts");
     private final static QName _UpdateSMSKeywordsResponse_QNAME = new QName("http://api.bronto.com/v4", "updateSMSKeywordsResponse");
@@ -656,6 +656,14 @@ public class ObjectFactory {
      */
     public UpdateDeliveries createUpdateDeliveries() {
         return new UpdateDeliveries();
+    }
+
+    /**
+     * Create an instance of {@link ReadContactsWithLatestUnsubscribeDateResponse }
+     * 
+     */
+    public ReadContactsWithLatestUnsubscribeDateResponse createReadContactsWithLatestUnsubscribeDateResponse() {
+        return new ReadContactsWithLatestUnsubscribeDateResponse();
     }
 
     /**
@@ -1291,14 +1299,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ReadContactsWithLatestUnsubcribeDate }
-     * 
-     */
-    public ReadContactsWithLatestUnsubcribeDate createReadContactsWithLatestUnsubcribeDate() {
-        return new ReadContactsWithLatestUnsubcribeDate();
-    }
-
-    /**
      * Create an instance of {@link AddDeliveryGroupResponse }
      * 
      */
@@ -1424,6 +1424,14 @@ public class ObjectFactory {
      */
     public AddToDeliveryGroup createAddToDeliveryGroup() {
         return new AddToDeliveryGroup();
+    }
+
+    /**
+     * Create an instance of {@link ReadContactsWithLatestUnsubscribeDate }
+     * 
+     */
+    public ReadContactsWithLatestUnsubscribeDate createReadContactsWithLatestUnsubscribeDate() {
+        return new ReadContactsWithLatestUnsubscribeDate();
     }
 
     /**
@@ -1768,14 +1776,6 @@ public class ObjectFactory {
      */
     public ReadSegments createReadSegments() {
         return new ReadSegments();
-    }
-
-    /**
-     * Create an instance of {@link ReadContactsWithLatestUnsubcribeDateResponse }
-     * 
-     */
-    public ReadContactsWithLatestUnsubcribeDateResponse createReadContactsWithLatestUnsubcribeDateResponse() {
-        return new ReadContactsWithLatestUnsubcribeDateResponse();
     }
 
     /**
@@ -2712,15 +2712,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ReadContactsWithLatestUnsubcribeDate }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readContactsWithLatestUnsubcribeDate")
-    public JAXBElement<ReadContactsWithLatestUnsubcribeDate> createReadContactsWithLatestUnsubcribeDate(ReadContactsWithLatestUnsubcribeDate value) {
-        return new JAXBElement<ReadContactsWithLatestUnsubcribeDate>(_ReadContactsWithLatestUnsubcribeDate_QNAME, ReadContactsWithLatestUnsubcribeDate.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AddContactsResponse }{@code >}}
      * 
      */
@@ -2892,6 +2883,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReadContactsWithLatestUnsubscribeDate }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readContactsWithLatestUnsubscribeDate")
+    public JAXBElement<ReadContactsWithLatestUnsubscribeDate> createReadContactsWithLatestUnsubscribeDate(ReadContactsWithLatestUnsubscribeDate value) {
+        return new JAXBElement<ReadContactsWithLatestUnsubscribeDate>(_ReadContactsWithLatestUnsubscribeDate_QNAME, ReadContactsWithLatestUnsubscribeDate.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AddToDeliveryGroup }{@code >}}
      * 
      */
@@ -2916,15 +2916,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "removeFromListResponse")
     public JAXBElement<RemoveFromListResponse> createRemoveFromListResponse(RemoveFromListResponse value) {
         return new JAXBElement<RemoveFromListResponse>(_RemoveFromListResponse_QNAME, RemoveFromListResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ReadContactsWithLatestUnsubcribeDateResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readContactsWithLatestUnsubcribeDateResponse")
-    public JAXBElement<ReadContactsWithLatestUnsubcribeDateResponse> createReadContactsWithLatestUnsubcribeDateResponse(ReadContactsWithLatestUnsubcribeDateResponse value) {
-        return new JAXBElement<ReadContactsWithLatestUnsubcribeDateResponse>(_ReadContactsWithLatestUnsubcribeDateResponse_QNAME, ReadContactsWithLatestUnsubcribeDateResponse.class, null, value);
     }
 
     /**
@@ -3816,6 +3807,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "updateDeliveries")
     public JAXBElement<UpdateDeliveries> createUpdateDeliveries(UpdateDeliveries value) {
         return new JAXBElement<UpdateDeliveries>(_UpdateDeliveries_QNAME, UpdateDeliveries.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReadContactsWithLatestUnsubscribeDateResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://api.bronto.com/v4", name = "readContactsWithLatestUnsubscribeDateResponse")
+    public JAXBElement<ReadContactsWithLatestUnsubscribeDateResponse> createReadContactsWithLatestUnsubscribeDateResponse(ReadContactsWithLatestUnsubscribeDateResponse value) {
+        return new JAXBElement<ReadContactsWithLatestUnsubscribeDateResponse>(_ReadContactsWithLatestUnsubscribeDateResponse_QNAME, ReadContactsWithLatestUnsubscribeDateResponse.class, null, value);
     }
 
     /**
