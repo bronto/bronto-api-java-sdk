@@ -10,7 +10,6 @@ import javax.xml.ws.WebFault;
  * Generated source version: 2.2
  * 
  */
-@SuppressWarnings("serial")
 @WebFault(name = "ApiException", targetNamespace = "http://api.bronto.com/v4")
 public class ApiException_Exception
     extends Exception

@@ -770,25 +770,6 @@ public interface BrontoSoapPortType {
      * @param sessionHeader
      * @param parameters
      * @return
-     *     returns com.bronto.api.model.ReadContactsWithLatestUnsubcribeDateResponse
-     * @throws ApiException_Exception
-     */
-    @WebMethod
-    @WebResult(name = "readContactsWithLatestUnsubcribeDateResponse", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
-    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
-    public ReadContactsWithLatestUnsubcribeDateResponse readContactsWithLatestUnsubcribeDate(
-        @WebParam(name = "readContactsWithLatestUnsubcribeDate", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
-        ReadContactsWithLatestUnsubcribeDate parameters,
-        @WebParam(name = "sessionHeader", targetNamespace = "http://api.bronto.com/v4", header = true, partName = "sessionHeader")
-        SessionHeader sessionHeader)
-        throws ApiException_Exception
-    ;
-
-    /**
-     * 
-     * @param sessionHeader
-     * @param parameters
-     * @return
      *     returns com.bronto.api.model.ReadWebformsResponse
      * @throws ApiException_Exception
      */
@@ -1119,6 +1100,25 @@ public interface BrontoSoapPortType {
     public UpdateListsResponse updateLists(
         @WebParam(name = "updateLists", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
         UpdateLists parameters,
+        @WebParam(name = "sessionHeader", targetNamespace = "http://api.bronto.com/v4", header = true, partName = "sessionHeader")
+        SessionHeader sessionHeader)
+        throws ApiException_Exception
+    ;
+
+    /**
+     * 
+     * @param sessionHeader
+     * @param parameters
+     * @return
+     *     returns com.bronto.api.model.ReadContactsWithLatestUnsubscribeDateResponse
+     * @throws ApiException_Exception
+     */
+    @WebMethod
+    @WebResult(name = "readContactsWithLatestUnsubscribeDateResponse", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
+    @SOAPBinding(parameterStyle = SOAPBinding.ParameterStyle.BARE)
+    public ReadContactsWithLatestUnsubscribeDateResponse readContactsWithLatestUnsubscribeDate(
+        @WebParam(name = "readContactsWithLatestUnsubscribeDate", targetNamespace = "http://api.bronto.com/v4", partName = "parameters")
+        ReadContactsWithLatestUnsubscribeDate parameters,
         @WebParam(name = "sessionHeader", targetNamespace = "http://api.bronto.com/v4", header = true, partName = "sessionHeader")
         SessionHeader sessionHeader)
         throws ApiException_Exception
