@@ -1,5 +1,7 @@
 # Bronto Java SDK
 
+**This project is no longer maintained and should be used for historical purposes only.**
+
 The SDK is broken up into two projects:
 
 - The `wsimported` Java models, that live in `com.bronto.api.model`
